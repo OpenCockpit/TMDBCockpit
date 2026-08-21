@@ -1,11 +1,7 @@
-# The Movie Database plugin TMDBCockpit
-Browse/query TMDB Database for movie info
+# TMDBCockpit
+Browse/query TMDB Database
 
-## E2-DarkOS skin
-![Screenshot](TMDBCockpit.jpg)
-
-## All other skins
-![Screenshot](TMDBCockpit2.jpg)
+![Screenshot](pic1.jpg)
 
 ## Features
 - Shows detailed movie/tv show information provided by TMDB.
@@ -16,8 +12,8 @@ Browse/query TMDB Database for movie info
 - Allows playback of YouTube trailers.
 
 ## Limitations
-- Supports Enigma2 on OpenViX and compatible distributions only
-- Is being tested on DM9xx only
+- tested on OpenViX and OpenATV
+- tested on DM9xx only
 
 ## Links
 - Installation: https://xcentaurix.github.io/TMDBCockpit

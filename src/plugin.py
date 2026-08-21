@@ -7,7 +7,7 @@ from Plugins.Plugin import PluginDescriptor
 from .__init__ import _
 from .Debug import logger
 from .Version import VERSION
-from .ConfigInit import ConfigInit
+from . import ConfigInit  # noqa: F401, pylint: disable=unused-import
 from .ScreenMain import ScreenMain
 from .ScreenTMDB import ScreenTMDB
 from .PluginUtils import WHERE_TMDB_SEARCH, WHERE_TMDB_MOVIELIST
@@ -107,8 +107,6 @@ def autoStart(reason, **__):
 
 
 def Plugins(**__):
-    ConfigInit()
-
     descriptors = [
         PluginDescriptor(
             where=[

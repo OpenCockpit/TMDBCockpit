@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMDBCockpit\n"
-"POT-Creation-Date: 2026-01-10 21:51+0100\n"
-"PO-Revision-Date: 2026-01-10 21:54+0100\n"
+"POT-Creation-Date: 2026-08-21 11:40+0200\n"
+"PO-Revision-Date: 2026-08-21 11:40+0200\n"
 "Last-Translator: xcentaurix\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -27,9 +27,6 @@ msgstr "Backdrop speichern"
 
 msgid "Save movie backdrop as cover"
 msgstr "Backdrop als Cover speichern"
-
-msgid "TMDB cover/backdrop"
-msgstr "TMDB Cover/Backdrop"
 
 msgid "Please select a function"
 msgstr "Funktionsauswahl"
@@ -55,15 +52,6 @@ msgstr "Keine Filmbeschreibung verfügbar"
 msgid "Various"
 msgstr "Verschiedene"
 
-msgid "Seasons"
-msgstr "Staffeln"
-
-msgid "Episodes"
-msgstr "Episoden"
-
-msgid "Season"
-msgstr "Staffel"
-
 msgid "female"
 msgstr "weiblich"
 
@@ -76,29 +64,11 @@ msgstr "divers"
 msgid "not specified"
 msgstr "undefiniert"
 
-msgid "OK"
-msgstr "Ok"
-
-msgid "Cancel"
-msgstr "Abbrechen"
-
-msgid "Language:"
-msgstr "Sprache"
-
-msgid "Skip to movie details for single result:"
-msgstr "Springe zur Detailansicht bei nur einem Film"
-
-msgid "Red key for TMDB infos in EPGs:"
-msgstr "Rote Taste für TMDB Infos in EPGs"
-
-msgid "Cover resolution:"
-msgstr "Cover Auflösung"
-
-msgid "Backdrop resolution:"
-msgstr "Backdrop Auflösung"
-
 msgid "Overview"
 msgstr "Überblick"
+
+msgid "Exit"
+msgstr "Schließen"
 
 msgid "Details"
 msgstr "Details"
@@ -109,14 +79,11 @@ msgstr "Suche"
 msgid "more ..."
 msgstr "Mehr ..."
 
-msgid "Setup"
-msgstr "Einstellungen"
+msgid "Menu"
+msgstr "Menu"
 
 msgid "Show details"
 msgstr "Zeige Details"
-
-msgid "Exit"
-msgstr "Schließen"
 
 msgid "Up"
 msgstr "Hoch"
@@ -130,6 +97,12 @@ msgstr "Details runter"
 msgid "Details up"
 msgstr "Details hoch"
 
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Setup"
+msgstr "Einstellungen"
+
 msgid "Current movies in cinemas"
 msgstr "Aktuelle Filme im Kino"
 
@@ -138,12 +111,6 @@ msgstr "Suchtext fehlt."
 
 msgid "Looking up: %s ..."
 msgstr "Lade: %s ..."
-
-msgid "page"
-msgstr "Seite"
-
-msgid "No results for:"
-msgstr "Keine Ergebnisse für: %s"
 
 msgid "TMDB Infos"
 msgstr "TMDB Infos"
@@ -162,9 +129,6 @@ msgstr "Empfohlene Filme"
 
 msgid "Best rated movies"
 msgstr "Bestbewertete Filme"
-
-msgid "TMDB categories"
-msgstr "TMDB Kategorien"
 
 msgid "Please select a category"
 msgstr "Kategorieauswahl"
@@ -208,6 +172,9 @@ msgstr "Studio:"
 msgid "Crew"
 msgstr "Besetzung"
 
+msgid "Seasons"
+msgstr "Staffeln"
+
 msgid "Selection up"
 msgstr "Auswahl hoch"
 
@@ -226,17 +193,14 @@ msgstr "Suche"
 msgid "No results for: %s"
 msgstr "Keine Ergebnisse für: %s"
 
-msgid "Videos"
-msgstr "Trailer"
-
 msgid "No search provider registered."
 msgstr "Keine Suchmaschine registriert"
 
-msgid "TMDB videos"
-msgstr "TMDB Trailer"
-
 msgid "Please select a video"
 msgstr "Trailer Auswahl"
+
+msgid "Downloading trailer ..."
+msgstr "Trailer wird heruntergeladen..."
 
 msgid "Trailer playback failed."
 msgstr "Trailer Playback ist fehlgeschlagen."
@@ -250,18 +214,6 @@ msgstr "Popularität"
 msgid "Known for:"
 msgstr "Bekannt aus:"
 
-msgid "Movie"
-msgstr "Film"
-
-msgid "Series"
-msgstr "Serie"
-
-msgid "Person"
-msgstr "Person"
-
-msgid "min"
-msgstr "Min"
-
 msgid "TMDB Infos for current event"
 msgstr "TMDb Infos für laufendes Programm"
 
@@ -271,26 +223,3 @@ msgstr "TMDb Suche"
 msgid "TMDBCockpit"
 msgstr "TMDBCockpit"
 
-msgid "Backdrop resolution"
-msgstr "Backdrop-Auflösung"
-
-msgid "Cover resolution"
-msgstr "Cover-Auflösung"
-
-msgid "Language"
-msgstr "Sprache"
-
-msgid "Log level"
-msgstr "Log-Level"
-
-msgid "Red key for TMDB infos in EPGs"
-msgstr "Rote Taste für TMDB Infos in EPGs"
-
-msgid "Skip to movie details for single result"
-msgstr "Springe zur Detailansicht bei nur einem Film"
-
-msgid "YouTube trailer best resolution"
-msgstr "YouTube Trailer beste Auflösung"
-
-msgid "YouTube trailer use Dash MP4"
-msgstr "YouTube Trailer Dash MP4 verwenden"

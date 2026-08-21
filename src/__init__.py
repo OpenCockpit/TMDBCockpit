@@ -7,7 +7,6 @@ import gettext
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 from Components.Language import language
 from .Version import PLUGIN
-from .Debug import initLogging
 
 
 def initLocale():
@@ -27,6 +26,5 @@ def __(singular, plural, n):
     return gettext.dngettext(PLUGIN, singular, plural, n)
 
 
-initLogging()
 initLocale()
 language.addCallback(initLocale)

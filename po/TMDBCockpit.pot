@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMDBCockpit\n"
-"POT-Creation-Date: 2026-01-10 21:51+0100\n"
-"PO-Revision-Date: 2026-01-10 21:54+0100\n"
+"POT-Creation-Date: 2026-08-21 11:40+0200\n"
+"PO-Revision-Date: 2026-08-21 11:40+0200\n"
 "Last-Translator: xcentaurix\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
 "X-Poedit-Basepath: ../src\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -26,9 +26,6 @@ msgid "Save movie backdrop"
 msgstr ""
 
 msgid "Save movie backdrop as cover"
-msgstr ""
-
-msgid "TMDB cover/backdrop"
 msgstr ""
 
 msgid "Please select a function"
@@ -55,15 +52,6 @@ msgstr ""
 msgid "Various"
 msgstr ""
 
-msgid "Seasons"
-msgstr ""
-
-msgid "Episodes"
-msgstr ""
-
-msgid "Season"
-msgstr ""
-
 msgid "female"
 msgstr ""
 
@@ -76,28 +64,10 @@ msgstr ""
 msgid "not specified"
 msgstr ""
 
-msgid "OK"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "Language:"
-msgstr ""
-
-msgid "Skip to movie details for single result:"
-msgstr ""
-
-msgid "Red key for TMDB infos in EPGs:"
-msgstr ""
-
-msgid "Cover resolution:"
-msgstr ""
-
-msgid "Backdrop resolution:"
-msgstr ""
-
 msgid "Overview"
+msgstr ""
+
+msgid "Exit"
 msgstr ""
 
 msgid "Details"
@@ -109,13 +79,10 @@ msgstr ""
 msgid "more ..."
 msgstr ""
 
-msgid "Setup"
+msgid "Menu"
 msgstr ""
 
 msgid "Show details"
-msgstr ""
-
-msgid "Exit"
 msgstr ""
 
 msgid "Up"
@@ -130,6 +97,12 @@ msgstr ""
 msgid "Details up"
 msgstr ""
 
+msgid "Cancel"
+msgstr ""
+
+msgid "Setup"
+msgstr ""
+
 msgid "Current movies in cinemas"
 msgstr ""
 
@@ -137,12 +110,6 @@ msgid "No search string specified."
 msgstr ""
 
 msgid "Looking up: %s ..."
-msgstr ""
-
-msgid "page"
-msgstr ""
-
-msgid "No results for:"
 msgstr ""
 
 msgid "TMDB Infos"
@@ -161,9 +128,6 @@ msgid "Recommendations"
 msgstr ""
 
 msgid "Best rated movies"
-msgstr ""
-
-msgid "TMDB categories"
 msgstr ""
 
 msgid "Please select a category"
@@ -208,6 +172,9 @@ msgstr ""
 msgid "Crew"
 msgstr ""
 
+msgid "Seasons"
+msgstr ""
+
 msgid "Selection up"
 msgstr ""
 
@@ -226,16 +193,13 @@ msgstr ""
 msgid "No results for: %s"
 msgstr ""
 
-msgid "Videos"
-msgstr ""
-
 msgid "No search provider registered."
 msgstr ""
 
-msgid "TMDB videos"
+msgid "Please select a video"
 msgstr ""
 
-msgid "Please select a video"
+msgid "Downloading trailer ..."
 msgstr ""
 
 msgid "Trailer playback failed."
@@ -250,18 +214,6 @@ msgstr ""
 msgid "Known for:"
 msgstr ""
 
-msgid "Movie"
-msgstr ""
-
-msgid "Series"
-msgstr ""
-
-msgid "Person"
-msgstr ""
-
-msgid "min"
-msgstr ""
-
 msgid "TMDB Infos for current event"
 msgstr ""
 
@@ -269,28 +221,4 @@ msgid "TMDb Search"
 msgstr ""
 
 msgid "TMDBCockpit"
-msgstr ""
-
-msgid "Backdrop resolution"
-msgstr ""
-
-msgid "Cover resolution"
-msgstr ""
-
-msgid "Language"
-msgstr ""
-
-msgid "Log level"
-msgstr ""
-
-msgid "Red key for TMDB infos in EPGs"
-msgstr ""
-
-msgid "Skip to movie details for single result"
-msgstr ""
-
-msgid "YouTube trailer best resolution"
-msgstr ""
-
-msgid "YouTube trailer use Dash MP4"
 msgstr ""

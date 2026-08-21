@@ -2,13 +2,15 @@
 # License: GNU General Public License v3.0
 
 
+import os
 from twisted.internet import threads, reactor
 from enigma import eServiceReference
 from Components.ActionMap import HelpableActionMap
+from Components.Button import Button
+from Components.config import config
 from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Components.ScrollLabel import ScrollLabel
-from Components.Sources.StaticText import StaticText
 from Screens.ChoiceBox import ChoiceBox
 from Screens.InfoBar import MoviePlayer
 from Screens.HelpMenu import HelpableScreen
@@ -25,14 +27,16 @@ from .Debug import logger
 from .SearchMovie import SearchMovie
 from .MoreOptions import MoreOptions
 from .PluginUtils import getPlugin, WHERE_SEARCH
+from .Utils import temp_dir
 from .YouTubeVideoUrl import YouTubeVideoUrl
 
 
 class TrailerPlayer(MoviePlayer):
     """Custom trailer player based on TMDB plugin"""
-    def __init__(self, session, service):
+    def __init__(self, session, service, trailer_path=None):
         MoviePlayer.__init__(self, session, service)
         self.skinName = 'MoviePlayer'
+        self.trailer_path = trailer_path
         self["actions"] = HelpableActionMap(
             self,
             "MoviePlayerActions",
@@ -54,6 +58,15 @@ class TrailerPlayer(MoviePlayer):
     def openServiceList(self):
         if hasattr(self, 'toggleShow'):
             self.toggleShow()
+
+    def close(self, *args):
+        if self.trailer_path and os.path.isfile(self.trailer_path):
+            try:
+                os.remove(self.trailer_path)
+            except OSError as e:
+                logger.error("Failed to delete downloaded trailer: %s", e)
+            self.trailer_path = None
+        MoviePlayer.close(self, *args)
 
 
 class ScreenMovie(MoreOptions, Picture, Screen, HelpableScreen):
@@ -81,6 +94,8 @@ class ScreenMovie(MoreOptions, Picture, Screen, HelpableScreen):
         self.movie_title = ""
         self.original_title = ""
         self.videos = []
+        self._wait_box = None
+        self._pending_trailer = None
 
         self["genre"] = Label()
         self["genre_txt"] = Label()
@@ -116,13 +131,13 @@ class ScreenMovie(MoreOptions, Picture, Screen, HelpableScreen):
             "studio": (_("Studio:"), "-"),
         }
 
-        self["key_red"] = Label(_("Exit"))
-        self["key_green"] = Label(_("Crew"))
-        self["key_yellow"] = Label(
-            _("Seasons")) if self.media == "tv" else Label("")
-        self["key_blue"] = Label(
-            _("more ...")) if self.service_path else Label("")
-        self["key_menu"] = StaticText(_("Setup"))
+        self["key_red"] = Button(_("Exit"))
+        self["key_green"] = Button(_("Crew"))
+        self["key_yellow"] = Button(
+            _("Seasons")) if self.media == "tv" else Button("")
+        self["key_blue"] = Button(
+            _("more ...")) if self.service_path else Button("")
+        self["key_menu"] = Button(_("Menu"))
 
         self["searchinfo"] = Label()
         self["cover"] = Pixmap()
@@ -244,19 +259,45 @@ class ScreenMovie(MoreOptions, Picture, Screen, HelpableScreen):
     def videolistCallback(self, ret):
         if ret:
             video_id = ret[1]
-            # Try to extract actual playable URL using YouTubeVideoUrl
-            try:
-                ytdl = YouTubeVideoUrl()
-                url = ytdl.extract(video_id)
-                if url:
-                    # Create service reference with extracted URL
-                    ref = eServiceReference(4097, 0, url)
-                    ref.setName(ret[0])  # Set video name as title
-                    self.session.open(TrailerPlayer, ref)
-                    return
-            except Exception as e:
-                logger.error("Failed to extract YouTube URL: %s", str(e))
-                self.session.open(MessageBox, _('Trailer playback failed.'), MessageBox.TYPE_INFO, timeout=3)
+            video_name = ret[0]
+            # YouTube now blocks direct streaming of the combined-format URLs yt-dlp
+            # can extract (403 Forbidden without a PO token), so the trailer is
+            # downloaded (DASH video+audio merged via ffmpeg) and played back locally.
+            self._pending_trailer = None
+            # Must use openWithCallback here: Session.close() only *schedules* the
+            # dialog-stack pop via a delayed timer, so opening TrailerPlayer right
+            # after wait_box.close() (before that pop actually runs) hits Enigma2's
+            # "Modal open are allowed only from a screen which is modal" guard. The
+            # openWithCallback callback only fires once that pop has completed.
+            self._wait_box = self.session.openWithCallback(
+                self.trailerWaitBoxClosed, MessageBox, _('Downloading trailer ...'),
+                MessageBox.TYPE_INFO, enable_input=False)
+            resolution_itag = config.plugins.tmdbcockpit.yttrailer_best_resolution.value
+            use_dash = config.plugins.tmdbcockpit.yttrailer_useDashMP4.value
+            deferred = threads.deferToThread(
+                YouTubeVideoUrl.download, video_id, temp_dir, resolution_itag, use_dash)
+            deferred.addCallback(boundFunction(self.trailerDownloaded, video_name))
+            deferred.addErrback(self.trailerDownloadFailed)
+
+    def trailerDownloaded(self, video_name, path):
+        self._pending_trailer = (video_name, path)
+        self._wait_box.close()
+
+    def trailerDownloadFailed(self, failure):
+        logger.error("Failed to download YouTube trailer: %s", failure.getErrorMessage())
+        self._pending_trailer = None
+        self._wait_box.close()
+
+    def trailerWaitBoxClosed(self, *_args):
+        self._wait_box = None
+        pending, self._pending_trailer = self._pending_trailer, None
+        if pending:
+            video_name, path = pending
+            ref = eServiceReference(4097, 0, path)
+            ref.setName(video_name)
+            self.session.open(TrailerPlayer, ref, path)
+        else:
+            self.session.open(MessageBox, _('Trailer playback failed.'), MessageBox.TYPE_INFO, timeout=3)
 
     def green(self):
         self.session.openWithCallback(self.screenPeopleCallback, ScreenPeople,

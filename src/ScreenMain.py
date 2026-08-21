@@ -5,7 +5,7 @@ import os
 from twisted.internet import threads, reactor
 from Components.ActionMap import HelpableActionMap
 from Components.Sources.List import List
-from Components.Sources.StaticText import StaticText
+from Components.Button import Button
 from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Components.config import config
@@ -53,11 +53,11 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
         self.result = []
 
         self['searchinfo'] = Label()
-        self['key_red'] = Label(_("Exit"))
-        self['key_green'] = Label(_("Details"))
-        self['key_yellow'] = Label(_("Edit search"))
-        self['key_blue'] = Label(_("more ..."))
-        self['key_menu'] = StaticText(_("Setup"))
+        self['key_red'] = Button(_("Exit"))
+        self['key_green'] = Button(_("Details"))
+        self['key_yellow'] = Button(_("Edit search"))
+        self['key_blue'] = Button(_("more ..."))
+        self['key_menu'] = Button(_("Menu"))
 
         self['list'] = List()
         self['cover'] = Pixmap()

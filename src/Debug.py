@@ -35,3 +35,6 @@ def setLogLevel(level):
     logger.setLevel(level)
     streamer.setLevel(level)
     logger.info("level: %s", level)
+
+
+initLogging()

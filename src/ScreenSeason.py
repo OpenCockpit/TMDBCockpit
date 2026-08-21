@@ -4,10 +4,10 @@
 from twisted.internet import threads, reactor
 from Components.Sources.List import List
 from Components.ActionMap import HelpableActionMap
+from Components.Button import Button
 from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Components.ScrollLabel import ScrollLabel
-from Components.Sources.StaticText import StaticText
 from Screens.HelpMenu import HelpableScreen
 from Screens.Screen import Screen
 from Tools.BoundFunction import boundFunction
@@ -39,12 +39,12 @@ class ScreenSeason(MoreOptions, Picture, Screen, HelpableScreen):
         self.result = []
         self['searchinfo'] = Label()
         self["overview"] = self.overview_label = ScrollLabel()
-        self['key_red'] = Label(_("Exit"))
-        self['key_green'] = Label()
-        self['key_yellow'] = Label()
-        self["key_blue"] = Label(
-            _("more ...")) if self.service_path else Label("")
-        self['key_menu'] = StaticText(_("Setup"))
+        self['key_red'] = Button(_("Exit"))
+        self['key_green'] = Button()
+        self['key_yellow'] = Button()
+        self["key_blue"] = Button(
+            _("more ...")) if self.service_path else Button("")
+        self['key_menu'] = Button(_("Menu"))
         self['list'] = self.list = List()
         self['cover'] = Pixmap()
         self['backdrop'] = Pixmap()
