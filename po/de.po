@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMDBCockpit\n"
-"POT-Creation-Date: 2026-08-21 11:40+0200\n"
-"PO-Revision-Date: 2026-08-21 11:40+0200\n"
+"POT-Creation-Date: 2026-08-24 23:58+0200\n"
+"PO-Revision-Date: 2026-08-24 23:58+0200\n"
 "Last-Translator: xcentaurix\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -51,6 +51,15 @@ msgstr "Keine Filmbeschreibung verfügbar"
 
 msgid "Various"
 msgstr "Verschiedene"
+
+msgid "Seasons"
+msgstr "Staffeln"
+
+msgid "Episodes"
+msgstr "Episoden"
+
+msgid "Season"
+msgstr "Staffel"
 
 msgid "female"
 msgstr "weiblich"
@@ -112,6 +121,12 @@ msgstr "Suchtext fehlt."
 msgid "Looking up: %s ..."
 msgstr "Lade: %s ..."
 
+msgid "page"
+msgstr "Seite"
+
+msgid "No results for:"
+msgstr "Keine Ergebnisse für: %s"
+
 msgid "TMDB Infos"
 msgstr "TMDB Infos"
 
@@ -172,9 +187,6 @@ msgstr "Studio:"
 msgid "Crew"
 msgstr "Besetzung"
 
-msgid "Seasons"
-msgstr "Staffeln"
-
 msgid "Selection up"
 msgstr "Auswahl hoch"
 
@@ -192,6 +204,9 @@ msgstr "Suche"
 
 msgid "No results for: %s"
 msgstr "Keine Ergebnisse für: %s"
+
+msgid "Videos"
+msgstr "Trailer"
 
 msgid "No search provider registered."
 msgstr "Keine Suchmaschine registriert"
@@ -213,6 +228,18 @@ msgstr "Popularität"
 
 msgid "Known for:"
 msgstr "Bekannt aus:"
+
+msgid "Movie"
+msgstr "Film"
+
+msgid "Series"
+msgstr "Serie"
+
+msgid "Person"
+msgstr "Person"
+
+msgid "min"
+msgstr "Min"
 
 msgid "TMDB Infos for current event"
 msgstr "TMDb Infos für laufendes Programm"

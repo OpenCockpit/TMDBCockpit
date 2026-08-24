@@ -43,7 +43,8 @@ class SearchMovie(Parsers, Json):
         result["rating"] = f"{float(result['vote_average']):.1f}"
         result["votes"] = str(result["vote_count"])
         result["votes_brackets"] = f"({str(result['vote_count'])})"
-        result["runtime"] = f"{result['runtime']} {_('min')}"
+        min_label = _("min")
+        result["runtime"] = f"{result['runtime']} {min_label}"
 
         self.parseCountry(result)
         self.parseGenre(result)

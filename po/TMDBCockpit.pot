@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TMDBCockpit\n"
-"POT-Creation-Date: 2026-08-21 11:40+0200\n"
-"PO-Revision-Date: 2026-08-21 11:40+0200\n"
+"POT-Creation-Date: 2026-08-24 23:58+0200\n"
+"PO-Revision-Date: 2026-08-24 23:58+0200\n"
 "Last-Translator: xcentaurix\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -50,6 +50,15 @@ msgid "No movie description available"
 msgstr ""
 
 msgid "Various"
+msgstr ""
+
+msgid "Seasons"
+msgstr ""
+
+msgid "Episodes"
+msgstr ""
+
+msgid "Season"
 msgstr ""
 
 msgid "female"
@@ -112,6 +121,12 @@ msgstr ""
 msgid "Looking up: %s ..."
 msgstr ""
 
+msgid "page"
+msgstr ""
+
+msgid "No results for:"
+msgstr ""
+
 msgid "TMDB Infos"
 msgstr ""
 
@@ -172,9 +187,6 @@ msgstr ""
 msgid "Crew"
 msgstr ""
 
-msgid "Seasons"
-msgstr ""
-
 msgid "Selection up"
 msgstr ""
 
@@ -191,6 +203,9 @@ msgid "Search"
 msgstr ""
 
 msgid "No results for: %s"
+msgstr ""
+
+msgid "Videos"
 msgstr ""
 
 msgid "No search provider registered."
@@ -212,6 +227,18 @@ msgid "Popularity"
 msgstr ""
 
 msgid "Known for:"
+msgstr ""
+
+msgid "Movie"
+msgstr ""
+
+msgid "Series"
+msgstr ""
+
+msgid "Person"
+msgstr ""
+
+msgid "min"
 msgstr ""
 
 msgid "TMDB Infos for current event"

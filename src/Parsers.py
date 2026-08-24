@@ -129,15 +129,18 @@ class Parsers(Json):
     def parseTVSeasons(self, result):
         num_seasons = result["number_of_seasons"]
         episodes = result["number_of_episodes"]
-        result["runtime"] = f"{num_seasons} {_('Seasons')} / {episodes} {_('Episodes')}"
+        seasons_label = _("Seasons")
+        episodes_label = _("Episodes")
+        result["runtime"] = f"{num_seasons} {seasons_label} / {episodes} {episodes_label}"
 
+        season_label = _("Season")
         seasons_string = ""
         for season in result["seasons"]:
             result1 = {}
             self.parseJson(result1, season, ["season_number", "episode_count", "air_date"])
             # logger.debug("seasons: %s", result1)
             if int(result1["season_number"]) >= 1:
-                seasons_string += f"{_('Season')} {result1['season_number']}: {result1['episode_count']} {_('Episodes')} ({result1['air_date'][:4]})\n"
+                seasons_string += f"{season_label} {result1['season_number']}: {result1['episode_count']} {episodes_label} ({result1['air_date'][:4]})\n"
         result["seasons"] = seasons_string
 
     def parsePersonGender(self, result):

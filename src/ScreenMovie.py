@@ -210,8 +210,9 @@ class ScreenMovie(MoreOptions, Picture, Screen, HelpableScreen):
                 self.movie_title = result["title"]
                 self.original_title = result["original_title"]
                 self.videos = result["videos"]
+                videos_label = _("Videos")
                 self["key_yellow"].setText(
-                    f"{_('Videos')} ({len(self.videos)})")
+                    f"{videos_label} ({len(self.videos)})")
             elif self.media == "tv":
                 self.movie_title = result["name"]
 

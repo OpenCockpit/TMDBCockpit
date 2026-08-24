@@ -7,6 +7,7 @@ from pathlib import Path
 from Tools.Directories import SCOPE_SKIN
 from Components.config import config
 from skin import loadSkin
+from .ScreenSummaryFix import patchScreenApplySkin
 # from .Debug import logger
 
 
@@ -26,3 +27,4 @@ def getSkinPath(file_name):
 def loadPluginSkin(file_name="skin.xml"):
     skin_file = getSkinPath(file_name)
     loadSkin(skin_file, scope=SCOPE_SKIN)
+    patchScreenApplySkin()

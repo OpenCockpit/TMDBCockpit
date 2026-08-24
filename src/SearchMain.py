@@ -34,7 +34,7 @@ class SearchMain(Json):
         elif menu_selection == 6:
             json_data = tmdb.Movies().top_rated(page=page, language=lang)
         else:
-            json_data = tmdb.Search().multi(query=text, language=lang)
+            json_data = tmdb.Search().multi(query=text, page=page, language=lang)
 
         results = {}
         self.parseJson(results, json_data, ["total_pages", "results"])
@@ -59,17 +59,21 @@ class SearchMain(Json):
 
             title = search_title = ""
             if media == "movie" and title_movie:
-                title = f"{title_movie} ({_('Movie')}, {date_movie[:4]})"
+                movie_label = _("Movie")
+                title = f"{title_movie} ({movie_label}, {date_movie[:4]})"
                 search_title = title_movie
             elif media == "tv" and title_series:
-                title = f"{title_series} ({_('Series')}, {date_tv[:4]})"
+                series_label = _("Series")
+                title = f"{title_series} ({series_label}, {date_tv[:4]})"
                 search_title = title_series
             elif media == "person" and title_person:
-                title = f"{title_person} ({_('Person')})"
+                person_label = _("Person")
+                title = f"{title_person} ({person_label})"
                 search_title = title_person
             elif menu_selection and title_movie:
                 media = "movie"
-                title = f"{title_movie} ({_('Movie')}, {date_movie[:4]})"
+                movie_label = _("Movie")
+                title = f"{title_movie} ({movie_label}, {date_movie[:4]})"
                 search_title = title_movie
             else:
                 media = ""

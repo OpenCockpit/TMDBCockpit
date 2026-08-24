@@ -177,18 +177,21 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
         self.totalpages = totalpages
         if self.menu_selection:
             if result:
+                page_label = _("page")
                 self["searchinfo"].setText(
-                    f"{self.search_title} ({_('page')} {self.page}/{totalpages})")
+                    f"{self.search_title} ({page_label} {self.page}/{totalpages})")
             else:
+                no_results_label = _("No results for:")
                 self['searchinfo'].setText(
-                    f"{_('No results for:')} {self.search_title}")
+                    f"{no_results_label} {self.search_title}")
         elif result:
             if text != self.text:
                 self['searchinfo'].setText(f"{text} ({self.text})")
             else:
                 self['searchinfo'].setText(self.text)
         else:
-            self['searchinfo'].setText(f"{_('No results for:')} {self.text}")
+            no_results_label = _("No results for:")
+            self['searchinfo'].setText(f"{no_results_label} {self.text}")
         self["list"].setList(result)
         if result:
             if self.direction_up:
@@ -289,7 +292,7 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
 
     def prevBouquet(self):
         logger.info("...")
-        if self.menu_selection:
+        if self.menu_selection or self.text:
             self.direction_up = False
             self.page += 1
             if self.page > self.totalpages:
@@ -298,7 +301,7 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
 
     def nextBouquet(self):
         logger.info("...")
-        if self.menu_selection:
+        if self.menu_selection or self.text:
             self.direction_up = True
             self.page -= 1
             if self.page <= 0:
