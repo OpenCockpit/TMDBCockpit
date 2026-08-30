@@ -1,0 +1,32 @@
+colors:
+  children:
+    - color:
+        name: "panelBG"
+        value: "#1a1a1a"
+    - color:
+        name: "barBG"
+        value: "#101010"
+    - color:
+        name: "separator"
+        value: "#404040"
+    - color:
+        name: "keyRed"
+        value: "#e0331e"
+    - color:
+        name: "keyGreen"
+        value: "#3c9f2a"
+    - color:
+        name: "keyYellow"
+        value: "#e0c31e"
+    - color:
+        name: "keyBlue"
+        value: "#1e4ab5"
+    - color:
+        name: "progressBG"
+        value: "#282828"
+    - color:
+        name: "secondBG"
+        value: "#202020"
+    - color:
+        name: "sliderBG"
+        value: "#303030"

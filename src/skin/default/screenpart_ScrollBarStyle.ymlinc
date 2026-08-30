@@ -1,0 +1,7 @@
+scrollbarstyle:
+  backgroundColor: "black"
+  borderColor: "white"
+  borderWidth: "1"
+  foregroundColor: "white"
+  mode: "showOnDemand"
+  width: "10"

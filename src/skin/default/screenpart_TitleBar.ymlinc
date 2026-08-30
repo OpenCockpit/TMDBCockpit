@@ -1,0 +1,17 @@
+- eLabel:
+    backgroundColor: "barBG"
+    position: "0,0"
+    size: "e,55"
+- widget:
+    font: "$FB_big"
+    position: "10,0"
+    render: "Label"
+    size: "e-20,55"
+    source: "Title"
+    transparent: "1"
+    valign: "center"
+    zPosition: "1"
+- eLabel:
+    backgroundColor: "separator"
+    position: "0,54"
+    size: "e,2"

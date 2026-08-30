@@ -1,0 +1,11 @@
+widget:
+  conditional: "$key"
+  font: "$FR_medium"
+  foregroundColor: "$color"
+  halign: "center"
+  name: "$name"
+  position: "0,0"
+  size: "$width,38"
+  transparent: "1"
+  valign: "center"
+  zPosition: "2"

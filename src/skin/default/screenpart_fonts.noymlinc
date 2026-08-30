@@ -1,0 +1,36 @@
+- global:
+    name: "FR_verysmall"
+    value: "Regular;20"
+- global:
+    name: "FR_small"
+    value: "Regular;26"
+- global:
+    name: "FR_medium"
+    value: "Regular;32"
+- global:
+    name: "FR_big"
+    value: "Regular;38"
+- global:
+    name: "FR_bigger"
+    value: "Regular;44"
+- global:
+    name: "FR_biggest"
+    value: "Regular;50"
+- global:
+    name: "FB_verysmall"
+    value: "Bold;20"
+- global:
+    name: "FB_small"
+    value: "Bold;26"
+- global:
+    name: "FB_medium"
+    value: "Bold;32"
+- global:
+    name: "FB_big"
+    value: "Bold;38"
+- global:
+    name: "FB_bigger"
+    value: "Bold;44"
+- global:
+    name: "FB_biggest"
+    value: "Bold;50"
