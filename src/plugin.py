@@ -113,7 +113,8 @@ def Plugins(**__):
                 PluginDescriptor.WHERE_AUTOSTART,
                 PluginDescriptor.WHERE_SESSIONSTART,
             ],
-            fnc=autoStart
+            fnc=autoStart,
+            needsRestart=True
         ),
         PluginDescriptor(
             name="TMDBCockpit",
@@ -122,7 +123,8 @@ def Plugins(**__):
                 WHERE_TMDB_MOVIELIST,
                 PluginDescriptor.WHERE_MOVIELIST,
             ],
-            fnc=movieList
+            fnc=movieList,
+            needsRestart=True
         ),
         PluginDescriptor(
             name="TMDBCockpit",
@@ -130,7 +132,8 @@ def Plugins(**__):
             where=[
                 WHERE_TMDB_SEARCH,
             ],
-            fnc=queryEventInfos
+            fnc=queryEventInfos,
+            needsRestart=True
         ),
         PluginDescriptor(
             name=_("TMDB Infos"),
@@ -139,7 +142,8 @@ def Plugins(**__):
                 PluginDescriptor.WHERE_EVENTINFO,
                 # PluginDescriptor.WHERE_CHANNEL_CONTEXT_MENU,
             ],
-            fnc=showEventInfos
+            fnc=showEventInfos,
+            needsRestart=True
         ),
         PluginDescriptor(
             name=_("TMDBCockpit"),
@@ -149,7 +153,8 @@ def Plugins(**__):
                 PluginDescriptor.WHERE_EXTENSIONSMENU,
             ],
             icon="TMDBCockpit.png",
-            fnc=main
+            fnc=main,
+            needsRestart=True
         )
     ]
     return descriptors
