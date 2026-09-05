@@ -4,6 +4,7 @@
 
 from Components.config import config
 from Plugins.Plugin import PluginDescriptor
+from skin import findSkinScreen
 from .__init__ import _
 from .Debug import logger
 from .Version import VERSION
@@ -14,7 +15,8 @@ from .PluginUtils import WHERE_TMDB_SEARCH, WHERE_TMDB_MOVIELIST
 from .SkinUtils import loadPluginSkin
 
 
-loadPluginSkin()
+if findSkinScreen("ScreenMain") is None:
+    loadPluginSkin()
 
 
 def monkeyPatchAllEPGScreens():
@@ -155,6 +157,10 @@ def Plugins(**__):
             icon="TMDBCockpit.png",
             fnc=main,
             needsRestart=True
-        )
+        ),
+        PluginDescriptor(
+            where=PluginDescriptor.WHERE_SKINCHANGE,
+            fnc=loadPluginSkin
+        ),
     ]
     return descriptors
