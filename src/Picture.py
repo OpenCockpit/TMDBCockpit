@@ -96,6 +96,16 @@ class Picture(WebRequests):
         logger.info("...")
         if widget and widget.instance and ident == self.ident:
             if path and os.path.isfile(path):
+                # Release the currently displayed picture's accelerated
+                # surface before decoding+loading the new one instead of
+                # letting both exist in accelerated/ION memory at once for
+                # the duration of the swap - each cover/backdrop is a
+                # full-screen-sized decoded image, and on a device with a
+                # small ION pool, rapid list navigation (a new picture per
+                # selection change) can otherwise exhaust it and crash
+                # (seen as repeated "[gAccel] alloc failed" followed by a
+                # segfault once ION_IOC_ALLOC itself fails).
+                widget.instance.setPixmap(None)
                 widget.instance.setPixmap(LoadPixmap(path))
                 widget.show()
             else:

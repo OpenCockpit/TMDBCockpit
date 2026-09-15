@@ -120,6 +120,18 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
         DelayTimer.stopAll()
         self["cover"].hide()
         self["backdrop"].hide()
+        # hide() alone doesn't release the widget's currently displayed
+        # picture - its accelerated/ION surface stays resident until
+        # something else is set. Drop it here, as soon as the user moves
+        # away from this item, instead of leaving it held until the 500ms
+        # debounce below settles and the *next* picture gets decoded - see
+        # Picture.displayPicture()'s comment for why holding two of these
+        # full-screen decoded images at once is what exhausts a small ION
+        # pool during fast scrolling.
+        if self["cover"].instance:
+            self["cover"].instance.setPixmap(None)
+        if self["backdrop"].instance:
+            self["backdrop"].instance.setPixmap(None)
         if config.plugins.tmdbcockpit.skip_to_movie.value and self.count == 1:
             DelayTimer(10, self.ok)
         else:
