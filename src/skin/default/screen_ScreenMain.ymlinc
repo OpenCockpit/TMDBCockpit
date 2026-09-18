@@ -16,7 +16,7 @@ screen:
         foregroundColor: "keyYellow"
         name: "searchinfo"
         position: "30,75"
-        size: "1860,50"
+        size: "1860,36"
         transparent: "1"
     - widget:
         font: "$FR_small"
