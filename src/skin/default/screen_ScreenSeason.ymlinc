@@ -38,7 +38,7 @@ screen:
     - widget:
         font: "$FR_small"
         name: "overview"
-        position: "30,650"
+        position: "30,680"
         size: "1860,330"
         transparent: "1"
     - xmlinc:

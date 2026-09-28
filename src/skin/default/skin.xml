@@ -20,7 +20,7 @@
 		<widget font="Bold;38" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
 		<eLabel backgroundColor="separator" position="0,54" size="1920,2"/>
 		<widget name="backdrop" position="0,0" scale="1" size="1920,1080" zPosition="-1"/>
-		<widget font="Bold;32" foregroundColor="keyYellow" name="searchinfo" position="30,75" size="1860,50" transparent="1"/>
+		<widget font="Bold;32" foregroundColor="keyYellow" name="searchinfo" position="30,75" size="1860,36" transparent="1"/>
 		<widget font="Regular;26" itemHeight="40" position="30,135" render="Listbox" scrollbarMode="showOnDemand" size="1350,840" source="list" transparent="1">
 			<convert type="StringList"/>
 		</widget>
@@ -44,24 +44,24 @@
 		<widget font="Regular;26" name="fulldescription" position="30,135" size="850,840" transparent="1"/>
 		<widget alphatest="blend" name="cover" position="1410,135" scale="1" size="480,720"/>
 		<widget alphatest="blend" name="star" position="905,265" scale="1" size="100,100" zPosition="0"/>
-		<widget alphatest="blend" name="fsklogo" position="1075,280" scale="1" size="100,100" zPosition="2"/>
-		<widget font="Regular;20" foregroundColor="black" halign="center" name="rating" position="880,305" size="150,25" transparent="1" zPosition="2"/>
-		<widget font="Regular;20" halign="center" name="votes_brackets" position="880,365" size="150,25" transparent="1" zPosition="2"/>
-		<widget font="Regular;20" name="year_txt" position="910,415" size="120,28" transparent="1"/>
+		<widget alphatest="blend" name="fsklogo" position="1040,280" scale="1" size="100,100" zPosition="2"/>
+		<widget font="Regular;20" foregroundColor="black" halign="center" name="rating" position="905,305" size="100,25" transparent="1" zPosition="2"/>
+		<widget font="Regular;20" halign="center" name="votes_brackets" position="905,365" size="100,25" transparent="1" zPosition="2"/>
+		<widget font="Regular;20" name="year_txt" position="905,415" size="120,28" transparent="1"/>
 		<widget font="Regular;20" name="year" position="1040,415" size="360,28" transparent="1"/>
-		<widget font="Regular;20" name="country_txt" position="910,445" size="120,28" transparent="1"/>
-		<widget font="Regular;20" name="country" position="1040,445" size="340,28" transparent="1"/>
-		<widget font="Regular;20" name="runtime_txt" position="910,475" size="120,28" transparent="1"/>
+		<widget font="Regular;20" name="country_txt" position="905,445" size="120,28" transparent="1"/>
+		<widget font="Regular;20" name="country" position="1040,445" size="360,28" transparent="1"/>
+		<widget font="Regular;20" name="runtime_txt" position="905,475" size="120,28" transparent="1"/>
 		<widget font="Regular;20" name="runtime" position="1040,475" size="360,28" transparent="1"/>
-		<widget font="Regular;20" name="votes_txt" position="910,505" size="130,28" transparent="1"/>
+		<widget font="Regular;20" name="votes_txt" position="905,505" size="120,28" transparent="1"/>
 		<widget font="Regular;20" name="votes" position="1040,505" size="360,28" transparent="1"/>
-		<widget font="Regular;20" name="director_txt" position="910,535" size="120,28" transparent="1"/>
+		<widget font="Regular;20" name="director_txt" position="905,535" size="120,28" transparent="1"/>
 		<widget font="Regular;20" name="director" position="1040,535" size="360,28" transparent="1"/>
-		<widget font="Regular;20" name="author_txt" position="910,565" size="120,28" transparent="1"/>
+		<widget font="Regular;20" name="author_txt" position="905,565" size="120,28" transparent="1"/>
 		<widget font="Regular;20" name="author" position="1040,565" size="360,28" transparent="1"/>
-		<widget font="Regular;20" name="genre_txt" position="910,595" size="100,28" transparent="1"/>
+		<widget font="Regular;20" name="genre_txt" position="905,595" size="120,28" transparent="1"/>
 		<widget font="Regular;20" name="genre" position="1040,595" size="360,28" transparent="1"/>
-		<widget font="Regular;20" name="studio_txt" position="910,625" size="120,28" transparent="1"/>
+		<widget font="Regular;20" name="studio_txt" position="905,625" size="120,28" transparent="1"/>
 		<widget font="Regular;20" name="studio" position="1040,625" size="360,28" transparent="1"/>
 		<eLabel backgroundColor="separator" position="0,1024" size="1920,2"/>
 		<eLabel backgroundColor="backgroundDark" position="0,1025" size="1920,55"/>
@@ -118,7 +118,7 @@
 			<convert type="StringList"/>
 		</widget>
 		<widget name="cover" position="1370,135" scaleFlags="scaleCenter" size="520,520"/>
-		<widget font="Regular;26" name="overview" position="30,650" size="1860,330" transparent="1"/>
+		<widget font="Regular;26" name="overview" position="30,680" size="1860,330" transparent="1"/>
 		<eLabel backgroundColor="separator" position="0,1024" size="1920,2"/>
 		<eLabel backgroundColor="backgroundDark" position="0,1025" size="1920,55"/>
 		<widget conditional="key_red" font="Regular;32" foregroundColor="red" halign="center" name="key_red" position="0,1032" size="435,38" transparent="1" valign="center" zPosition="2"/>
