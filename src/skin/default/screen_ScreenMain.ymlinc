@@ -19,6 +19,7 @@ screen:
         size: "1860,36"
         transparent: "1"
     - widget:
+        backgroundColorSelected: "$backgroundColorSelected"
         font: "$FR_small"
         itemHeight: "40"
         position: "30,135"

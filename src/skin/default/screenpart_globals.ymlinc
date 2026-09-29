@@ -4,3 +4,8 @@
     file: "screenpart_fonts.ymlinc"
 - xmlinc:
     file: "screenpart_defaults.ymlinc"
+
+# symbolic colors
+- global:
+    name: "backgroundColorSelected"
+    value: "blue"
