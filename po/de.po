@@ -16,237 +16,377 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
+#: MoreOptions.py:26
 msgid "Save movie description"
 msgstr "Beschreibung speichern"
 
+#: MoreOptions.py:27
 msgid "Save movie cover"
 msgstr "Cover speichern"
 
+#: MoreOptions.py:28
 msgid "Save movie backdrop"
 msgstr "Backdrop speichern"
 
+#: MoreOptions.py:29
 msgid "Save movie backdrop as cover"
 msgstr "Backdrop als Cover speichern"
 
+#: MoreOptions.py:37
 msgid "Please select a function"
 msgstr "Funktionsauswahl"
 
+#: MoreOptions.py:53
 msgid "Cover saved."
 msgstr "Cover gespeichert."
 
+#: MoreOptions.py:57
 msgid "No cover available"
 msgstr "Kein Cover verfügbar"
 
+#: MoreOptions.py:65
 msgid "Backdrop saved."
 msgstr "Backdrop gespeichert."
 
+#: MoreOptions.py:69
 msgid "No backdrop available"
 msgstr "Kein Backdrop verfügbar"
 
+#: MoreOptions.py:77
 msgid "Movie description saved."
 msgstr "Filmbeschreibung gespeichert."
 
+#: MoreOptions.py:80
 msgid "No movie description available"
 msgstr "Keine Filmbeschreibung verfügbar"
 
+#: Parsers.py:116
 msgid "Various"
 msgstr "Verschiedene"
 
+#: Parsers.py:132 ScreenMovie.py:137 ScreenMovie.py:161 ScreenSeason.py:30
+#: ScreenSeason.py:88 ScreenSeason.py:95 ScreenSeason.py:97
 msgid "Seasons"
 msgstr "Staffeln"
 
+#: Parsers.py:133
 msgid "Episodes"
 msgstr "Episoden"
 
+#: Parsers.py:136
 msgid "Season"
 msgstr "Staffel"
 
+#: Parsers.py:149
 msgid "female"
 msgstr "weiblich"
 
+#: Parsers.py:151
 msgid "male"
 msgstr "männlich"
 
+#: Parsers.py:153
 msgid "divers"
 msgstr "divers"
 
+#: Parsers.py:155 ScreenPerson.py:83 ScreenPerson.py:85
 msgid "not specified"
 msgstr "undefiniert"
 
+#: ScreenMain.py:43
 msgid "Overview"
 msgstr "Überblick"
 
+#: ScreenMain.py:56 ScreenMain.py:72 ScreenMovie.py:134 ScreenMovie.py:154
+#: ScreenPeople.py:40 ScreenPeople.py:55 ScreenPerson.py:41 ScreenPerson.py:52
+#: ScreenSeason.py:42 ScreenSeason.py:57
 msgid "Exit"
 msgstr "Schließen"
 
+#: ScreenMain.py:57 ScreenPeople.py:41
 msgid "Details"
 msgstr "Details"
 
+#: ScreenMain.py:58 ScreenMain.py:79 ScreenMain.py:82
 msgid "Edit search"
 msgstr "Suche"
 
+#: ScreenMain.py:59 ScreenMain.py:80 ScreenMovie.py:139 ScreenMovie.py:162
+#: ScreenSeason.py:46 ScreenSeason.py:65
 msgid "more ..."
 msgstr "Mehr ..."
 
+#: ScreenMain.py:60 ScreenMovie.py:140 ScreenPeople.py:44 ScreenPerson.py:45
+#: ScreenSeason.py:47
 msgid "Menu"
 msgstr "Menu"
 
+#: ScreenMain.py:71 ScreenMain.py:78 ScreenPeople.py:54 ScreenPeople.py:61
 msgid "Show details"
 msgstr "Zeige Details"
 
+#: ScreenMain.py:73
 msgid "Up"
 msgstr "Hoch"
 
+#: ScreenMain.py:74
 msgid "Down"
 msgstr "Runter"
 
+#: ScreenMain.py:75 ScreenSeason.py:60
 msgid "Details down"
 msgstr "Details runter"
 
+#: ScreenMain.py:76 ScreenSeason.py:61
 msgid "Details up"
 msgstr "Details hoch"
 
+#: ScreenMain.py:77 ScreenMovie.py:159 ScreenPeople.py:60 ScreenPerson.py:57
+#: ScreenSeason.py:64
 msgid "Cancel"
 msgstr "Abbrechen"
 
+#: ScreenMain.py:81 ScreenMovie.py:163 ScreenPeople.py:62 ScreenPerson.py:58
+#: ScreenSeason.py:66 SetupScreen.py:16
 msgid "Setup"
 msgstr "Einstellungen"
 
+#: ScreenMain.py:110 ScreenMain.py:250
 msgid "Current movies in cinemas"
 msgstr "Aktuelle Filme im Kino"
 
+#: ScreenMain.py:134
 msgid "No search string specified."
 msgstr "Suchtext fehlt."
 
+#: ScreenMain.py:148 ScreenMain.py:158 ScreenMovie.py:176 ScreenPeople.py:84
+#: ScreenPerson.py:69 ScreenSeason.py:87
+#, python-format
 msgid "Looking up: %s ..."
 msgstr "Lade: %s ..."
 
+#: ScreenMain.py:180
 msgid "page"
 msgstr "Seite"
 
+#: ScreenMain.py:184 ScreenMain.py:193
 msgid "No results for:"
 msgstr "Keine Ergebnisse für: %s"
 
+#: ScreenMain.py:249 plugin.py:120 plugin.py:129 plugin.py:136 plugin.py:146
 msgid "TMDB Infos"
 msgstr "TMDB Infos"
 
+#: ScreenMain.py:251
 msgid "Upcoming movies"
 msgstr "Kommende Filme im Kino"
 
+#: ScreenMain.py:252
 msgid "Popular movies"
 msgstr "Populäre Filme"
 
+#: ScreenMain.py:253
 msgid "Similar movies"
 msgstr "Ähnliche Filme"
 
+#: ScreenMain.py:254
 msgid "Recommendations"
 msgstr "Empfohlene Filme"
 
+#: ScreenMain.py:255
 msgid "Best rated movies"
 msgstr "Bestbewertete Filme"
 
+#: ScreenMain.py:260
 msgid "Please select a category"
 msgstr "Kategorieauswahl"
 
+#: ScreenMain.py:322
 msgid "Search for Movie:"
 msgstr "Suche nach Film:"
 
+#: ScreenMovie.py:44
 msgid "Leave trailer player"
 msgstr "Trailer-Player verlassen"
 
+#: ScreenMovie.py:47
 msgid "Trailer Player"
 msgstr "Trailer-Player"
 
+#: ScreenMovie.py:83
 msgid "Movie Details"
 msgstr "Filmdetails"
 
+#: ScreenMovie.py:121
 msgid "Genre:"
 msgstr "Genre:"
 
+#: ScreenMovie.py:124
 msgid "Votes:"
 msgstr "Stimmen:"
 
+#: ScreenMovie.py:126
 msgid "Runtime:"
 msgstr "Dauer:"
 
+#: ScreenMovie.py:127
 msgid "Year:"
 msgstr "Jahr:"
 
+#: ScreenMovie.py:128
 msgid "Countries:"
 msgstr "Länder:"
 
+#: ScreenMovie.py:129
 msgid "Director:"
 msgstr "Regie:"
 
+#: ScreenMovie.py:130
 msgid "Author:"
 msgstr "Author:"
 
+#: ScreenMovie.py:131
 msgid "Studio:"
 msgstr "Studio:"
 
+#: ScreenMovie.py:135 ScreenMovie.py:153 ScreenMovie.py:160 ScreenPeople.py:30
+#: ScreenPeople.py:84 ScreenPeople.py:90 ScreenPeople.py:92
 msgid "Crew"
 msgstr "Besetzung"
 
+#: ScreenMovie.py:155 ScreenPeople.py:56 ScreenPerson.py:53 ScreenSeason.py:58
 msgid "Selection up"
 msgstr "Auswahl hoch"
 
+#: ScreenMovie.py:156 ScreenPeople.py:57 ScreenPerson.py:54 ScreenSeason.py:59
 msgid "Selection down"
 msgstr "Auswahl runter"
 
+#: ScreenMovie.py:157 ScreenPerson.py:55
 msgid "Page up"
 msgstr "Seite hoch"
 
+#: ScreenMovie.py:158 ScreenPeople.py:58 ScreenPeople.py:59 ScreenPerson.py:56
+#: ScreenSeason.py:62 ScreenSeason.py:63
 msgid "Page down"
 msgstr "Seite runter"
 
+#: ScreenMovie.py:164
 msgid "Search"
 msgstr "Suche"
 
+#: ScreenMovie.py:186 ScreenPeople.py:90 ScreenPerson.py:79 ScreenSeason.py:95
+#, python-format
 msgid "No results for: %s"
 msgstr "Keine Ergebnisse für: %s"
 
+#: ScreenMovie.py:213
 msgid "Videos"
 msgstr "Trailer"
 
+#: ScreenMovie.py:228
 msgid "No search provider registered."
 msgstr "Keine Suchmaschine registriert"
 
+#: ScreenMovie.py:249
 msgid "Please select a video"
 msgstr "Trailer Auswahl"
 
+#: ScreenMovie.py:274
 msgid "Downloading trailer ..."
 msgstr "Trailer wird heruntergeladen..."
 
+#: ScreenMovie.py:301
 msgid "Trailer playback failed."
 msgstr "Trailer Playback ist fehlgeschlagen."
 
+#: ScreenPerson.py:29
 msgid "Person Details"
 msgstr "Personendetails"
 
+#: ScreenPerson.py:90
 msgid "Popularity"
 msgstr "Popularität"
 
+#: ScreenPerson.py:93
 msgid "Known for:"
 msgstr "Bekannt aus:"
 
+#: SearchMain.py:62 SearchMain.py:75
 msgid "Movie"
 msgstr "Film"
 
+#: SearchMain.py:66
 msgid "Series"
 msgstr "Serie"
 
+#: SearchMain.py:70
 msgid "Person"
 msgstr "Person"
 
+#: SearchMovie.py:46
 msgid "min"
 msgstr "Min"
 
+#: plugin.py:44
 msgid "TMDB Infos for current event"
 msgstr "TMDb Infos für laufendes Programm"
 
+#: plugin.py:137
 msgid "TMDb Search"
 msgstr "TMDb Suche"
 
+#: plugin.py:145
 msgid "TMDBCockpit"
 msgstr "TMDBCockpit"
 
+#~ msgid "TMDB cover/backdrop"
+#~ msgstr "TMDB Cover/Backdrop"
+
+#~ msgid "OK"
+#~ msgstr "Ok"
+
+#~ msgid "Language:"
+#~ msgstr "Sprache"
+
+#~ msgid "Skip to movie details for single result:"
+#~ msgstr "Springe zur Detailansicht bei nur einem Film"
+
+#~ msgid "Red key for TMDB infos in EPGs:"
+#~ msgstr "Rote Taste für TMDB Infos in EPGs"
+
+#~ msgid "Cover resolution:"
+#~ msgstr "Cover Auflösung"
+
+#~ msgid "Backdrop resolution:"
+#~ msgstr "Backdrop Auflösung"
+
+#~ msgid "TMDB categories"
+#~ msgstr "TMDB Kategorien"
+
+#~ msgid "TMDB videos"
+#~ msgstr "TMDB Trailer"
+
+#~ msgid "Backdrop resolution"
+#~ msgstr "Backdrop-Auflösung"
+
+#~ msgid "Cover resolution"
+#~ msgstr "Cover-Auflösung"
+
+#~ msgid "Language"
+#~ msgstr "Sprache"
+
+#~ msgid "Log level"
+#~ msgstr "Log-Level"
+
+#~ msgid "Red key for TMDB infos in EPGs"
+#~ msgstr "Rote Taste für TMDB Infos in EPGs"
+
+#~ msgid "Skip to movie details for single result"
+#~ msgstr "Springe zur Detailansicht bei nur einem Film"
+
+#~ msgid "YouTube trailer best resolution"
+#~ msgstr "YouTube Trailer beste Auflösung"
+
+#~ msgid "YouTube trailer use Dash MP4"
+#~ msgstr "YouTube Trailer Dash MP4 verwenden"

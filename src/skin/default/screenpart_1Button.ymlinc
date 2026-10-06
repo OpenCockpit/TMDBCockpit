@@ -5,7 +5,7 @@ widget:
   halign: "center"
   name: "$name"
   position: "0,0"
-  size: "$width,38"
+  size: "$width,55"
   transparent: "1"
   valign: "center"
   zPosition: "2"

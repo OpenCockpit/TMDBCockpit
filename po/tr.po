@@ -264,3 +264,29 @@ msgstr "YouTube fragmanı için en iyi çözünürlük"
 
 msgid "YouTube trailer use Dash MP4"
 msgstr "YouTube fragmanı için Dash MP4 kullan"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
