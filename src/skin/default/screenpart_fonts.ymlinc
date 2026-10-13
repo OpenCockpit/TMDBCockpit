@@ -1,3 +1,15 @@
+- fonts:
+    children:
+      - font:
+          filename: "/usr/share/enigma2/FontCockpit/fonts/DejaVuSans.ttf"
+          name: "Regular"
+          scale: "89"
+      - font:
+          filename: "Roboto-Bold.ttf"
+          name: "Bold"
+          scale: "71"
+
+# symbolic font names
 - global:
     name: "FR_verysmall"
     value: "Regular;20"

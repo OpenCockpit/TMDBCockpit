@@ -1,9 +1,10 @@
 widget:
   conditional: "$key"
-  font: "$FR_medium"
+  font: "$FB_big"
   foregroundColor: "$color"
   halign: "center"
   name: "$name"
+  noWrap: "1"
   position: "0,0"
   size: "$width,55"
   transparent: "1"

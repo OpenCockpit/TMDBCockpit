@@ -265,28 +265,26 @@ msgstr "YouTube fragmanı için en iyi çözünürlük"
 msgid "YouTube trailer use Dash MP4"
 msgstr "YouTube fragmanı için Dash MP4 kullan"
 
+msgid "Automatically skip to movie details when only one result is found."
+msgstr ""
 
+msgid "Select the debug log level."
+msgstr ""
 
+msgid "Select the language for TMDB results."
+msgstr ""
 
+msgid "Select the preferred resolution for YouTube trailers."
+msgstr ""
 
+msgid "Select the resolution for backdrop images."
+msgstr ""
 
+msgid "Select the resolution for cover images."
+msgstr ""
 
+msgid "Use Dash MP4 streams for YouTube trailers."
+msgstr ""
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+msgid "Use the red key to open TMDB infos in EPG screens."
+msgstr ""
