@@ -17,49 +17,52 @@ from .SkinUtils import loadPluginSkin
 loadPluginSkin("ScreenMain")
 
 
+_epgPatched = False
+EPG_CONFIGS = ("infobar", "single", "multi", "grid")   # the EPG screens with a configurable red button
+
+
 def monkeyPatchAllEPGScreens():
-    """
-    Monkey patch EPGSelectionBase without requiring any core system changes
-    This overrides both the button action AND the button label
-    """
-    from Screens.EpgSelectionBase import EPGSelectionBase, EPGStandardButtons
-    from Screens.UserDefinedButtons import UserDefinedButtons
+    """Make the red key of the EPG screens open TMDBCockpit, without any change of the system.
 
-    # Store originals
-    original_helpKeyAction = EPGStandardButtons.helpKeyAction
-    original_udb_init = UserDefinedButtons.__init__
+    The EPG offers the red key as "TMDb Search" only if the plugin folder "tmdb" exists (isPluginInstalled("tmdb")),
+    otherwise it is the IMDb search - also as the default of the configurable red button of the EPG screens. TMDBCockpit
+    is no folder "tmdb", so three things are done here:
+    - the search "openTMDb" of the EPG screens opens TMDBCockpit,
+    - the EPG screens are told that "tmdb" is installed (the label of the key, and the red key of the screens
+      that don't have a configurable one),
+    - the configurable red button gets the TMDb search as its default instead of the IMDb one. A button the user has
+      set himself is left alone, and the default is not stored: with the setting off it is the IMDb search again."""
+    global _epgPatched
+    if _epgPatched:
+        return
+    import Screens.EpgSelectionBase as epgBase
 
-    def customOpenTMDb(self):
-        """TMDBCockpit custom handler"""
-        logger.info("[TMDBCockpit] EPG red button pressed (openTMDb)")
-        event = self["list"].getCurrent()[0]
+    def openTMDb(self):
+        if hasattr(self, "closeEventViewDialog"):
+            self.closeEventViewDialog()
+        current = self["list"].getCurrent()
+        event = current and current[0]
         if event is not None:
             event_name = event.getEventName()
-            logger.info("[TMDBCockpit] Opening for event: %s", event_name)
+            logger.info("EPG red button pressed, opening for event: %s", event_name)
             self.session.open(ScreenMain, event_name, 2)
 
-    def customHelpKeyAction(self, actionName):
-        """Override helpKeyAction to use our custom openTMDb only if TMDb is selected"""
-        if actionName == "red" and self.tmdb:  # Only override if TMDb is selected
-            return (customOpenTMDb.__get__(self, type(self)), _("TMDB Infos for current event"))
-        return original_helpKeyAction(self, actionName)
+    epgBase.EPGSelectionBase.openTMDb = openTMDb
 
-    def customUDBInit(self, epgConfig, *args):
-        """Override UserDefinedButtons.__init__ to patch button config"""
-        # Call original init
-        original_udb_init(self, epgConfig, *args)
-        # After init, update the button config to point to openTMDb
-        # This ensures UserDefinedButtons-based screens use our handler
-        if hasattr(self, '_UserDefinedButtons__actions') and 'openTMDb' in self._UserDefinedButtons__actions:
-            # The action exists, no need to change - our openTMDb override will be used
-            pass
+    isPluginInstalled = epgBase.isPluginInstalled
 
-    # Apply monkey patches
-    EPGSelectionBase.openTMDb = customOpenTMDb
-    EPGStandardButtons.helpKeyAction = customHelpKeyAction
-    UserDefinedButtons.__init__ = customUDBInit
+    def tmdbInstalled(pluginname, *args, **kwargs):
+        return True if pluginname == "tmdb" else isPluginInstalled(pluginname, *args, **kwargs)
 
-    logger.info("[TMDBCockpit] EPG override installed for TMDb button (no system changes required)")
+    epgBase.isPluginInstalled = tmdbInstalled
+
+    for name in EPG_CONFIGS:
+        button = getattr(getattr(getattr(config, "epgselection", None), name, None), "btn_red", None)
+        if button is not None and button.saved_value is None and button.default == "openIMDb":
+            button.default = "openTMDb"
+            button.value = "openTMDb"
+    _epgPatched = True
+    logger.info("EPG red key patched for TMDBCockpit (no system changes required)")
 
 
 def showEventInfos(session, event="", service="", **__):

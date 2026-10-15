@@ -30,6 +30,8 @@ class SearchTMDB(Json):
 
             media = result["media_type"]
             ident = result["id"]
+            if media not in {"movie", "tv"}:
+                continue   # a person is no answer to the lookup of a title
             title = result["title"] if media == "movie" else result["name"]
             cover_url = f"http://image.tmdb.org/t/p/{config.plugins.tmdbcockpit.cover_size.value}{result['poster_path']}"
             backdrop_url = f"http://image.tmdb.org/t/p/{config.plugins.tmdbcockpit.backdrop_size.value}{result['backdrop_path']}"

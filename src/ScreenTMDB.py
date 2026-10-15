@@ -41,7 +41,11 @@ class ScreenTMDB():
             self.gotData(result)
 
     def getData(self, text, callback):
-        result = SearchTMDB().getResult(self.result1, text)
+        try:
+            result = SearchTMDB().getResult(self.result1, text)
+        except Exception as e:
+            logger.error("search failed: %s", e)
+            result = []
         reactor.callFromThread(callback, result)
 
     def gotData(self, result):
@@ -49,11 +53,18 @@ class ScreenTMDB():
         if result:
             current = result[0][0]
             logger.debug("current: %s", current)
-            ident = current[1]
-            media = current[2]
-            cover_url = current[3]
-            if media in {"movie", "tv"}:
-                result = SearchMovie().getResult(self.result2, ident, media)
-                result["cover_url"] = cover_url
+            # the details are another request to TMDB: not on the main thread
+            threads.deferToThread(self.getDetails, current[1], current[2], current[3])
+        else:
+            self.callback({})
+
+    def getDetails(self, ident, media, cover_url):
+        result = {}
+        try:
+            result = SearchMovie().getResult(self.result2, ident, media)
+            result["cover_url"] = cover_url
+        except Exception as e:
+            logger.error("details of %s failed: %s", ident, e)
+            result = {}
         logger.debug("result: %s", result)
-        self.callback(result)
+        reactor.callFromThread(self.callback, result)

@@ -11,6 +11,9 @@ Browse/query TMDB Database
 - Allows unique tmdb api key in /etc/enigma2/tmdb_key.txt
 - Allows playback of YouTube trailers.
 
+## Documentation
+Installation, usage, settings, the interface for other plugins and troubleshooting are described in the [TMDBCockpit wiki](https://github.com/OpenCockpit/TMDBCockpit/wiki).
+
 ## Disclaimer
 The project author is not responsible for how this software is used by others. It is not intended to be used for accessing or distributing copyrighted materials without authorization.
 Users are solely responsible for determining the legality of their actions.
