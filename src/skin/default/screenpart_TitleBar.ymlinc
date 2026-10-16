@@ -1,9 +1,9 @@
 - eLabel:
-    backgroundColor: "backgroundDark"
+    backgroundColor: "md_surface_container_lowest"
     position: "0,0"
     size: "$screen_width,55"
 - widget:
-    font: "$FB_big"
+    font: "$header_font"
     position: "10,0"
     render: "Label"
     size: "$screen_width-20,55"
@@ -12,6 +12,6 @@
     valign: "center"
     zPosition: "1"
 - eLabel:
-    backgroundColor: "separator"
+    backgroundColor: "md_outline_variant"
     position: "0,54"
     size: "$screen_width,2"

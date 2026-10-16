@@ -1,8 +1,8 @@
 - eLabel:
-    backgroundColor: "separator"
+    backgroundColor: "md_outline_variant"
     position: "0,$screen_height-56"
     size: "$screen_width,2"
 - eLabel:
-    backgroundColor: "backgroundDark"
+    backgroundColor: "md_surface_container_lowest"
     position: "0,$screen_height-55"
     size: "$screen_width,55"

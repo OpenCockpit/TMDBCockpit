@@ -51,11 +51,11 @@ class Parsers(Json):
             crew_string += f"{result2['name']} ({result2['job']})\n"
             if result2["job"] == "Director":
                 if director:
-                    director += "\n"
+                    director += ", "
                 director += result2["name"]
             if result2["job"] == "Screenplay" or result2["job"] == "Writer":
                 if author:
-                    author += "\n"
+                    author += ", "
                 author += result2["name"]
         result["crew"] = crew_string
         result["director"] = director
@@ -111,7 +111,7 @@ class Parsers(Json):
             result1 = {}
             self.parseJson(result1, directors, ["name"])
             if director:
-                director += "\n"
+                director += ", "
             director += result1["name"]
         result["director"] = _("Various")
         result["author"] = director

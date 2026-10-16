@@ -30,7 +30,10 @@ class ScreenPeople(Picture, Screen, HelpableScreen):
         self.title = _("Crew")
         self.session = session
         self.movie = movie
-        self.ident = ident
+        # Picture.showPicture() reuses self.ident as its "current image" marker, so the
+        # movie's own id lives in its own attribute (getData() runs in a thread and could
+        # otherwise read the value showPicture() just overwrote)
+        self.movie_ident = ident
         self.media = media
         self.cover_url = cover_url
         self.backdrop_url = backdrop_url
@@ -76,13 +79,13 @@ class ScreenPeople(Picture, Screen, HelpableScreen):
 
     def __onLayoutFinish(self):
         logger.debug("movie: %s", self.movie)
-        self.showPicture(self["backdrop"], "backdrop", self.ident, self.backdrop_url)
+        self.showPicture(self["backdrop"], "backdrop", self.movie_ident, self.backdrop_url)
         threads.deferToThread(self.getData, self.gotData)
 
     def getData(self, callback):
         self["searchinfo"].setText(
             _("Looking up: %s ...") % (self.movie + " - " + _("Crew")))
-        result = SearchPeople().getResult(self.result, self.ident, self.media)
+        result = SearchPeople().getResult(self.result, self.movie_ident, self.media)
         reactor.callFromThread(callback, result)
 
     def gotData(self, result):
@@ -106,7 +109,7 @@ class ScreenPeople(Picture, Screen, HelpableScreen):
             cover_ident = current[3]
             if cover_ident:
                 self.session.openWithCallback(
-                    self.screenPersonCallback, ScreenPerson, name, cover_ident, self.ident)
+                    self.screenPersonCallback, ScreenPerson, name, cover_ident, self.movie_ident)
 
     def screenPersonCallback(self, do_exit):
         if do_exit:

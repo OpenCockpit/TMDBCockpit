@@ -1,14 +1,24 @@
 - xmlinc:
-    file: "screenpart_colors.ymlinc"
+    file: "colors.ymlinc"
 - xmlinc:
-    file: "screenpart_fonts.ymlinc"
+    file: "fonts.ymlinc"
 - xmlinc:
     file: "screenpart_defaults.ymlinc"
 
 # symbolic colors
 - global:
     name: "backgroundColorSelected"
-    value: "blue"
+    value: "md_primary_container"
+
+# corner radius of covers/posters
+- global:
+    name: "radius_poster"
+    value: "12"
+
+# corner radius of the selected list item
+- global:
+    name: "radius_item"
+    value: "8"
 
 # screen sizes
 - global:
