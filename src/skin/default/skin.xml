@@ -39,54 +39,16 @@
 		<color name="md_transparent" value="#ff000000"/>
 	</colors>
 	<fonts>
-		<font filename="fonts/DejaVuSans.ttf" name="Regular" scale="89"/>
+		<font filename="OpenSans-Regular.ttf" name="Regular" scale="89"/>
 		<font filename="Roboto-Bold.ttf" name="Bold" scale="71"/>
-		<font filename="fonts/BNR.otf" name="ExtraF_3" scale="100"/>
-		<font filename="fonts/Bignoodletitling.ttf" name="CAID" scale="100"/>
-		<font filename="lcd.ttf" name="LCD" scale="100"/>
-		<font filename="tuxtxt.ttf" name="Console" scale="100"/>
-		<font filename="andale.ttf" name="Fixed" scale="100"/>
-		<font filename="DejaVuSans.ttf" name="DejaVuSans" scale="100"/>
-		<alias font="Regular" height="38" name="ChoiceList" size="28"/>
-		<alias font="Regular" height="38" name="TextNormal" size="28"/>
-		<alias font="Regular" height="25" name="ChoiceBoxDescription" size="22"/>
-		<alias font="Regular" height="38" name="FileList" size="28"/>
-		<alias font="Regular" height="38" name="FileListMulti" size="28"/>
-		<alias font="Regular" height="76" name="PluginBrowser0" size="32"/>
-		<alias font="Regular" name="PluginBrowser1" size="22"/>
-		<alias font="Regular" height="45" name="ServiceInfo" size="30"/>
-		<alias font="Regular" height="45" name="SelectionList" size="30"/>
-		<alias font="Regular" height="30" name="ImsSelectionList" size="28"/>
-		<alias font="Regular" height="38" name="PartnerBoxEntryList0" size="28"/>
-		<alias font="Regular" name="PartnerBoxEntryList1" size="28"/>
-		<alias font="Regular" height="114" name="PartnerBoxE2TimerMenu0" size="32"/>
-		<alias font="Regular" name="PartnerBoxE2TimerMenu1" size="28"/>
-		<alias font="Regular" height="45" name="PartnerBoxBouquetList0" size="32"/>
-		<alias font="Regular" name="PartnerBoxBouquetList1" size="28"/>
-		<alias font="Regular" height="114" name="PartnerBoxChannelList0" size="32"/>
-		<alias font="Regular" name="PartnerBoxChannelList1" size="28"/>
-		<alias font="Regular" height="38" name="PartnerBoxChannelEPGList0" size="32"/>
-		<alias font="Regular" name="PartnerBoxChannelEPGList1" size="24"/>
-		<alias font="DejaVuSans" height="68" name="VirtualKeyBoard" size="42"/>
-		<alias font="Regular" height="45" name="HelpMenuList" size="30"/>
-		<alias font="Regular" height="75" name="HelpMenuListExt0" size="32"/>
-		<alias font="Regular" name="HelpMenuListExt1" size="28"/>
-		<alias font="Regular" height="45" name="Dreamexplorer" size="30"/>
-		<alias font="Regular" height="38" name="PlayList" size="28"/>
-		<alias font="Regular" height="25" name="AutotimerList" size="22"/>
-		<alias font="Regular" name="AutotimerListExt0" size="28"/>
-		<alias font="Regular" height="95" name="AutotimerListExt1" size="22"/>
-		<alias font="Fixed" height="45" name="FcZipArchiver" size="26"/>
-		<alias font="Regular" name="AutomaticVolumeAdjustment0" size="28"/>
-		<alias font="Regular" name="AutomaticVolumeAdjustment1" size="28"/>
 	</fonts>
 	<screen backgroundColor="md_surface" flags="wfNoBorder" name="ScreenMain" position="0,0" resolution="1920,1080" size="1920,1080">
-		<eLabel backgroundColor="md_surface_container_lowest" position="0,0" size="1920,55"/>
-		<widget font="Bold;36" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
+		<eLabel backgroundColor="md_surface_container_high" position="0,0" size="1920,55"/>
+		<widget font="Bold;36" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,54" size="1920,2"/>
 		<widget name="backdrop" position="0,0" scale="1" size="1920,1080" zPosition="-1"/>
 		<widget font="Regular;36" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
-		<widget backgroundColorSelected="md_primary_container" itemCornerRadiusSelected="8" position="30,135" render="Listbox" scrollbarMode="showOnDemand" size="1350,840" source="list" transparent="1">
+		<widget backgroundColorSelected="md_surface_container_high" foregroundColorSelected="md_primary" itemCornerRadiusSelected="8" position="30,135" render="Listbox" scrollbarMode="showOnDemand" size="1350,840" source="list" transparent="1">
 			<convert type="TemplatedMultiContentEx">
 			{
 				"template": [
@@ -100,7 +62,7 @@
 		<widget cornerRadius="12" name="cover" position="1410,135" scale="1" size="480,720"/>
 		<ePixmap alphatest="blend" pixmap="~/../images/tmdb.png" position="1475,880" scale="1" size="350,30"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,1024" size="1920,2"/>
-		<eLabel backgroundColor="md_surface_container_lowest" position="0,1025" size="1920,55"/>
+		<eLabel backgroundColor="md_surface_container_high" position="0,1025" size="1920,55"/>
 		<widget conditional="key_red" font="Bold;36" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
 		<widget conditional="key_green" font="Bold;36" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
 		<widget conditional="key_yellow" font="Bold;36" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
@@ -109,8 +71,8 @@
 		<widget conditional="key_info" font="Bold;36" foregroundColor="md_on_surface" halign="center" name="key_info" noWrap="1" position="1830,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
 	</screen>
 	<screen backgroundColor="md_surface" flags="wfNoBorder" name="ScreenMovie" position="0,0" resolution="1920,1080" size="1920,1080">
-		<eLabel backgroundColor="md_surface_container_lowest" position="0,0" size="1920,55"/>
-		<widget font="Bold;36" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
+		<eLabel backgroundColor="md_surface_container_high" position="0,0" size="1920,55"/>
+		<widget font="Bold;36" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,54" size="1920,2"/>
 		<widget name="backdrop" position="0,0" scale="1" size="1920,1080" zPosition="-1"/>
 		<widget font="Regular;36" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
@@ -137,7 +99,7 @@
 		<widget font="Regular;20" name="studio_txt" noWrap="1" position="905,625" size="120,28" transparent="1"/>
 		<widget font="Regular;20" name="studio" noWrap="1" position="1040,625" size="360,28" transparent="1"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,1024" size="1920,2"/>
-		<eLabel backgroundColor="md_surface_container_lowest" position="0,1025" size="1920,55"/>
+		<eLabel backgroundColor="md_surface_container_high" position="0,1025" size="1920,55"/>
 		<widget conditional="key_red" font="Bold;36" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
 		<widget conditional="key_green" font="Bold;36" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
 		<widget conditional="key_yellow" font="Bold;36" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
@@ -146,12 +108,12 @@
 		<widget conditional="key_info" font="Bold;36" foregroundColor="md_on_surface" halign="center" name="key_info" noWrap="1" position="1830,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
 	</screen>
 	<screen backgroundColor="md_surface" flags="wfNoBorder" name="ScreenPeople" position="0,0" resolution="1920,1080" size="1920,1080">
-		<eLabel backgroundColor="md_surface_container_lowest" position="0,0" size="1920,55"/>
-		<widget font="Bold;36" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
+		<eLabel backgroundColor="md_surface_container_high" position="0,0" size="1920,55"/>
+		<widget font="Bold;36" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,54" size="1920,2"/>
 		<widget name="backdrop" position="0,0" scale="1" size="1920,1080" zPosition="-1"/>
 		<widget font="Regular;36" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
-		<widget backgroundColorSelected="md_primary_container" itemCornerRadiusSelected="8" position="30,135" render="Listbox" scrollbarMode="showOnDemand" size="1350,840" source="list" transparent="1">
+		<widget backgroundColorSelected="md_surface_container_high" foregroundColorSelected="md_primary" itemCornerRadiusSelected="8" position="30,135" render="Listbox" scrollbarMode="showOnDemand" size="1350,840" source="list" transparent="1">
 			<convert type="TemplatedMultiContentEx">
 			{
 				"template": [
@@ -165,7 +127,7 @@
 		<widget addon="Pager" connection="list" foregroundColor="md_on_surface" picL="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/shevronleft.png" picPage="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/dot.png" picPageCurrent="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/dotfull.png" picR="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/shevronright.png" position="30,985" size="1350,25" transparent="1"/>
 		<widget alphatest="blend" cornerRadius="12" name="cover" position="1410,135" scale="1" size="480,720"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,1024" size="1920,2"/>
-		<eLabel backgroundColor="md_surface_container_lowest" position="0,1025" size="1920,55"/>
+		<eLabel backgroundColor="md_surface_container_high" position="0,1025" size="1920,55"/>
 		<widget conditional="key_red" font="Bold;36" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
 		<widget conditional="key_green" font="Bold;36" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
 		<widget conditional="key_yellow" font="Bold;36" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
@@ -174,15 +136,15 @@
 		<widget conditional="key_info" font="Bold;36" foregroundColor="md_on_surface" halign="center" name="key_info" noWrap="1" position="1830,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
 	</screen>
 	<screen backgroundColor="md_surface" flags="wfNoBorder" name="ScreenPerson" position="0,0" resolution="1920,1080" size="1920,1080">
-		<eLabel backgroundColor="md_surface_container_lowest" position="0,0" size="1920,55"/>
-		<widget font="Bold;36" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
+		<eLabel backgroundColor="md_surface_container_high" position="0,0" size="1920,55"/>
+		<widget font="Bold;36" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,54" size="1920,2"/>
 		<widget name="backdrop" position="0,0" scale="1" size="1920,1080" zPosition="-1"/>
 		<widget font="Regular;36" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
 		<widget font="Regular;26" name="fulldescription" position="30,135" size="1350,840" transparent="1"/>
 		<widget alphatest="blend" cornerRadius="12" name="cover" position="1410,135" scale="1" size="480,720"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,1024" size="1920,2"/>
-		<eLabel backgroundColor="md_surface_container_lowest" position="0,1025" size="1920,55"/>
+		<eLabel backgroundColor="md_surface_container_high" position="0,1025" size="1920,55"/>
 		<widget conditional="key_red" font="Bold;36" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
 		<widget conditional="key_green" font="Bold;36" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
 		<widget conditional="key_yellow" font="Bold;36" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
@@ -191,12 +153,12 @@
 		<widget conditional="key_info" font="Bold;36" foregroundColor="md_on_surface" halign="center" name="key_info" noWrap="1" position="1830,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
 	</screen>
 	<screen backgroundColor="md_surface" flags="wfNoBorder" name="ScreenSeason" position="0,0" resolution="1920,1080" size="1920,1080">
-		<eLabel backgroundColor="md_surface_container_lowest" position="0,0" size="1920,55"/>
-		<widget font="Bold;36" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
+		<eLabel backgroundColor="md_surface_container_high" position="0,0" size="1920,55"/>
+		<widget font="Bold;36" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,54" size="1920,2"/>
 		<widget name="backdrop" position="0,0" scale="1" size="1920,1080" zPosition="-1"/>
 		<widget font="Regular;36" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
-		<widget backgroundColorSelected="md_primary_container" itemCornerRadiusSelected="8" position="30,135" render="Listbox" scrollbarMode="showOnDemand" size="1310,520" source="list" transparent="1">
+		<widget backgroundColorSelected="md_surface_container_high" foregroundColorSelected="md_primary" itemCornerRadiusSelected="8" position="30,135" render="Listbox" scrollbarMode="showOnDemand" size="1310,520" source="list" transparent="1">
 			<convert type="TemplatedMultiContentEx">
 			{
 				"template": [
@@ -211,7 +173,7 @@
 		<widget cornerRadius="12" name="cover" position="1370,135" scaleFlags="scaleCenter" size="520,520"/>
 		<widget font="Regular;26" name="overview" position="30,680" size="1860,330" transparent="1"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,1024" size="1920,2"/>
-		<eLabel backgroundColor="md_surface_container_lowest" position="0,1025" size="1920,55"/>
+		<eLabel backgroundColor="md_surface_container_high" position="0,1025" size="1920,55"/>
 		<widget conditional="key_red" font="Bold;36" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
 		<widget conditional="key_green" font="Bold;36" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
 		<widget conditional="key_yellow" font="Bold;36" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>

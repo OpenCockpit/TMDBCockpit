@@ -1,6 +1,6 @@
 widget:
   conditional: "$key"
-  font: "$header_font"
+  font: "$md_headline_small_emphasized"
   foregroundColor: "$color"
   halign: "center"
   name: "$name"

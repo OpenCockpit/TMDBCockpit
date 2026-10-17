@@ -1,9 +1,10 @@
 - eLabel:
-    backgroundColor: "md_surface_container_lowest"
+    backgroundColor: "md_surface_container_high"
     position: "0,0"
     size: "$screen_width,55"
 - widget:
-    font: "$header_font"
+    font: "$md_headline_small_emphasized"
+    foregroundColor: "md_primary"
     position: "10,0"
     render: "Label"
     size: "$screen_width-20,55"

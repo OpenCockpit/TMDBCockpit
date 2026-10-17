@@ -12,7 +12,7 @@ screen:
         size: "1920,1080"
         zPosition: "-1"
     - widget:
-        font: "$subtitle_font"
+        font: "$md_headline_small"
         foregroundColor: "md_key_yellow"
         name: "searchinfo"
         position: "30,75"
@@ -20,6 +20,7 @@ screen:
         transparent: "1"
     - widget:
         backgroundColorSelected: "$backgroundColorSelected"
+        foregroundColorSelected: "$foregroundColorSelected"
         itemCornerRadiusSelected: "$radius_item"
         position: "30,135"
         render: "Listbox"
@@ -33,12 +34,12 @@ screen:
               cell:
                 itemHeight: 40
                 fonts:
-                  - "$label_font"
+                  - "$md_body_small"
                 fields:
                   - text:
                       position: "10,0"
                       size: "e-20,40"
-                      font: "$label_font"
+                      font: "$md_body_small"
                       flags: RT_HALIGN_LEFT|RT_VALIGN_CENTER
                       value: 0
     - xmlinc:
@@ -53,7 +54,7 @@ screen:
         scaleFlags: "scaleCenter"
         size: "520,520"
     - widget:
-        font: "$label_font"
+        font: "$md_body_small"
         name: "overview"
         position: "30,680"
         size: "1860,330"

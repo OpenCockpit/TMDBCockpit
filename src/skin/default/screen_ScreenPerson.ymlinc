@@ -12,14 +12,14 @@ screen:
         size: "1920,1080"
         zPosition: "-1"
     - widget:
-        font: "$subtitle_font"
+        font: "$md_headline_small"
         foregroundColor: "md_key_yellow"
         name: "searchinfo"
         position: "30,75"
         size: "1860,45"
         transparent: "1"
     - widget:
-        font: "$label_font"
+        font: "$md_body_small"
         name: "fulldescription"
         position: "30,135"
         size: "1350,840"

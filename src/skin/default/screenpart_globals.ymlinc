@@ -8,7 +8,10 @@
 # symbolic colors
 - global:
     name: "backgroundColorSelected"
-    value: "md_primary_container"
+    value: "md_surface_container_high"
+- global:
+    name: "foregroundColorSelected"
+    value: "md_primary"
 
 # corner radius of covers/posters
 - global:

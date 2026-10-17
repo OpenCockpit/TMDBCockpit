@@ -1,298 +1,63 @@
 - fonts:
     children:
       - font:
-          filename: "fonts/DejaVuSans.ttf"
+          filename: "OpenSans-Regular.ttf"
           name: "Regular"
           scale: "89"
       - font:
           filename: "Roboto-Bold.ttf"
           name: "Bold"
           scale: "71"
-      - font:
-          filename: "fonts/BNR.otf"
-          name: "ExtraF_3"
-          scale: "100"
-      - font:
-          filename: "fonts/Bignoodletitling.ttf"
-          name: "CAID"
-          scale: "100"
-      - font:
-          filename: "lcd.ttf"
-          name: "LCD"
-          scale: "100"
-      - font:
-          filename: "tuxtxt.ttf"
-          name: "Console"
-          scale: "100"
-      - font:
-          filename: "andale.ttf"
-          name: "Fixed"
-          scale: "100"
-      - font:
-          filename: "DejaVuSans.ttf"
-          name: "DejaVuSans"
-          scale: "100"
-      - alias:
-          font: "Regular"
-          height: "38"
-          name: "ChoiceList"
-          size: "28"
-      - alias:
-          font: "Regular"
-          height: "38"
-          name: "TextNormal"
-          size: "28"
-      - alias:
-          font: "Regular"
-          height: "25"
-          name: "ChoiceBoxDescription"
-          size: "22"
-      - alias:
-          font: "Regular"
-          height: "38"
-          name: "FileList"
-          size: "28"
-      - alias:
-          font: "Regular"
-          height: "38"
-          name: "FileListMulti"
-          size: "28"
-      - alias:
-          font: "Regular"
-          height: "76"
-          name: "PluginBrowser0"
-          size: "32"
-      - alias:
-          font: "Regular"
-          name: "PluginBrowser1"
-          size: "22"
-      - alias:
-          font: "Regular"
-          height: "45"
-          name: "ServiceInfo"
-          size: "30"
-      - alias:
-          font: "Regular"
-          height: "45"
-          name: "SelectionList"
-          size: "30"
-      - alias:
-          font: "Regular"
-          height: "30"
-          name: "ImsSelectionList"
-          size: "28"
-      - alias:
-          font: "Regular"
-          height: "38"
-          name: "PartnerBoxEntryList0"
-          size: "28"
-      - alias:
-          font: "Regular"
-          name: "PartnerBoxEntryList1"
-          size: "28"
-      - alias:
-          font: "Regular"
-          height: "114"
-          name: "PartnerBoxE2TimerMenu0"
-          size: "32"
-      - alias:
-          font: "Regular"
-          name: "PartnerBoxE2TimerMenu1"
-          size: "28"
-      - alias:
-          font: "Regular"
-          height: "45"
-          name: "PartnerBoxBouquetList0"
-          size: "32"
-      - alias:
-          font: "Regular"
-          name: "PartnerBoxBouquetList1"
-          size: "28"
-      - alias:
-          font: "Regular"
-          height: "114"
-          name: "PartnerBoxChannelList0"
-          size: "32"
-      - alias:
-          font: "Regular"
-          name: "PartnerBoxChannelList1"
-          size: "28"
-      - alias:
-          font: "Regular"
-          height: "38"
-          name: "PartnerBoxChannelEPGList0"
-          size: "32"
-      - alias:
-          font: "Regular"
-          name: "PartnerBoxChannelEPGList1"
-          size: "24"
-      - alias:
-          font: "DejaVuSans"
-          height: "68"
-          name: "VirtualKeyBoard"
-          size: "42"
-      - alias:
-          font: "Regular"
-          height: "45"
-          name: "HelpMenuList"
-          size: "30"
-      - alias:
-          font: "Regular"
-          height: "75"
-          name: "HelpMenuListExt0"
-          size: "32"
-      - alias:
-          font: "Regular"
-          name: "HelpMenuListExt1"
-          size: "28"
-      - alias:
-          font: "Regular"
-          height: "45"
-          name: "Dreamexplorer"
-          size: "30"
-      - alias:
-          font: "Regular"
-          height: "38"
-          name: "PlayList"
-          size: "28"
-      - alias:
-          font: "Regular"
-          height: "25"
-          name: "AutotimerList"
-          size: "22"
-      - alias:
-          font: "Regular"
-          name: "AutotimerListExt0"
-          size: "28"
-      - alias:
-          font: "Regular"
-          height: "95"
-          name: "AutotimerListExt1"
-          size: "22"
-      - alias:
-          font: "Fixed"
-          height: "45"
-          name: "FcZipArchiver"
-          size: "26"
-      - alias:
-          font: "Regular"
-          name: "AutomaticVolumeAdjustment0"
-          size: "28"
-      - alias:
-          font: "Regular"
-          name: "AutomaticVolumeAdjustment1"
-          size: "28"
+
+# material style font definitions, used as $md_... in the skins
 - global:
-    name: "micro_font"
+    name: "md_label_small"
     value: "Regular;16"
 - global:
-    name: "micro_font_size"
-    value: "16"
-- global:
-    name: "caption_font"
+    name: "md_label_medium"
     value: "Regular;20"
 - global:
-    name: "caption_font_size"
-    value: "20"
-- global:
-    name: "hint_font"
+    name: "md_label_large"
     value: "Regular;24"
 - global:
-    name: "hint_font_size"
-    value: "24"
-- global:
-    name: "label_font"
+    name: "md_body_small"
     value: "Regular;26"
 - global:
-    name: "label_font_size"
-    value: "26"
-- global:
-    name: "text_font"
+    name: "md_body_medium"
     value: "Regular;28"
 - global:
-    name: "text_font_size"
-    value: "28"
-- global:
-    name: "list_font"
+    name: "md_body_large"
     value: "Regular;30"
 - global:
-    name: "list_font_size"
-    value: "30"
-- global:
-    name: "list_large_font"
+    name: "md_title_large"
     value: "Regular;34"
 - global:
-    name: "list_large_font_size"
-    value: "34"
-- global:
-    name: "subtitle_font"
+    name: "md_headline_small"
     value: "Regular;36"
 - global:
-    name: "subtitle_font_size"
-    value: "36"
-- global:
-    name: "heading_font"
+    name: "md_headline_medium"
     value: "Regular;40"
 - global:
-    name: "heading_font_size"
-    value: "40"
-- global:
-    name: "display_font"
+    name: "md_headline_large"
     value: "Regular;44"
 - global:
-    name: "display_font_size"
-    value: "44"
-- global:
-    name: "xlarge_font"
-    value: "Regular;50"
-- global:
-    name: "xlarge_font_size"
-    value: "50"
-- global:
-    name: "huge_font"
-    value: "Regular;60"
-- global:
-    name: "huge_font_size"
-    value: "60"
-- global:
-    name: "giant_font"
-    value: "Regular;108"
-- global:
-    name: "giant_font_size"
-    value: "108"
-- global:
-    name: "path_font"
+    name: "md_label_small_emphasized"
     value: "Bold;18"
 - global:
-    name: "info_font"
+    name: "md_label_large_emphasized"
     value: "Bold;26"
 - global:
-    name: "title_font"
+    name: "md_title_small_emphasized"
     value: "Bold;28"
 - global:
-    name: "event_font"
+    name: "md_title_medium_emphasized"
     value: "Bold;30"
 - global:
-    name: "header_font"
+    name: "md_headline_small_emphasized"
     value: "Bold;36"
 - global:
-    name: "emphasis_font"
+    name: "md_headline_medium_emphasized"
     value: "Bold;40"
 - global:
-    name: "title_single_font"
+    name: "md_headline_large_emphasized"
     value: "Bold;42"
-- global:
-    name: "clock_large_font"
-    value: "Bold;50"
-- global:
-    name: "clock_huge_font"
-    value: "Bold;60"
-- global:
-    name: "mono_font"
-    value: "Fixed;26"
-- global:
-    name: "console_font"
-    value: "Console;27"
-- global:
-    name: "caid_font"
-    value: "CAID;36"
