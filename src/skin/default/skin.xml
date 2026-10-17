@@ -44,18 +44,18 @@
 	</fonts>
 	<screen backgroundColor="md_surface" flags="wfNoBorder" name="ScreenMain" position="0,0" resolution="1920,1080" size="1920,1080">
 		<eLabel backgroundColor="md_surface_container_high" position="0,0" size="1920,55"/>
-		<widget font="Bold;36" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
+		<widget font="Bold;42" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,54" size="1920,2"/>
 		<widget name="backdrop" position="0,0" scale="1" size="1920,1080" zPosition="-1"/>
-		<widget font="Regular;36" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
-		<widget backgroundColorSelected="md_surface_container_high" foregroundColorSelected="md_primary" itemCornerRadiusSelected="8" position="30,135" render="Listbox" scrollbarMode="showOnDemand" size="1350,840" source="list" transparent="1">
-			<convert type="TemplatedMultiContentEx">
+		<widget font="Regular;34" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
+		<widget backgroundColorSelected="md_surface_container_high" foregroundColorSelected="md_primary" itemCornerRadiusSelected="8" position="30,135" render="Listbox" scrollbarMode="showOnDemand" size="1350,810" source="list" transparent="1">
+			<convert type="COCTemplatedMultiContentEx">
 			{
 				"template": [
-					MultiContentEntryText(pos=(10,0), size=(e-20,40), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=0),
+					MultiContentEntryText(pos=(10,0), size=(e-20,45), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=0),
 				],
-				"fonts": [parseFont("Regular;26")],
-				"itemHeight": 40
+				"fonts": [parseFont("Regular;30")],
+				"itemHeight": 45
 			}
 			</convert>
 		</widget>
@@ -63,19 +63,19 @@
 		<ePixmap alphatest="blend" pixmap="~/../images/tmdb.png" position="1475,880" scale="1" size="350,30"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,1024" size="1920,2"/>
 		<eLabel backgroundColor="md_surface_container_high" position="0,1025" size="1920,55"/>
-		<widget conditional="key_red" font="Bold;36" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_green" font="Bold;36" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_yellow" font="Bold;36" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_blue" font="Bold;36" foregroundColor="md_key_blue" halign="center" name="key_blue" noWrap="1" position="1305,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_menu" font="Bold;36" foregroundColor="md_on_surface" halign="center" name="key_menu" noWrap="1" position="1740,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_info" font="Bold;36" foregroundColor="md_on_surface" halign="center" name="key_info" noWrap="1" position="1830,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_red" font="Regular;26" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_green" font="Regular;26" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_yellow" font="Regular;26" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_blue" font="Regular;26" foregroundColor="md_key_blue" halign="center" name="key_blue" noWrap="1" position="1305,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_menu" font="Regular;26" foregroundColor="md_on_surface" halign="center" name="key_menu" noWrap="1" position="1740,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_info" font="Regular;26" foregroundColor="md_on_surface" halign="center" name="key_info" noWrap="1" position="1830,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
 	</screen>
 	<screen backgroundColor="md_surface" flags="wfNoBorder" name="ScreenMovie" position="0,0" resolution="1920,1080" size="1920,1080">
 		<eLabel backgroundColor="md_surface_container_high" position="0,0" size="1920,55"/>
-		<widget font="Bold;36" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
+		<widget font="Bold;42" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,54" size="1920,2"/>
 		<widget name="backdrop" position="0,0" scale="1" size="1920,1080" zPosition="-1"/>
-		<widget font="Regular;36" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
+		<widget font="Regular;34" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
 		<widget font="Regular;26" name="fulldescription" position="30,135" size="850,840" transparent="1"/>
 		<widget alphatest="blend" cornerRadius="12" name="cover" position="1410,135" scale="1" size="480,720"/>
 		<widget alphatest="blend" name="star" position="905,265" scale="1" size="100,100" zPosition="0"/>
@@ -100,85 +100,85 @@
 		<widget font="Regular;20" name="studio" noWrap="1" position="1040,625" size="360,28" transparent="1"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,1024" size="1920,2"/>
 		<eLabel backgroundColor="md_surface_container_high" position="0,1025" size="1920,55"/>
-		<widget conditional="key_red" font="Bold;36" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_green" font="Bold;36" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_yellow" font="Bold;36" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_blue" font="Bold;36" foregroundColor="md_key_blue" halign="center" name="key_blue" noWrap="1" position="1305,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_menu" font="Bold;36" foregroundColor="md_on_surface" halign="center" name="key_menu" noWrap="1" position="1740,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_info" font="Bold;36" foregroundColor="md_on_surface" halign="center" name="key_info" noWrap="1" position="1830,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_red" font="Regular;26" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_green" font="Regular;26" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_yellow" font="Regular;26" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_blue" font="Regular;26" foregroundColor="md_key_blue" halign="center" name="key_blue" noWrap="1" position="1305,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_menu" font="Regular;26" foregroundColor="md_on_surface" halign="center" name="key_menu" noWrap="1" position="1740,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_info" font="Regular;26" foregroundColor="md_on_surface" halign="center" name="key_info" noWrap="1" position="1830,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
 	</screen>
 	<screen backgroundColor="md_surface" flags="wfNoBorder" name="ScreenPeople" position="0,0" resolution="1920,1080" size="1920,1080">
 		<eLabel backgroundColor="md_surface_container_high" position="0,0" size="1920,55"/>
-		<widget font="Bold;36" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
+		<widget font="Bold;42" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,54" size="1920,2"/>
 		<widget name="backdrop" position="0,0" scale="1" size="1920,1080" zPosition="-1"/>
-		<widget font="Regular;36" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
-		<widget backgroundColorSelected="md_surface_container_high" foregroundColorSelected="md_primary" itemCornerRadiusSelected="8" position="30,135" render="Listbox" scrollbarMode="showOnDemand" size="1350,840" source="list" transparent="1">
-			<convert type="TemplatedMultiContentEx">
+		<widget font="Regular;34" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
+		<widget backgroundColorSelected="md_surface_container_high" foregroundColorSelected="md_primary" itemCornerRadiusSelected="8" position="30,135" render="Listbox" scrollbarMode="showOnDemand" size="1350,810" source="list" transparent="1">
+			<convert type="COCTemplatedMultiContentEx">
 			{
 				"template": [
-					MultiContentEntryText(pos=(10,0), size=(e-20,40), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=0),
+					MultiContentEntryText(pos=(10,0), size=(e-20,45), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=0),
 				],
-				"fonts": [parseFont("Regular;26")],
-				"itemHeight": 40
+				"fonts": [parseFont("Regular;30")],
+				"itemHeight": 45
 			}
 			</convert>
 		</widget>
-		<widget addon="Pager" connection="list" foregroundColor="md_on_surface" picL="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/shevronleft.png" picPage="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/dot.png" picPageCurrent="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/dotfull.png" picR="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/shevronright.png" position="30,985" size="1350,25" transparent="1"/>
+		<widget addon="Pager" connection="list" foregroundColor="md_on_surface" picL="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/shevronleft.png" picPage="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/dot.png" picPageCurrent="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/dotfull.png" picR="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/shevronright.png" position="30,950" size="1350,25" transparent="1"/>
 		<widget alphatest="blend" cornerRadius="12" name="cover" position="1410,135" scale="1" size="480,720"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,1024" size="1920,2"/>
 		<eLabel backgroundColor="md_surface_container_high" position="0,1025" size="1920,55"/>
-		<widget conditional="key_red" font="Bold;36" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_green" font="Bold;36" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_yellow" font="Bold;36" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_blue" font="Bold;36" foregroundColor="md_key_blue" halign="center" name="key_blue" noWrap="1" position="1305,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_menu" font="Bold;36" foregroundColor="md_on_surface" halign="center" name="key_menu" noWrap="1" position="1740,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_info" font="Bold;36" foregroundColor="md_on_surface" halign="center" name="key_info" noWrap="1" position="1830,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_red" font="Regular;26" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_green" font="Regular;26" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_yellow" font="Regular;26" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_blue" font="Regular;26" foregroundColor="md_key_blue" halign="center" name="key_blue" noWrap="1" position="1305,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_menu" font="Regular;26" foregroundColor="md_on_surface" halign="center" name="key_menu" noWrap="1" position="1740,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_info" font="Regular;26" foregroundColor="md_on_surface" halign="center" name="key_info" noWrap="1" position="1830,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
 	</screen>
 	<screen backgroundColor="md_surface" flags="wfNoBorder" name="ScreenPerson" position="0,0" resolution="1920,1080" size="1920,1080">
 		<eLabel backgroundColor="md_surface_container_high" position="0,0" size="1920,55"/>
-		<widget font="Bold;36" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
+		<widget font="Bold;42" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,54" size="1920,2"/>
 		<widget name="backdrop" position="0,0" scale="1" size="1920,1080" zPosition="-1"/>
-		<widget font="Regular;36" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
+		<widget font="Regular;34" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
 		<widget font="Regular;26" name="fulldescription" position="30,135" size="1350,840" transparent="1"/>
 		<widget alphatest="blend" cornerRadius="12" name="cover" position="1410,135" scale="1" size="480,720"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,1024" size="1920,2"/>
 		<eLabel backgroundColor="md_surface_container_high" position="0,1025" size="1920,55"/>
-		<widget conditional="key_red" font="Bold;36" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_green" font="Bold;36" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_yellow" font="Bold;36" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_blue" font="Bold;36" foregroundColor="md_key_blue" halign="center" name="key_blue" noWrap="1" position="1305,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_menu" font="Bold;36" foregroundColor="md_on_surface" halign="center" name="key_menu" noWrap="1" position="1740,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_info" font="Bold;36" foregroundColor="md_on_surface" halign="center" name="key_info" noWrap="1" position="1830,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_red" font="Regular;26" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_green" font="Regular;26" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_yellow" font="Regular;26" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_blue" font="Regular;26" foregroundColor="md_key_blue" halign="center" name="key_blue" noWrap="1" position="1305,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_menu" font="Regular;26" foregroundColor="md_on_surface" halign="center" name="key_menu" noWrap="1" position="1740,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_info" font="Regular;26" foregroundColor="md_on_surface" halign="center" name="key_info" noWrap="1" position="1830,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
 	</screen>
 	<screen backgroundColor="md_surface" flags="wfNoBorder" name="ScreenSeason" position="0,0" resolution="1920,1080" size="1920,1080">
 		<eLabel backgroundColor="md_surface_container_high" position="0,0" size="1920,55"/>
-		<widget font="Bold;36" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
+		<widget font="Bold;42" foregroundColor="md_primary" position="10,0" render="Label" size="1900,55" source="Title" transparent="1" valign="center" zPosition="1"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,54" size="1920,2"/>
 		<widget name="backdrop" position="0,0" scale="1" size="1920,1080" zPosition="-1"/>
-		<widget font="Regular;36" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
-		<widget backgroundColorSelected="md_surface_container_high" foregroundColorSelected="md_primary" itemCornerRadiusSelected="8" position="30,135" render="Listbox" scrollbarMode="showOnDemand" size="1310,520" source="list" transparent="1">
-			<convert type="TemplatedMultiContentEx">
+		<widget font="Regular;34" foregroundColor="md_key_yellow" name="searchinfo" position="30,75" size="1860,45" transparent="1"/>
+		<widget backgroundColorSelected="md_surface_container_high" foregroundColorSelected="md_primary" itemCornerRadiusSelected="8" position="30,135" render="Listbox" scrollbarMode="showOnDemand" size="1310,495" source="list" transparent="1">
+			<convert type="COCTemplatedMultiContentEx">
 			{
 				"template": [
-					MultiContentEntryText(pos=(10,0), size=(e-20,40), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=0),
+					MultiContentEntryText(pos=(10,0), size=(e-20,45), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=0),
 				],
-				"fonts": [parseFont("Regular;26")],
-				"itemHeight": 40
+				"fonts": [parseFont("Regular;30")],
+				"itemHeight": 45
 			}
 			</convert>
 		</widget>
-		<widget addon="Pager" connection="list" foregroundColor="md_on_surface" picL="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/shevronleft.png" picPage="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/dot.png" picPageCurrent="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/dotfull.png" picR="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/shevronright.png" position="30,655" size="1310,25" transparent="1"/>
+		<widget addon="Pager" connection="list" foregroundColor="md_on_surface" picL="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/shevronleft.png" picPage="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/dot.png" picPageCurrent="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/dotfull.png" picR="/usr/lib/enigma2/python/Plugins/Extensions/TMDBCockpit/skin/images/shevronright.png" position="30,635" size="1310,25" transparent="1"/>
 		<widget cornerRadius="12" name="cover" position="1370,135" scaleFlags="scaleCenter" size="520,520"/>
-		<widget font="Regular;26" name="overview" position="30,680" size="1860,330" transparent="1"/>
+		<widget font="Regular;30" name="overview" position="30,680" size="1860,330" transparent="1"/>
 		<eLabel backgroundColor="md_outline_variant" position="0,1024" size="1920,2"/>
 		<eLabel backgroundColor="md_surface_container_high" position="0,1025" size="1920,55"/>
-		<widget conditional="key_red" font="Bold;36" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_green" font="Bold;36" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_yellow" font="Bold;36" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_blue" font="Bold;36" foregroundColor="md_key_blue" halign="center" name="key_blue" noWrap="1" position="1305,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_menu" font="Bold;36" foregroundColor="md_on_surface" halign="center" name="key_menu" noWrap="1" position="1740,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
-		<widget conditional="key_info" font="Bold;36" foregroundColor="md_on_surface" halign="center" name="key_info" noWrap="1" position="1830,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_red" font="Regular;26" foregroundColor="md_key_red" halign="center" name="key_red" noWrap="1" position="0,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_green" font="Regular;26" foregroundColor="md_key_green" halign="center" name="key_green" noWrap="1" position="435,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_yellow" font="Regular;26" foregroundColor="md_key_yellow" halign="center" name="key_yellow" noWrap="1" position="870,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_blue" font="Regular;26" foregroundColor="md_key_blue" halign="center" name="key_blue" noWrap="1" position="1305,1025" size="435,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_menu" font="Regular;26" foregroundColor="md_on_surface" halign="center" name="key_menu" noWrap="1" position="1740,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
+		<widget conditional="key_info" font="Regular;26" foregroundColor="md_on_surface" halign="center" name="key_info" noWrap="1" position="1830,1025" size="90,55" transparent="1" valign="center" zPosition="2"/>
 	</screen>
 </skin>

@@ -3,7 +3,7 @@
     position: "0,0"
     size: "$screen_width,55"
 - widget:
-    font: "$md_headline_small_emphasized"
+    font: "$md_headline_large_emphasized"
     foregroundColor: "md_primary"
     position: "10,0"
     render: "Label"

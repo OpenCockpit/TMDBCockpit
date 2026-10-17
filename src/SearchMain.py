@@ -1,11 +1,21 @@
 # Copyright (C) 2018-2026 by xcentaurix
 # License: GNU General Public License v3.0
 
+from collections import OrderedDict
 from Components.config import config
 from . import tmdbsimple as tmdb
 from .__init__ import _
 from .Debug import logger
 from .Json import Json
+
+# TMDB delivers its result lists in pages of a fixed 20 entries. The list shows PAGE_SIZE rows, so the entries
+# are regrouped here: page N of the screen is entries (N-1)*PAGE_SIZE ... N*PAGE_SIZE-1 of the TMDB sequence,
+# which may need one or two TMDB pages (the ones fetched last are kept, as the next screen page
+# usually needs one of them again).
+PAGE_SIZE = 18
+TMDB_PAGE_SIZE = 20
+TMDB_PAGE_CACHE_SIZE = 6
+tmdb_page_cache = OrderedDict()
 
 
 class SearchMain(Json):
@@ -13,12 +23,12 @@ class SearchMain(Json):
     def __init__(self):
         Json.__init__(self)
 
-    def getResult(self, res, menu_selection, text, ident, page):
-        logger.info("menu_selection: %s, text: %s, ident: %s, page: %s",
-                    menu_selection, text, ident, page)
-        lang = config.plugins.tmdbcockpit.lang.value
-        totalpages = 0
-        json_data = {}
+    def getTmdbPage(self, menu_selection, text, ident, page, lang):
+        """(total pages, total results, entries) of one TMDB result page."""
+        key = (menu_selection, text, ident, lang, page)
+        if key in tmdb_page_cache:
+            tmdb_page_cache.move_to_end(key)
+            return tmdb_page_cache[key]
         if menu_selection == 1:
             json_data = tmdb.Movies().now_playing(page=page, language=lang)
         elif menu_selection == 2:
@@ -35,10 +45,39 @@ class SearchMain(Json):
             json_data = tmdb.Movies().top_rated(page=page, language=lang)
         else:
             json_data = tmdb.Search().multi(query=text, page=page, language=lang)
+        raw = {}
+        self.parseJson(raw, json_data, ["total_pages", "total_results", "results"])
+        total_pages = raw["total_pages"] if isinstance(raw["total_pages"], int) else 0
+        total_results = raw["total_results"] if isinstance(raw["total_results"], int) else 0
+        entries = raw["results"] if isinstance(raw["results"], list) else []
+        del json_data
+        tmdb_page_cache[key] = (total_pages, total_results, entries)
+        while len(tmdb_page_cache) > TMDB_PAGE_CACHE_SIZE:
+            tmdb_page_cache.popitem(last=False)
+        return total_pages, total_results, entries
 
-        results = {}
-        self.parseJson(results, json_data, ["total_pages", "results"])
-        totalpages = results["total_pages"]
+    def getResult(self, res, menu_selection, text, ident, page):
+        logger.info("menu_selection: %s, text: %s, ident: %s, page: %s",
+                    menu_selection, text, ident, page)
+        lang = config.plugins.tmdbcockpit.lang.value
+        first_index = (page - 1) * PAGE_SIZE
+        last_index = page * PAGE_SIZE - 1
+        first_tmdb_page = first_index // TMDB_PAGE_SIZE + 1
+        last_tmdb_page = last_index // TMDB_PAGE_SIZE + 1
+        entries = []
+        tmdb_total_pages = 0
+        total_results = 0
+        for tmdb_page in range(first_tmdb_page, last_tmdb_page + 1):
+            if tmdb_total_pages and tmdb_page > tmdb_total_pages:
+                break
+            tmdb_total_pages, total_results, page_entries = self.getTmdbPage(
+                menu_selection, text, ident, tmdb_page, lang)
+            entries += page_entries
+        offset = first_index - (first_tmdb_page - 1) * TMDB_PAGE_SIZE
+        results = {"results": entries[offset:offset + PAGE_SIZE]}
+        # TMDB serves at most tmdb_total_pages pages, which can be fewer than total_results suggests
+        reachable = min(total_results, tmdb_total_pages * TMDB_PAGE_SIZE) if total_results else tmdb_total_pages * TMDB_PAGE_SIZE
+        totalpages = -(-reachable // PAGE_SIZE)
         for entry in results["results"]:
             logger.debug("entry: %s", entry)
             result = {}
@@ -89,5 +128,4 @@ class SearchMain(Json):
             if ident and title and media:
                 res.append(
                     (title, ident, media, cover_url, backdrop_url, search_title))
-        del json_data
         return totalpages, res

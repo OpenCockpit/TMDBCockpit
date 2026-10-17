@@ -9,16 +9,10 @@
           name: "Bold"
           scale: "71"
 
-# material style font definitions, used as $md_... in the skins
-- global:
-    name: "md_label_small"
-    value: "Regular;16"
+# material style font definitions, used as $md_... in the skins (same names and sizes as MaterialSkinCockpit's aliases)
 - global:
     name: "md_label_medium"
     value: "Regular;20"
-- global:
-    name: "md_label_large"
-    value: "Regular;24"
 - global:
     name: "md_body_small"
     value: "Regular;26"
@@ -32,20 +26,17 @@
     name: "md_title_large"
     value: "Regular;34"
 - global:
-    name: "md_headline_small"
-    value: "Regular;36"
-- global:
     name: "md_headline_medium"
     value: "Regular;40"
 - global:
-    name: "md_headline_large"
-    value: "Regular;44"
+    name: "md_display_small"
+    value: "Regular;50"
+- global:
+    name: "md_display_large"
+    value: "Regular;108"
 - global:
     name: "md_label_small_emphasized"
     value: "Bold;18"
-- global:
-    name: "md_label_large_emphasized"
-    value: "Bold;26"
 - global:
     name: "md_title_small_emphasized"
     value: "Bold;28"
@@ -56,8 +47,8 @@
     name: "md_headline_small_emphasized"
     value: "Bold;36"
 - global:
-    name: "md_headline_medium_emphasized"
-    value: "Bold;40"
-- global:
     name: "md_headline_large_emphasized"
     value: "Bold;42"
+- global:
+    name: "md_display_medium_emphasized"
+    value: "Bold;60"

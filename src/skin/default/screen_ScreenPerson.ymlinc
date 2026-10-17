@@ -12,7 +12,7 @@ screen:
         size: "1920,1080"
         zPosition: "-1"
     - widget:
-        font: "$md_headline_small"
+        font: "$md_title_large"
         foregroundColor: "md_key_yellow"
         name: "searchinfo"
         position: "30,75"
