@@ -3,6 +3,10 @@
 - xmlinc:
     file: "fonts.ymlinc"
 - xmlinc:
+    file: "radii.ymlinc"
+- xmlinc:
+    file: "frames.ymlinc"
+- xmlinc:
     file: "screenpart_defaults.ymlinc"
 
 # symbolic colors
@@ -13,15 +17,10 @@
     name: "foregroundColorSelected"
     value: "md_primary"
 
-# corner radius of covers/posters
+# the key icons of the button bar (screenpart_ButtonsBarTemplate); MaterialSkinCockpit has them in its own skin directory
 - global:
-    name: "radius_poster"
-    value: "12"
-
-# corner radius of the selected list item
-- global:
-    name: "radius_item"
-    value: "8"
+    name: "buttons_dir"
+    value: "/usr/lib/enigma2/python/Plugins/Extensions/%PLUGIN%/skin/images/buttons"
 
 # screen sizes
 - global:

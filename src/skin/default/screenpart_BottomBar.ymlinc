@@ -1,8 +1,0 @@
-- eLabel:
-    backgroundColor: "md_outline_variant"
-    position: "0,$screen_height-56"
-    size: "$screen_width,2"
-- eLabel:
-    backgroundColor: "md_surface_container_high"
-    position: "0,$screen_height-55"
-    size: "$screen_width,55"

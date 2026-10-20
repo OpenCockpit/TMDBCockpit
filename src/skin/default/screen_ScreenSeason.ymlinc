@@ -1,15 +1,18 @@
 screen:
+  backgroundColor: "md_transparent"
   name: "ScreenSeason"
-  position: "0,0"
-  size: "1920,1080"
+  position: "fill"
+  resolution: "1920,1080"
   children:
     - xmlinc:
-        file: "screenpart_TitleBar.ymlinc"
+        file: "screenpart_Window_Full.ymlinc"
+        position: "center"
     - widget:
+        cornerRadius: "$radius_window_inner"
         name: "backdrop"
-        position: "0,0"
+        position: "2,72"
         scale: "1"
-        size: "1920,1080"
+        size: "1908,927"
         zPosition: "-1"
     - widget:
         font: "$md_title_large"
@@ -48,7 +51,7 @@ screen:
         position: "30,635"
         width: "1310"
     - widget:
-        cornerRadius: "$radius_poster"
+        cornerRadius: "$radius_poster_large"
         name: "cover"
         position: "1370,135"
         scaleFlags: "scaleCenter"
@@ -57,7 +60,5 @@ screen:
         font: "$md_body_large"
         name: "overview"
         position: "30,680"
-        size: "1860,330"
+        size: "1860,315"
         transparent: "1"
-    - xmlinc:
-        file: "screenpart_Footer.ymlinc"

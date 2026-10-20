@@ -1,15 +1,18 @@
 screen:
+  backgroundColor: "md_transparent"
   name: "ScreenMain"
-  position: "0,0"
-  size: "1920,1080"
+  position: "fill"
+  resolution: "1920,1080"
   children:
     - xmlinc:
-        file: "screenpart_TitleBar.ymlinc"
+        file: "screenpart_Window_Full.ymlinc"
+        position: "center"
     - widget:
+        cornerRadius: "$radius_window_inner"
         name: "backdrop"
-        position: "0,0"
+        position: "2,72"
         scale: "1"
-        size: "1920,1080"
+        size: "1908,927"
         zPosition: "-1"
     - widget:
         font: "$md_title_large"
@@ -43,7 +46,7 @@ screen:
                       flags: RT_HALIGN_LEFT|RT_VALIGN_CENTER
                       value: 0
     - widget:
-        cornerRadius: "$radius_poster"
+        cornerRadius: "$radius_poster_large"
         name: "cover"
         position: "1410,135"
         scale: "1"
@@ -54,5 +57,3 @@ screen:
         position: "1475,880"
         scale: "1"
         size: "350,30"
-    - xmlinc:
-        file: "screenpart_Footer.ymlinc"

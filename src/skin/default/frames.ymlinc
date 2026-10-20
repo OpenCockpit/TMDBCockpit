@@ -1,0 +1,63 @@
+- global:
+    name: "window_medium_width"
+    value: "1180"
+- global:
+    name: "window_medium_height"
+    value: "858"
+- global:
+    name: "window_medium_content_x"
+    value: "26"
+- global:
+    name: "window_medium_content_y"
+    value: "92"
+- global:
+    name: "window_medium_content_width"
+    value: "$window_medium_width-50"
+- global:
+    name: "window_medium_list_height"
+    value: "635"
+- global:
+    name: "window_medium_pager_y"
+    value: "731"
+- global:
+    name: "window_medium_pager_height"
+    value: "25"
+- global:
+    name: "window_small_width"
+    value: "932"
+- global:
+    name: "window_small_height"
+    value: "825"
+- global:
+    name: "window_small_content_width"
+    value: "889"
+- global:
+    name: "window_wide_width"
+    value: "1416"
+- global:
+    name: "window_wide_height"
+    value: "858"
+- global:
+    name: "window_large_width"
+    value: "1728"
+- global:
+    name: "window_large_height"
+    value: "992"
+- global:
+    name: "window_large_margin"
+    value: "49"
+- global:
+    name: "window_large_content_x"
+    value: "29"
+- global:
+    name: "window_large_content_y"
+    value: "96"
+- global:
+    name: "window_large_inner_width"
+    value: "$window_large_width-2*$window_large_margin"
+- global:
+    name: "window_wizard_width"
+    value: "1536"
+- global:
+    name: "window_wizard_height"
+    value: "908"

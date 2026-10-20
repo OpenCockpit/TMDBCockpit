@@ -1,0 +1,75 @@
+- global:
+    name: "radius_window"
+    value: "16"
+- global:
+    name: "radius_window_inner"
+    value: "14"
+- global:
+    name: "radius_infobar"
+    value: "12"
+- global:
+    name: "radius_infobar_inner"
+    value: "10"
+- global:
+    name: "radius_panel"
+    value: "6"
+- global:
+    name: "radius_item"
+    value: "6"
+- global:
+    name: "radius_rating"
+    value: "6"
+- global:
+    name: "radius_rating_large"
+    value: "12"
+- global:
+    name: "radius_poster"
+    value: "6"
+- global:
+    name: "radius_poster_frame"
+    value: "8"
+- global:
+    name: "radius_poster_large"
+    value: "25"
+- global:
+    name: "radius_poster_large_frame"
+    value: "27"
+- global:
+    name: "radius_video"
+    value: "8"
+- global:
+    name: "radius_icon"
+    value: "8"
+- global:
+    name: "radius_popup"
+    value: "7"
+- global:
+    name: "radius_bar_thin"
+    value: "2"
+- global:
+    name: "radius_bar"
+    value: "3"
+- global:
+    name: "radius_bar_thick"
+    value: "6"
+- global:
+    name: "radius_panel_large"
+    value: "12"
+- global:
+    name: "radius_cover"
+    value: "12"
+- global:
+    name: "radius_cover_large"
+    value: "20"
+- global:
+    name: "radius_chip"
+    value: "4"
+- global:
+    name: "radius_dialog"
+    value: "8"
+- global:
+    name: "radius_tile"
+    value: "48"
+- global:
+    name: "radius_tile_inner"
+    value: "16"
