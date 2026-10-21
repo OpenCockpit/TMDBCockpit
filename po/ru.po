@@ -391,6 +391,60 @@ msgstr "Лучшее качество для трейлеров YouTube"
 msgid "YouTube trailer use Dash MP4"
 msgstr "Использовать Dash MP4 для трейлеров YouTube"
 
+msgid "Save movie backdrop as cover"
+msgstr "Сохранить фон фильма как обложку"
+
+msgid "Please select a function"
+msgstr "Выберите функцию"
+
+msgid "not specified"
+msgstr "не указано"
+
+msgid "TMDB Infos"
+msgstr "Информация TMDB"
+
+msgid "TMDb Search"
+msgstr "Поиск по TMDB"
+
+msgid "TMDBCockpit"
+msgstr "TMDBCockpit"
+
+msgid "Menu"
+msgstr "Меню"
+
+msgid "page"
+msgstr "страница"
+
+msgid "No results for:"
+msgstr "Нет результатов для:"
+
+msgid "Please select a category"
+msgstr "Выберите категорию"
+
+msgid "Up"
+msgstr "Стрелка вверх"
+
+msgid "Down"
+msgstr "Вниз"
+
+msgid "Trailer Player"
+msgstr "Проигрыватель трейлеров"
+
+msgid "No search provider registered."
+msgstr "Поставщик поиска не зарегистрирован."
+
+msgid "Downloading trailer ..."
+msgstr "Загрузка трейлера ..."
+
+msgid "Trailer playback failed."
+msgstr "Не удалось воспроизвести трейлер."
+
+msgid "Leave trailer player"
+msgstr "Выйти из проигрывателя трейлеров"
+
+msgid "Search"
+msgstr "Поиск"
+
 msgid "Automatically skip to movie details when only one result is found."
 msgstr ""
 

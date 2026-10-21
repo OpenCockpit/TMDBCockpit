@@ -281,6 +281,30 @@ msgstr "Migliore risoluzione per trailer YouTube"
 msgid "YouTube trailer use Dash MP4"
 msgstr "Usa Dash MP4 per trailer YouTube"
 
+msgid "TMDB Infos"
+msgstr "Info TMDB"
+
+msgid "TMDb Search"
+msgstr "Ricerca in TMDb"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "No results for:"
+msgstr "Nessun risultato per:"
+
+msgid "Trailer Player"
+msgstr "Player trailer"
+
+msgid "Downloading trailer ..."
+msgstr "Download del trailer in corso ..."
+
+msgid "Trailer playback failed."
+msgstr "Riproduzione trailer non riuscita."
+
+msgid "Leave trailer player"
+msgstr "Uscire dal player trailer"
+
 msgid "Automatically skip to movie details when only one result is found."
 msgstr ""
 

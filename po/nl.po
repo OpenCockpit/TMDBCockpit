@@ -352,6 +352,48 @@ msgstr "Beste resolutie voor YouTube trailer"
 msgid "YouTube trailer use Dash MP4"
 msgstr "Gebruik Dash MP4 voor YouTube trailer"
 
+msgid "Save movie backdrop as cover"
+msgstr "Film achtergrond opslaan als omslag"
+
+msgid "Please select a function"
+msgstr "Selecteer een functie"
+
+msgid "not specified"
+msgstr "niet opgegeven"
+
+msgid "TMDB Infos"
+msgstr "TMDB-informatie"
+
+msgid "TMDb Search"
+msgstr "TMDb zoeken"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "No results for:"
+msgstr "Geen resultaten voor:"
+
+msgid "Please select a category"
+msgstr "Selecteer een categorie"
+
+msgid "Up"
+msgstr "Omhoog"
+
+msgid "Down"
+msgstr "Omlaag"
+
+msgid "Trailer Player"
+msgstr "Trailerspeler"
+
+msgid "Downloading trailer ..."
+msgstr "Trailer downloaden ..."
+
+msgid "Trailer playback failed."
+msgstr "Afspelen van trailer mislukt."
+
+msgid "Leave trailer player"
+msgstr "Trailerspeler verlaten"
+
 msgid "Automatically skip to movie details when only one result is found."
 msgstr ""
 

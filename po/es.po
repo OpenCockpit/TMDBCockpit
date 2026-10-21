@@ -350,6 +350,48 @@ msgstr "Mejor resolución para tráilers de YouTube"
 msgid "YouTube trailer use Dash MP4"
 msgstr "Usar Dash MP4 para tráilers de YouTube"
 
+msgid "Save movie backdrop as cover"
+msgstr "Guardar fondo de película como carátula"
+
+msgid "Please select a function"
+msgstr "Seleccione una función"
+
+msgid "not specified"
+msgstr "no especificado"
+
+msgid "TMDB Infos"
+msgstr "Información de TMDB"
+
+msgid "TMDb Search"
+msgstr "Búsqueda TMDb"
+
+msgid "Menu"
+msgstr "Menú"
+
+msgid "No results for:"
+msgstr "Sin resultados para:"
+
+msgid "Please select a category"
+msgstr "Seleccione una categoría"
+
+msgid "Up"
+msgstr "Arriba"
+
+msgid "Down"
+msgstr "Abajo"
+
+msgid "Trailer Player"
+msgstr "Reproductor de tráilers"
+
+msgid "Downloading trailer ..."
+msgstr "Descargando tráiler ..."
+
+msgid "Trailer playback failed."
+msgstr "Error al reproducir el tráiler."
+
+msgid "Leave trailer player"
+msgstr "Salir del reproductor de tráilers"
+
 msgid "Automatically skip to movie details when only one result is found."
 msgstr ""
 

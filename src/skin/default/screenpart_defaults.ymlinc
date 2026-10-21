@@ -3,3 +3,24 @@
     flags: "wfNoBorder"
     resolution: "1920,1080"
     backgroundColor: "md_surface"
+
+# What a list does not set itself comes from the active system skin, so the lists of the plugins would look different
+# with every skin but MaterialSkinCockpit. They get the look of MaterialSkinCockpit here instead:
+#  - the selected entry is drawn by the list (backgroundColorSelected, itemCornerRadiusSelected): the system skin's
+#    frame around it (its windowstyle's bsListboxEntry, which MaterialSkinCockpit does not have) is switched off
+#  - the text and the background of the other entries (MaterialSkinCockpit's ListboxForeground/ListboxBackground)
+#  - the scrollbar (the system skin's scrollbarstyle, MaterialSkinCockpit has none: its lists that show one set this)
+#  - the behaviour all of them share: wrap around at the ends, no panel of their own, a scrollbar only when needed
+#    (a list that needs something else says so itself, like the narrow columns of TVMagazineCockpit)
+- default:
+    tag: "widget[render=Listbox]"
+    selectionFrame: "none"
+    enableWrapAround: "1"
+    transparent: "1"
+    scrollbarMode: "showOnDemand"
+    foregroundColor: "md_on_surface"
+    backgroundColor: "md_surface"
+    scrollbarWidth: "3"
+    scrollbarSliderBorderWidth: "1"
+    scrollbarSliderBorderColor: "md_on_surface"
+    scrollbarSliderForegroundColor: "md_on_surface_variant"

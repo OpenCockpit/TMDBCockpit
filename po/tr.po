@@ -265,6 +265,57 @@ msgstr "YouTube fragmanı için en iyi çözünürlük"
 msgid "YouTube trailer use Dash MP4"
 msgstr "YouTube fragmanı için Dash MP4 kullan"
 
+msgid "Save movie backdrop as cover"
+msgstr "Film arka planını kapak olarak kaydet"
+
+msgid "Please select a function"
+msgstr "Lütfen bir işlev seçin"
+
+msgid "not specified"
+msgstr "belirtilmedi"
+
+msgid "TMDB Infos"
+msgstr "TMDB Bilgileri"
+
+msgid "TMDb Search"
+msgstr "TMDb'de Ara"
+
+msgid "TMDBCockpit"
+msgstr "TMDBCockpit"
+
+msgid "Menu"
+msgstr "Menü"
+
+msgid "No results for:"
+msgstr "Sonuç bulunamadı:"
+
+msgid "Please select a category"
+msgstr "Lütfen bir kategori seçin"
+
+msgid "Up"
+msgstr "Yukari"
+
+msgid "Down"
+msgstr "Asagi"
+
+msgid "Trailer Player"
+msgstr "Fragman Oynatıcı"
+
+msgid "No search provider registered."
+msgstr "Kayıtlı arama sağlayıcısı yok."
+
+msgid "Downloading trailer ..."
+msgstr "Fragman indiriliyor ..."
+
+msgid "Trailer playback failed."
+msgstr "Fragman oynatılamadı."
+
+msgid "Leave trailer player"
+msgstr "Fragman oynatıcısından çık"
+
+msgid "Search"
+msgstr "Arama yap"
+
 msgid "Automatically skip to movie details when only one result is found."
 msgstr ""
 

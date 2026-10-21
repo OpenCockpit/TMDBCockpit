@@ -346,6 +346,45 @@ msgstr "أفضل دقة لمقطع يوتيوب"
 msgid "YouTube trailer use Dash MP4"
 msgstr "استخدام Dash MP4 لمقاطع يوتيوب"
 
+msgid "Please select a function"
+msgstr "الرجاء اختيار وظيفة"
+
+msgid "not specified"
+msgstr "غير محدد"
+
+msgid "TMDB Infos"
+msgstr "معلومات TMDB"
+
+msgid "TMDb Search"
+msgstr "بحث TMDb"
+
+msgid "Menu"
+msgstr "قائمة"
+
+msgid "No results for:"
+msgstr "لا توجد نتائج لـ:"
+
+msgid "Please select a category"
+msgstr "الرجاء اختيار فئة"
+
+msgid "Up"
+msgstr "أعلى"
+
+msgid "Down"
+msgstr "أسفل"
+
+msgid "Trailer Player"
+msgstr "مشغل المقاطع الدعائية"
+
+msgid "Downloading trailer ..."
+msgstr "جارٍ تنزيل المقطع الدعائي ..."
+
+msgid "Trailer playback failed."
+msgstr "فشل تشغيل المقطع الدعائي."
+
+msgid "Leave trailer player"
+msgstr "الخروج من مشغل المقاطع الدعائية"
+
 msgid "Automatically skip to movie details when only one result is found."
 msgstr ""
 
