@@ -20,7 +20,7 @@
     scrollbarMode: "showOnDemand"
     foregroundColor: "md_on_surface"
     backgroundColor: "md_surface"
-    scrollbarWidth: "3"
+    scrollbarWidth: "5"
     scrollbarSliderBorderWidth: "1"
     scrollbarSliderBorderColor: "md_on_surface"
     scrollbarSliderForegroundColor: "md_on_surface_variant"
