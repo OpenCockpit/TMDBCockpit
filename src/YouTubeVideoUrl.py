@@ -5,6 +5,8 @@
 import os
 import glob
 
+from .Debug import logger
+
 try:
     from yt_dlp import YoutubeDL
     HAS_YTDLP = True
@@ -17,6 +19,12 @@ except ImportError:
 RESOLUTION_HEIGHTS = {
     '38': 2160, '37': 1080, '22': 720, '35': 480, '18': 360, '5': 240, '17': 144,
 }
+
+# yt-dlp player clients to try, in order. The default web client has to solve a JS challenge for every video, which
+# takes ~45 s with quickjs on the box's 32-bit ARM CPU (measured: 49 s for a whole trailer download, 42 s of it spent
+# extracting). visionos needs no challenge (extraction ~5 s) and offers the same avc1 720p DASH + m4a streams, which
+# googlevideo serves normally. None is yt-dlp's default selection, the fallback should visionos stop working.
+PLAYER_CLIENTS = ('visionos', None)
 
 
 class YouTubeVideoUrl():
@@ -47,14 +55,28 @@ class YouTubeVideoUrl():
             )
         else:
             fmt = f'best[vcodec^=avc1][height<={height}]/best[height<={height}]/best'
+        last_error = None
+        for client in PLAYER_CLIENTS:
+            try:
+                return YouTubeVideoUrl._download(video_id, dest_dir, fmt, outtmpl, client)
+            except Exception as e:  # pylint: disable=broad-except
+                logger.debug("YouTube trailer %s with player client %s failed: %s", video_id, client or 'default', e)
+                last_error = e
+        raise last_error
+
+    @staticmethod
+    def _download(video_id, dest_dir, fmt, outtmpl, client):
         ydl_opts = {
             'format': fmt,
             'merge_output_format': 'mp4',
             'outtmpl': outtmpl,
             'quiet': True,
             'no_warnings': True,
+            'noprogress': True,     # quiet alone still writes every progress update to stdout (enigma2's log)
             'socket_timeout': 15,
         }
+        if client:
+            ydl_opts['extractor_args'] = {'youtube': {'player_client': [client]}}
         with YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(video_id, download=True)
             path = None
