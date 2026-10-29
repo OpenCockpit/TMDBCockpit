@@ -58,7 +58,9 @@ class WebRequests():
         logger.debug("content.text: %s", content.text)
         return content
 
-    def getContent(self, url, params=None, headers=None):
+    def getContent(self, url, params=None, headers=None, not_found_ok=False):
+        """The text of *url*, "" on any failure. *not_found_ok*: a 404 is an expected answer (the page after the last one of a
+        listing), not an error: it is only logged as debug."""
         logger.info("url: %s", url)
         _headers = {"user-agent": self.getUserAgent()}
         if headers:
@@ -72,6 +74,12 @@ class WebRequests():
             response.raise_for_status()
             # Return decoded text for Python 3 compatibility
             content = response.text
+        except requests.exceptions.HTTPError as e:
+            if not_found_ok and e.response is not None and e.response.status_code == 404:
+                logger.debug("not found: %s", url)
+            else:
+                logger.error("exception: %s", e)
+            content = ""
         except Exception as e:
             logger.error("exception: %s", e)
             content = ""

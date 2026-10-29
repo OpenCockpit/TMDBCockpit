@@ -1,0 +1,23 @@
+- widget:
+    font: "$md_title_large"
+    foregroundColor: "md_key_yellow"
+    name: "searchinfo"
+    position: "0,0"
+    size: "$width,45"
+    transparent: "1"
+- widget:
+    font: "$md_body_small"
+    name: "fulldescription"
+    position: "0,60"
+    size: "850,$height-60"
+    transparent: "1"
+- widget:
+    alphatest: "blend"
+    cornerRadius: "$radius_poster_large"
+    name: "cover"
+    position: "$width-480,60"
+    scale: "1"
+    size: "480,720"
+- xmlinc:
+    file: "screenpart_MovieDetails.ymlinc"
+    position: "875,190"

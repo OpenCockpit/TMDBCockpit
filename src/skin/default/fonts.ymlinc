@@ -14,6 +14,9 @@
     name: "md_label_medium"
     value: "Regular;20"
 - global:
+    name: "md_label_large"
+    value: "Regular;22"
+- global:
     name: "md_body_small"
     value: "Regular;26"
 - global:

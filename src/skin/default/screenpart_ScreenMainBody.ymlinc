@@ -1,0 +1,43 @@
+- widget:
+    font: "$md_title_large"
+    foregroundColor: "md_key_yellow"
+    name: "searchinfo"
+    position: "0,0"
+    size: "$width,45"
+    transparent: "1"
+- widget:
+    backgroundColorSelected: "$backgroundColorSelected"
+    foregroundColorSelected: "$foregroundColorSelected"
+    itemCornerRadiusSelected: "$radius_item"
+    position: "0,60"
+    render: "Listbox"
+    scrollbarMode: "showOnDemand"
+    size: "1350,eval(($height-60)/$list_item_height*$list_item_height)"
+    source: "list"
+    transparent: "1"
+    children:
+      - convert:
+          type: "COCTemplatedMultiContentEx"
+          cell:
+            itemHeight: $list_item_height
+            fonts:
+              - "$md_body_large"
+            fields:
+              - text:
+                  position: "10,0"
+                  size: "e-20,45"
+                  font: "$md_body_large"
+                  flags: RT_HALIGN_LEFT|RT_VALIGN_CENTER
+                  value: 0
+- widget:
+    cornerRadius: "$radius_poster_large"
+    name: "cover"
+    position: "$width-480,60"
+    scale: "1"
+    size: "480,720"
+- ePixmap:
+    alphatest: "blend"
+    pixmap: "~/../images/tmdb.png"
+    position: "1445,805"
+    scale: "1"
+    size: "350,30"

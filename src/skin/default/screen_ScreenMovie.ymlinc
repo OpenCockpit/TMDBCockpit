@@ -5,35 +5,18 @@ screen:
   resolution: "1920,1080"
   children:
     - xmlinc:
-        file: "screenpart_Window_Full.ymlinc"
+        file: "screenpart_Window.ymlinc"
         position: "center"
+        size: "$window_full_width,$window_full_height"
+        window_inset_x: "$window_full_body_x"
     - widget:
         cornerRadius: "$radius_window_inner"
         name: "backdrop"
-        position: "2,72"
+        position: "$window_surface_x,$window_header_height"
         scale: "1"
-        size: "1908,927"
+        size: "$window_full_width-2*$window_surface_x,$window_full_height-$window_surface_trim"
         zPosition: "-1"
-    - widget:
-        font: "$md_title_large"
-        foregroundColor: "md_key_yellow"
-        name: "searchinfo"
-        position: "30,75"
-        size: "1860,45"
-        transparent: "1"
-    - widget:
-        font: "$md_body_small"
-        name: "fulldescription"
-        position: "30,135"
-        size: "850,840"
-        transparent: "1"
-    - widget:
-        alphatest: "blend"
-        cornerRadius: "$radius_poster_large"
-        name: "cover"
-        position: "1410,135"
-        scale: "1"
-        size: "480,720"
     - xmlinc:
-        file: "screenpart_MovieDetails.ymlinc"
-        position: "905,265"
+        file: "screenpart_ScreenMovieBody.ymlinc"
+        position: "$window_full_body_x,$window_full_body_y"
+        size: "$window_full_body_width,$window_full_body_height"

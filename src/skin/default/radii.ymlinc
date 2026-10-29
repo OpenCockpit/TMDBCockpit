@@ -30,10 +30,10 @@
     value: "8"
 - global:
     name: "radius_poster_large"
-    value: "25"
+    value: "20"
 - global:
     name: "radius_poster_large_frame"
-    value: "27"
+    value: "22"
 - global:
     name: "radius_video"
     value: "8"
@@ -42,13 +42,13 @@
     value: "8"
 - global:
     name: "radius_popup"
-    value: "7"
+    value: "8"
 - global:
     name: "radius_bar_thin"
-    value: "2"
+    value: "4"
 - global:
     name: "radius_bar"
-    value: "3"
+    value: "4"
 - global:
     name: "radius_bar_thick"
     value: "6"

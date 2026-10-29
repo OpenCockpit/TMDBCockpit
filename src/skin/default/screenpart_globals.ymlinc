@@ -7,6 +7,8 @@
 - xmlinc:
     file: "frames.ymlinc"
 - xmlinc:
+    file: "lists.ymlinc"
+- xmlinc:
     file: "screenpart_defaults.ymlinc"
 
 # symbolic colors
@@ -22,8 +24,8 @@
     name: "buttons_dir"
     value: "/usr/lib/enigma2/python/Plugins/Extensions/%PLUGIN%/skin/images/buttons"
 
-# the size of screenpart_Window_Dialog: the screens that include it pass their own (dialog_width, dialog_height
-# attributes of the include); these are the ones the part is drawn with on its own (the preview of the part)
+# the size of a dialog window (screenpart_Window): the screens that include it pass their own (dialog_width,
+# dialog_height attributes of the include); these are the ones the part is drawn with on its own (the preview of the part)
 - global:
     name: "dialog_width"
     value: "1200"

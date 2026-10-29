@@ -1,0 +1,13 @@
+screen:
+  frame: "true"
+  name: "Window"
+  children:
+    - xmlinc:
+        file: "screenpart_WindowBase.ymlinc"
+        position: "0,0"
+    - xmlinc:
+        file: "screenpart_WindowHeader.ymlinc"
+        position: "0,0"
+    - xmlinc:
+        file: "screenpart_WindowFooter.ymlinc"
+        position: "0,0"

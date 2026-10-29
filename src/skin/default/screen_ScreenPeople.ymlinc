@@ -5,55 +5,18 @@ screen:
   resolution: "1920,1080"
   children:
     - xmlinc:
-        file: "screenpart_Window_Full.ymlinc"
+        file: "screenpart_Window.ymlinc"
         position: "center"
+        size: "$window_full_width,$window_full_height"
+        window_inset_x: "$window_full_body_x"
     - widget:
         cornerRadius: "$radius_window_inner"
         name: "backdrop"
-        position: "2,72"
+        position: "$window_surface_x,$window_header_height"
         scale: "1"
-        size: "1908,927"
+        size: "$window_full_width-2*$window_surface_x,$window_full_height-$window_surface_trim"
         zPosition: "-1"
-    - widget:
-        font: "$md_title_large"
-        foregroundColor: "md_key_yellow"
-        name: "searchinfo"
-        position: "30,75"
-        size: "1860,45"
-        transparent: "1"
-    - widget:
-        backgroundColorSelected: "$backgroundColorSelected"
-        foregroundColorSelected: "$foregroundColorSelected"
-        itemCornerRadiusSelected: "$radius_item"
-        position: "30,135"
-        render: "Listbox"
-        scrollbarMode: "showOnDemand"
-        size: "1350,810"
-        source: "list"
-        transparent: "1"
-        children:
-          - convert:
-              type: "COCTemplatedMultiContentEx"
-              cell:
-                itemHeight: 45
-                fonts:
-                  - "$md_body_large"
-                fields:
-                  - text:
-                      position: "10,0"
-                      size: "e-20,45"
-                      font: "$md_body_large"
-                      flags: RT_HALIGN_LEFT|RT_VALIGN_CENTER
-                      value: 0
     - xmlinc:
-        file: "screenpart_ListPager.ymlinc"
-        connection: "list"
-        position: "30,950"
-        width: "1350"
-    - widget:
-        alphatest: "blend"
-        cornerRadius: "$radius_poster_large"
-        name: "cover"
-        position: "1410,135"
-        scale: "1"
-        size: "480,720"
+        file: "screenpart_ScreenPeopleBody.ymlinc"
+        position: "$window_full_body_x,$window_full_body_y"
+        size: "$window_full_body_width,$window_full_body_height"

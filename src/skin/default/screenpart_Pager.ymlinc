@@ -1,0 +1,10 @@
+# The page indicator of a list (Pager addon). The includer places it with position= and size= (at the bottom edge of the
+# body: position "0,$height-25", size "$width,25") and names the list or label it follows with connection=.
+- widget:
+    addon: "Pager"
+    backgroundColor: "md_surface"
+    conditional: "$connection"
+    connection: "$connection"
+    position: "0,0"
+    size: "$width,$height"
+    transparent: "1"

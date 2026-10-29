@@ -1,0 +1,15 @@
+screen:
+  name: "WindowBase"
+  children:
+    - eLabel:
+        backgroundColor: "md_surface_container_high"
+        cornerRadius: "$radius_window"
+        position: "0,0"
+        size: "$width,$height-20"
+        zPosition: "-11"
+    - eLabel:
+        backgroundColor: "md_surface"
+        cornerRadius: "$radius_window_inner"
+        position: "2,$window_header_height"
+        size: "$width-4,$height-$window_surface_trim"
+        zPosition: "-10"

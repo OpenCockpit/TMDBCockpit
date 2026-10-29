@@ -1,0 +1,8 @@
+# The row heights of the lists. A list is a whole number of rows high: size="$width,13*$list_item_height", not a number of pixels.
+# list_item_height: the standard row (a line of text and its padding); list_item_height_compact: the dense lists (logs, info).
+- global:
+    name: "list_item_height"
+    value: "45"
+- global:
+    name: "list_item_height_compact"
+    value: "38"

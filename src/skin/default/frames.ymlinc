@@ -1,27 +1,32 @@
+# The windows of a screen: per frame its size, the padding between the surface of the window and its body, and the
+# body rectangle that follows from both. A screen includes screenpart_Window.ymlinc with size="$window_<frame>_width,
+# $window_<frame>_height" and its body at "$window_<frame>_body_x,$window_<frame>_body_y" in the size
+# "$window_<frame>_body_width,$window_<frame>_body_height".
+
+# what all frames share
 - global:
-    name: "window_medium_width"
-    value: "1180"
+    name: "window_surface_x"
+    value: "2"
+# the distance of the header and of the footer from the left and from the right edge of the window: the one of the body
+# of the frame (window_<frame>_body_x), which every include of screenpart_Window.ymlinc passes as window_inset_x; the
+# value here is the one the part is drawn with on its own (the preview of the part)
 - global:
-    name: "window_medium_height"
-    value: "858"
-- global:
-    name: "window_medium_content_x"
+    name: "window_inset_x"
     value: "26"
 - global:
-    name: "window_medium_content_y"
-    value: "92"
+    name: "window_header_height"
+    value: "62"
 - global:
-    name: "window_medium_content_width"
-    value: "$window_medium_width-50"
+    name: "window_footer_height"
+    value: "62"
 - global:
-    name: "window_medium_list_height"
-    value: "635"
+    name: "window_surface_trim"
+    value: "20+$window_header_height+$window_footer_height"
 - global:
-    name: "window_medium_pager_y"
-    value: "731"
-- global:
-    name: "window_medium_pager_height"
-    value: "25"
+    name: "window_popup_header_height"
+    value: "47"
+
+# small
 - global:
     name: "window_small_width"
     value: "932"
@@ -29,8 +34,69 @@
     name: "window_small_height"
     value: "825"
 - global:
-    name: "window_small_content_width"
-    value: "889"
+    name: "window_small_padding_x"
+    value: "19"
+- global:
+    name: "window_small_padding_top"
+    value: "24"
+- global:
+    name: "window_small_padding_bottom"
+    value: "5"
+- global:
+    name: "window_small_body_x"
+    value: "$window_surface_x+$window_small_padding_x"
+- global:
+    name: "window_small_body_y"
+    value: "$window_header_height+$window_small_padding_top"
+- global:
+    name: "window_small_trim_x"
+    value: "2*$window_surface_x+2*$window_small_padding_x"
+- global:
+    name: "window_small_trim_y"
+    value: "$window_surface_trim+$window_small_padding_top+$window_small_padding_bottom"
+- global:
+    name: "window_small_body_width"
+    value: "$window_small_width-$window_small_trim_x"
+- global:
+    name: "window_small_body_height"
+    value: "$window_small_height-$window_small_trim_y"
+
+# medium
+- global:
+    name: "window_medium_width"
+    value: "1180"
+- global:
+    name: "window_medium_height"
+    value: "858"
+- global:
+    name: "window_medium_padding_x"
+    value: "24"
+- global:
+    name: "window_medium_padding_top"
+    value: "30"
+- global:
+    name: "window_medium_padding_bottom"
+    value: "20"
+- global:
+    name: "window_medium_body_x"
+    value: "$window_surface_x+$window_medium_padding_x"
+- global:
+    name: "window_medium_body_y"
+    value: "$window_header_height+$window_medium_padding_top"
+- global:
+    name: "window_medium_trim_x"
+    value: "2*$window_surface_x+2*$window_medium_padding_x"
+- global:
+    name: "window_medium_trim_y"
+    value: "$window_surface_trim+$window_medium_padding_top+$window_medium_padding_bottom"
+- global:
+    name: "window_medium_body_width"
+    value: "$window_medium_width-$window_medium_trim_x"
+- global:
+    name: "window_medium_body_height"
+    value: "$window_medium_height-$window_medium_trim_y"
+
+# wide
 - global:
     name: "window_wide_width"
     value: "1416"
@@ -38,23 +104,128 @@
     name: "window_wide_height"
     value: "858"
 - global:
+    name: "window_wide_padding_x"
+    value: "24"
+- global:
+    name: "window_wide_padding_top"
+    value: "30"
+- global:
+    name: "window_wide_padding_bottom"
+    value: "20"
+- global:
+    name: "window_wide_body_x"
+    value: "$window_surface_x+$window_wide_padding_x"
+- global:
+    name: "window_wide_body_y"
+    value: "$window_header_height+$window_wide_padding_top"
+- global:
+    name: "window_wide_trim_x"
+    value: "2*$window_surface_x+2*$window_wide_padding_x"
+- global:
+    name: "window_wide_trim_y"
+    value: "$window_surface_trim+$window_wide_padding_top+$window_wide_padding_bottom"
+- global:
+    name: "window_wide_body_width"
+    value: "$window_wide_width-$window_wide_trim_x"
+- global:
+    name: "window_wide_body_height"
+    value: "$window_wide_height-$window_wide_trim_y"
+
+# large
+- global:
     name: "window_large_width"
     value: "1728"
 - global:
     name: "window_large_height"
     value: "992"
 - global:
-    name: "window_large_margin"
-    value: "49"
+    name: "window_large_padding_x"
+    value: "27"
 - global:
-    name: "window_large_content_x"
-    value: "29"
+    name: "window_large_padding_top"
+    value: "34"
 - global:
-    name: "window_large_content_y"
-    value: "96"
+    name: "window_large_padding_bottom"
+    value: "24"
 - global:
-    name: "window_large_inner_width"
-    value: "$window_large_width-2*$window_large_margin"
+    name: "window_large_body_x"
+    value: "$window_surface_x+$window_large_padding_x"
+- global:
+    name: "window_large_body_y"
+    value: "$window_header_height+$window_large_padding_top"
+- global:
+    name: "window_large_trim_x"
+    value: "2*$window_surface_x+2*$window_large_padding_x"
+- global:
+    name: "window_large_trim_y"
+    value: "$window_surface_trim+$window_large_padding_top+$window_large_padding_bottom"
+- global:
+    name: "window_large_body_width"
+    value: "$window_large_width-$window_large_trim_x"
+- global:
+    name: "window_large_body_height"
+    value: "$window_large_height-$window_large_trim_y"
+
+# full
+- global:
+    name: "window_full_width"
+    value: "$output_width-8"
+- global:
+    name: "window_full_height"
+    value: "$output_height+11"
+- global:
+    name: "window_full_padding_x"
+    value: "24"
+- global:
+    name: "window_full_padding_top"
+    value: "24"
+- global:
+    name: "window_full_padding_bottom"
+    value: "14"
+- global:
+    name: "window_full_body_x"
+    value: "$window_surface_x+$window_full_padding_x"
+- global:
+    name: "window_full_body_y"
+    value: "$window_header_height+$window_full_padding_top"
+- global:
+    name: "window_full_trim_x"
+    value: "2*$window_surface_x+2*$window_full_padding_x"
+- global:
+    name: "window_full_trim_y"
+    value: "$window_surface_trim+$window_full_padding_top+$window_full_padding_bottom"
+- global:
+    name: "window_full_body_width"
+    value: "$window_full_width-$window_full_trim_x"
+- global:
+    name: "window_full_body_height"
+    value: "$window_full_height-$window_full_trim_y"
+
+# dialog: the size is the one of the screen (dialog_width, dialog_height of its include), so the body is
+# given as an origin and as the amounts it is smaller than the dialog
+- global:
+    name: "window_dialog_padding_x"
+    value: "14"
+- global:
+    name: "window_dialog_padding_top"
+    value: "12"
+- global:
+    name: "window_dialog_padding_bottom"
+    value: "12"
+- global:
+    name: "window_dialog_body_x"
+    value: "$window_surface_x+$window_dialog_padding_x"
+- global:
+    name: "window_dialog_body_y"
+    value: "$window_header_height+$window_dialog_padding_top"
+- global:
+    name: "window_dialog_trim_x"
+    value: "2*$window_surface_x+2*$window_dialog_padding_x"
+- global:
+    name: "window_dialog_trim_y"
+    value: "$window_surface_trim+$window_dialog_padding_top+$window_dialog_padding_bottom"
+
+# the wizard window
 - global:
     name: "window_wizard_width"
     value: "1536"

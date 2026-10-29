@@ -1,0 +1,4 @@
+- xmlinc:
+    file: "screenpart_ButtonsBarTemplate.ymlinc"
+    position: "$window_inset_x,$height-68"
+    size: "$width-2*$window_inset_x,62"
