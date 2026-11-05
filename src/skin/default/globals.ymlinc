@@ -9,17 +9,17 @@
 - xmlinc:
     file: "lists.ymlinc"
 - xmlinc:
-    file: "screenpart_defaults.ymlinc"
+    file: "defaults.ymlinc"
 
-# symbolic colors
+# symbolic colors: the selected entry of a list is the inverse selection of Google TV (light grey, with dark blue text)
 - global:
     name: "backgroundColorSelected"
-    value: "md_surface_container_high"
+    value: "md_inverse_surface"
 - global:
     name: "foregroundColorSelected"
-    value: "md_primary"
+    value: "md_inverse_on_surface"
 
-# the key icons of the button bar (screenpart_ButtonsBarTemplate); MaterialSkinCockpit has them in its own skin directory
+# the key icons of the button bar (screenpart_ButtonsBar); MaterialSkinCockpit has them in its own skin directory
 - global:
     name: "buttons_dir"
     value: "/usr/lib/enigma2/python/Plugins/Extensions/%PLUGIN%/skin/images/buttons"

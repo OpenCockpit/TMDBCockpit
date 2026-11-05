@@ -46,8 +46,20 @@ colors:
         name: "md_on_surface_variant"
         value: "#00c4c4c4"
     - color:
+        name: "md_inverse_surface"
+        value: "#00b0b0b0"
+    - color:
+        name: "md_inverse_on_surface"
+        value: "#00062f7a"
+    - color:
+        name: "md_inverse_primary"
+        value: "#00062f7a"
+    - color:
         name: "md_primary"
         value: "#00a8c7fa"
+    - color:
+        name: "md_on_primary"
+        value: "#00062e6f"
     - color:
         name: "md_primary_container"
         value: "#000842a0"
@@ -79,17 +91,33 @@ colors:
         name: "md_success_container"
         value: "#000f5223"
     - color:
+        name: "md_on_success_container"
+        value: "#00c4eed0"
+    - color:
         name: "md_warning"
         value: "#00ffb74d"
     - color:
         name: "md_warning_container"
         value: "#006b3f00"
     - color:
+        name: "md_on_warning_container"
+        value: "#00ffddb3"
+    # the warning, as text on the inverse selection (light grey): the light roles above are hardly visible on it
+    - color:
+        name: "md_inverse_warning"
+        value: "#005c4300"
+    - color:
         name: "md_error"
         value: "#00f28b82"
     - color:
         name: "md_error_container"
         value: "#008c1d18"
+    - color:
+        name: "md_on_error_container"
+        value: "#00f9dedc"
+    - color:
+        name: "md_inverse_error"
+        value: "#007f1710"
     - color:
         name: "md_key_red"
         value: "#00f28b82"

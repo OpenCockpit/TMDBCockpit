@@ -5,6 +5,7 @@ import os
 from twisted.internet import threads, reactor
 from Components.ActionMap import HelpableActionMap
 from Components.Sources.List import List
+from Components.Sources.COCPageSource import COCPageSource
 from Components.Button import Button
 from Components.Label import Label
 from Components.Pixmap import Pixmap
@@ -60,6 +61,7 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
         self['key_menu'] = Button(_("Menu"))
 
         self['list'] = List()
+        self["pages"] = COCPageSource()  # the result pages of TMDb (page/totalpages), for the pager under the list
         self['cover'] = Pixmap()
         self['backdrop'] = Pixmap()
 
@@ -187,11 +189,10 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
         logger.info("len(result): %s", len(result))
         self.count = len(result)
         self.totalpages = totalpages
+        self["pages"].setPages(self.page, totalpages if result else 0)
         if self.menu_selection:
             if result:
-                page_label = _("page")
-                self["searchinfo"].setText(
-                    f"{self.search_title} ({page_label} {self.page}/{totalpages})")
+                self["searchinfo"].setText(self.search_title)
             else:
                 no_results_label = _("No results for:")
                 self['searchinfo'].setText(

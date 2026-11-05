@@ -1,3 +1,8 @@
+- eLabel:
+    backgroundColor: "md_outline_variant"
+    position: "$width-480-15,60"
+    size: "1,$height-60"
+    zPosition: "-5"
 - widget:
     font: "$md_title_large"
     foregroundColor: "md_key_yellow"
@@ -9,7 +14,16 @@
     font: "$md_body_small"
     name: "fulldescription"
     position: "0,60"
-    size: "850,$height-60"
+    scrollbarMode: "showNever"
+    size: "850,$height-95"
+    transparent: "1"
+- widget:
+    addon: "COCPager"
+    backgroundColor: "md_surface"
+    conditional: "fulldescription"
+    connection: "fulldescription"
+    position: "0,$height-25"
+    size: "850,25"
     transparent: "1"
 - widget:
     alphatest: "blend"

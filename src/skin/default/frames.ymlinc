@@ -26,6 +26,24 @@
     name: "window_popup_header_height"
     value: "47"
 
+# the padding between the surface of a window and its body, the same for small, medium and large windows: a body starts at the
+# same distance from the edges of every window (full and dialog have paddings of their own)
+- global:
+    name: "window_padding_x"
+    value: "24"
+- global:
+    name: "window_padding_top"
+    value: "30"
+- global:
+    name: "window_padding_bottom"
+    value: "24"
+
+# the zPosition of the button bar: above the window it belongs to; a screen that has to cover it (the pictures of the
+# Slideshow, which shows the bar only while they are smaller than the screen) passes buttons_bar_z with the include
+- global:
+    name: "buttons_bar_z"
+    value: "10"
+
 # small
 - global:
     name: "window_small_width"
@@ -35,13 +53,13 @@
     value: "825"
 - global:
     name: "window_small_padding_x"
-    value: "19"
+    value: "$window_padding_x"
 - global:
     name: "window_small_padding_top"
-    value: "24"
+    value: "$window_padding_top"
 - global:
     name: "window_small_padding_bottom"
-    value: "5"
+    value: "$window_padding_bottom"
 - global:
     name: "window_small_body_x"
     value: "$window_surface_x+$window_small_padding_x"
@@ -70,13 +88,13 @@
     value: "858"
 - global:
     name: "window_medium_padding_x"
-    value: "24"
+    value: "$window_padding_x"
 - global:
     name: "window_medium_padding_top"
-    value: "30"
+    value: "$window_padding_top"
 - global:
     name: "window_medium_padding_bottom"
-    value: "20"
+    value: "$window_padding_bottom"
 - global:
     name: "window_medium_body_x"
     value: "$window_surface_x+$window_medium_padding_x"
@@ -96,41 +114,6 @@
     name: "window_medium_body_height"
     value: "$window_medium_height-$window_medium_trim_y"
 
-# wide
-- global:
-    name: "window_wide_width"
-    value: "1416"
-- global:
-    name: "window_wide_height"
-    value: "858"
-- global:
-    name: "window_wide_padding_x"
-    value: "24"
-- global:
-    name: "window_wide_padding_top"
-    value: "30"
-- global:
-    name: "window_wide_padding_bottom"
-    value: "20"
-- global:
-    name: "window_wide_body_x"
-    value: "$window_surface_x+$window_wide_padding_x"
-- global:
-    name: "window_wide_body_y"
-    value: "$window_header_height+$window_wide_padding_top"
-- global:
-    name: "window_wide_trim_x"
-    value: "2*$window_surface_x+2*$window_wide_padding_x"
-- global:
-    name: "window_wide_trim_y"
-    value: "$window_surface_trim+$window_wide_padding_top+$window_wide_padding_bottom"
-- global:
-    name: "window_wide_body_width"
-    value: "$window_wide_width-$window_wide_trim_x"
-- global:
-    name: "window_wide_body_height"
-    value: "$window_wide_height-$window_wide_trim_y"
-
 # large
 - global:
     name: "window_large_width"
@@ -140,13 +123,13 @@
     value: "992"
 - global:
     name: "window_large_padding_x"
-    value: "27"
+    value: "$window_padding_x"
 - global:
     name: "window_large_padding_top"
-    value: "34"
+    value: "$window_padding_top"
 - global:
     name: "window_large_padding_bottom"
-    value: "24"
+    value: "$window_padding_bottom"
 - global:
     name: "window_large_body_x"
     value: "$window_surface_x+$window_large_padding_x"
@@ -232,3 +215,30 @@
 - global:
     name: "window_wizard_height"
     value: "908"
+- global:
+    name: "window_wizard_padding_x"
+    value: "$window_padding_x"
+- global:
+    name: "window_wizard_padding_top"
+    value: "$window_padding_top"
+- global:
+    name: "window_wizard_padding_bottom"
+    value: "$window_padding_bottom"
+- global:
+    name: "window_wizard_body_x"
+    value: "$window_surface_x+$window_wizard_padding_x"
+- global:
+    name: "window_wizard_body_y"
+    value: "$window_header_height+$window_wizard_padding_top"
+- global:
+    name: "window_wizard_trim_x"
+    value: "2*$window_surface_x+2*$window_wizard_padding_x"
+- global:
+    name: "window_wizard_trim_y"
+    value: "$window_surface_trim+$window_wizard_padding_top+$window_wizard_padding_bottom"
+- global:
+    name: "window_wizard_body_width"
+    value: "$window_wizard_width-$window_wizard_trim_x"
+- global:
+    name: "window_wizard_body_height"
+    value: "$window_wizard_height-$window_wizard_trim_y"

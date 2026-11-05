@@ -1,57 +1,50 @@
-- fonts:
-    children:
-      - font:
-          filename: "OpenSans-Regular.ttf"
-          name: "Regular"
-          scale: "89"
-      - font:
-          filename: "Roboto-Bold.ttf"
-          name: "Bold"
-          scale: "71"
+# The fonts of the Cockpit plugins are registered system wide by FontsCockpit (Roboto Regular as "Roboto", Roboto
+# Medium as "RobotoMedium"), under names of their own so that no skin's "Regular" or "Medium" is replaced. A plugin
+# skin does not define fonts; FontsCockpit is a dependency of the plugins.
 
-# material style font definitions, used as $md_... in the skins (same names and sizes as MaterialSkinCockpit's aliases)
+# material style font definitions, used as $md_... in the skins (same sizes as MaterialSkinCockpit's aliases)
 - global:
     name: "md_label_medium"
-    value: "Regular;20"
+    value: "Roboto;20"
 - global:
     name: "md_label_large"
-    value: "Regular;22"
+    value: "Roboto;22"
 - global:
     name: "md_body_small"
-    value: "Regular;26"
+    value: "Roboto;26"
 - global:
     name: "md_body_medium"
-    value: "Regular;28"
+    value: "Roboto;28"
 - global:
     name: "md_body_large"
-    value: "Regular;30"
+    value: "Roboto;30"
 - global:
     name: "md_title_large"
-    value: "Regular;34"
+    value: "Roboto;34"
 - global:
     name: "md_headline_medium"
-    value: "Regular;40"
+    value: "Roboto;40"
 - global:
     name: "md_display_small"
-    value: "Regular;50"
+    value: "Roboto;50"
 - global:
     name: "md_display_large"
-    value: "Regular;108"
+    value: "Roboto;108"
 - global:
     name: "md_label_small_emphasized"
-    value: "Bold;18"
+    value: "RobotoMedium;18"
 - global:
     name: "md_title_small_emphasized"
-    value: "Bold;28"
+    value: "RobotoMedium;28"
 - global:
     name: "md_title_medium_emphasized"
-    value: "Bold;30"
+    value: "RobotoMedium;30"
 - global:
     name: "md_headline_small_emphasized"
-    value: "Bold;36"
+    value: "RobotoMedium;36"
 - global:
     name: "md_headline_large_emphasized"
-    value: "Bold;42"
+    value: "RobotoMedium;42"
 - global:
     name: "md_display_medium_emphasized"
-    value: "Bold;60"
+    value: "RobotoMedium;60"

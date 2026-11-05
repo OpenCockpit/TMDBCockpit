@@ -1,4 +1,17 @@
-- xmlinc:
-    file: "screenpart_ButtonsBarTemplate.ymlinc"
-    position: "$window_inset_x,$height-68"
-    size: "$width-2*$window_inset_x,62"
+screen:
+  name: "WindowFooter"
+  children:
+    - widget:
+        actionButtonsPos: "farRight"
+        addon: "ScreenButtonsBar"
+        backgroundColor: "md_surface_container_high"
+        connection: "key_red,key_green,key_yellow,key_blue,key_play,key_previous,key_left,key_info,key_help,key_pvr,key_menu,key_text,VKeyIcon,key_next,key_right,key_0"
+        font: "$md_body_small"
+        layoutStyle: "fluid"
+        pixmaps: "key_red:$buttons_dir/key_red.png,key_green:$buttons_dir/key_green.png,key_yellow:$buttons_dir/key_yellow.png,key_blue:$buttons_dir/key_blue.png,key_play:$buttons_dir/key_play.png,key_info:$buttons_dir/key_info.png,key_help:$buttons_dir/key_help.png,key_pvr:$buttons_dir/key_pvr.png,key_menu:$buttons_dir/key_menu.png,key_text:$buttons_dir/key_text.png,VKeyIcon:$buttons_dir/key_text.png,key_previous:$buttons_dir/key_prev.png,key_next:$buttons_dir/key_next.png,key_left:$buttons_dir/key_left.png,key_right:$buttons_dir/key_right.png,key_0:$buttons_dir/key_0.png"
+        position: "0,0"
+        size: "$width,36"
+        spacingActionColorGroups: "60"
+        spacingColor: "120"
+        spacingPixmapText: "10"
+        zPosition: "$buttons_bar_z"

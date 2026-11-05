@@ -13,9 +13,10 @@
 - global:
     name: "radius_panel"
     value: "6"
+# the rows of the lists, the selected one most of all: the "medium" step of the Material shape scale
 - global:
     name: "radius_item"
-    value: "6"
+    value: "12"
 - global:
     name: "radius_rating"
     value: "6"

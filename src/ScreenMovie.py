@@ -7,6 +7,7 @@ from twisted.internet import threads, reactor
 from enigma import eServiceReference
 from Components.ActionMap import HelpableActionMap
 from Components.Button import Button
+from Components.Sources.StaticText import StaticText
 from Components.config import config
 from Components.Label import Label
 from Components.Pixmap import Pixmap
@@ -137,7 +138,8 @@ class ScreenMovie(MoreOptions, Picture, Screen, HelpableScreen):
             _("Seasons")) if self.media == "tv" else Button("")
         self["key_blue"] = Button(
             _("more ...")) if self.service_path else Button("")
-        self["key_menu"] = Button(_("Menu"))
+        # the buttons bar shows an action key only if its source has a true boolean: StaticText with text, not Button
+        self["key_menu"] = StaticText(_("MENU"))
 
         self["searchinfo"] = Label()
         self["cover"] = Pixmap()

@@ -1,7 +1,7 @@
 skin:
   children:
     - xmlinc:
-        file: "screenpart_globals.ymlinc"
+        file: "globals.ymlinc"
     - xmlinc:
         file: "screen_ScreenMain.ymlinc"
     - xmlinc:

@@ -1,3 +1,8 @@
+- eLabel:
+    backgroundColor: "md_outline_variant"
+    position: "$width-480-15,60"
+    size: "1,$height-60"
+    zPosition: "-5"
 - widget:
     font: "$md_title_large"
     foregroundColor: "md_key_yellow"
@@ -11,7 +16,7 @@
     itemCornerRadiusSelected: "$radius_item"
     position: "0,60"
     render: "Listbox"
-    scrollbarMode: "showOnDemand"
+    scrollbarMode: "showNever"
     size: "1350,18*$list_item_height"
     source: "list"
     transparent: "1"

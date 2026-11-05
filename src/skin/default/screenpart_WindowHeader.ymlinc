@@ -1,13 +1,13 @@
 - xmlinc:
     file: "screenpart_Clock.ymlinc"
-    position: "$width-138,2"
+    position: "$width-$window_inset_x-120,2"
     size: "120,$window_header_height-2"
     clock_background: "md_surface_container_low"
     clock_font: "$md_headline_small_emphasized"
 - eLabel:
     backgroundColor: "md_surface_container_high"
     position: "$window_inset_x,3"
-    size: "$width-138-$window_inset_x,$window_header_height-2"
+    size: "$width-2*$window_inset_x-120,$window_header_height-2"
     zPosition: "19"
 - widget:
     addon: "ScreenHeader"
@@ -16,7 +16,7 @@
     pathFont: "$md_label_small_emphasized"
     pathForegroundColor: "md_primary"
     position: "$window_inset_x,2"
-    size: "$width-138-$window_inset_x,$window_header_height-2"
+    size: "$width-2*$window_inset_x-120,$window_header_height-2"
     titleFont: "$md_title_small_emphasized"
     titleForegroundColor: "md_primary"
     titleSingleFont: "$md_headline_large_emphasized"

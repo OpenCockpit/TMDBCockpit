@@ -1,3 +1,8 @@
+- eLabel:
+    backgroundColor: "md_outline_variant"
+    position: "$width-520-15,60"
+    size: "1,525"
+    zPosition: "-5"
 - widget:
     font: "$md_title_large"
     foregroundColor: "md_key_yellow"
@@ -44,5 +49,13 @@
     font: "$md_body_large"
     name: "overview"
     position: "0,$height-315"
-    size: "$width,315"
+    size: "$width,285"
+    transparent: "1"
+- widget:
+    addon: "COCPager"
+    backgroundColor: "md_surface"
+    conditional: "overview"
+    connection: "overview"
+    position: "0,$height-25"
+    size: "$width,25"
     transparent: "1"
