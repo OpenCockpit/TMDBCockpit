@@ -1,0 +1,16 @@
+- widget:
+    backgroundColor: "$clock_background"
+    font: "$clock_font"
+    foregroundColor: "md_on_surface"
+    halign: "right"
+    position: "0,0"
+    render: "Label"
+    size: "$width,$height"
+    source: "global.CurrentTime"
+    transparent: "1"
+    valign: "center"
+    zPosition: "20"
+    children:
+      - convert:
+          type: "ClockToText"
+          text: "Default"

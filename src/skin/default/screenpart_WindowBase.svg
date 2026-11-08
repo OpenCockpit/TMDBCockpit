@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1960" height="1148" viewBox="0 0 1960 1148">
+<metadata id="xml2svg-source">{&quot;fragment&quot;: true, &quot;screens&quot;: [{&quot;tag&quot;: &quot;screen&quot;, &quot;attrs&quot;: {&quot;name&quot;: &quot;WindowBase&quot;, &quot;backgroundColor&quot;: &quot;md_surface&quot;, &quot;flags&quot;: &quot;wfNoBorder&quot;, &quot;resolution&quot;: &quot;1920,1080&quot;}, &quot;children&quot;: [{&quot;tag&quot;: &quot;eLabel&quot;, &quot;attrs&quot;: {&quot;backgroundColor&quot;: &quot;md_surface_container_high&quot;, &quot;cornerRadius&quot;: &quot;16&quot;, &quot;position&quot;: &quot;0,0&quot;, &quot;size&quot;: &quot;1920,1060&quot;, &quot;zPosition&quot;: &quot;-11&quot;}, &quot;children&quot;: null, &quot;text&quot;: null}, {&quot;tag&quot;: &quot;eLabel&quot;, &quot;attrs&quot;: {&quot;backgroundColor&quot;: &quot;md_surface&quot;, &quot;cornerRadius&quot;: &quot;14&quot;, &quot;position&quot;: &quot;2,62&quot;, &quot;size&quot;: &quot;1916,936&quot;, &quot;zPosition&quot;: &quot;-10&quot;}, &quot;children&quot;: null, &quot;text&quot;: null}], &quot;text&quot;: null}]}</metadata>
+<rect x="0" y="0" width="1960" height="1148" fill="#f4f4f4"/>
+<text x="20" y="38" font-family="sans-serif" font-size="16" font-weight="bold" fill="#111111">WindowBase (1920x1080) <tspan font-family="monospace" font-size="12" font-weight="normal" fill="#555555">ids = line in screenpart_WindowBase.ymlinc</tspan></text>
+<g data-screen="0" transform="translate(20,48)">
+<rect x="0" y="0" width="1920" height="1080" fill="#ffffff" stroke="#999999" stroke-width="1"/>
+<rect data-ref="0:0" data-src="screenpart_WindowBase.ymlinc:4" x="0" y="0" width="1920" height="1060" fill="#2c2c2c" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screenpart_WindowBase.ymlinc:4
+&lt;eLabel&gt; backgroundColor=&quot;md_surface_container_high&quot; cornerRadius=&quot;16&quot; position=&quot;0,0&quot; size=&quot;1920,1060&quot; zPosition=&quot;-11&quot;</title></rect>
+<rect data-ref="0:1" data-src="screenpart_WindowBase.ymlinc:10" x="2" y="62" width="1916" height="936" fill="#121212" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screenpart_WindowBase.ymlinc:10
+&lt;eLabel&gt; backgroundColor=&quot;md_surface&quot; cornerRadius=&quot;14&quot; position=&quot;2,62&quot; size=&quot;1916,936&quot; zPosition=&quot;-10&quot;</title></rect>
+<g pointer-events="none" font-family="monospace" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="3" stroke-opacity="0.85" stroke-linejoin="round" paint-order="stroke">
+<text x="4" y="14"><tspan font-weight="bold">#4</tspan> eLabel</text>
+<text x="6" y="76"><tspan font-weight="bold">#10</tspan> eLabel</text>
+</g>
+</g>
+</svg>

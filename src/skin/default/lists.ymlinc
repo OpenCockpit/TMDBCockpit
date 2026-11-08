@@ -1,0 +1,35 @@
+# The row height of the lists. A list is a whole number of rows high: size="$width,13*$list_item_height", not a number of pixels.
+# list_item_height: the row (a line of text and its padding).
+- global:
+    name: "list_item_height"
+    value: "45"
+
+# list_indent: the distance of the first element of a row (its icon or its text) from the left edge of a list. Every list of
+# the skin starts its rows at this indent: the row templates, textOffset, sidesMargin and the parameters of the lists that
+# enigma2 draws itself (Choicelist, SelectionList, FcFileList, ...). The rest of a row keeps its distance to the first element.
+- global:
+    name: "list_indent"
+    value: "10"
+
+# list_item_height_double: the row of a list with two lines (a name and a description under it).
+- global:
+    name: "list_item_height_double"
+    value: "2*$list_item_height"
+
+# the icons in the rows of a list: medium (a row of one line with a line of text under it), large (a row of two lines)
+- global:
+    name: "list_icon_medium"
+    value: "48"
+- global:
+    name: "list_icon_large"
+    value: "72"
+
+# list_item_height_icon: the row of a list with an icon (list_icon_medium) in front of one line of text.
+- global:
+    name: "list_item_height_icon"
+    value: "60"
+
+# list_icon_small: the icon of a row of a list that is a state (a timer that is waiting, running, done), in front of a line of text.
+- global:
+    name: "list_icon_small"
+    value: "32"

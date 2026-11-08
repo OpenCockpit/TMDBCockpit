@@ -1,0 +1,14 @@
+skin:
+  children:
+    - xmlinc:
+        file: "globals.ymlinc"
+    - xmlinc:
+        file: "screen_ScreenMain.ymlinc"
+    - xmlinc:
+        file: "screen_ScreenMovie.ymlinc"
+    - xmlinc:
+        file: "screen_ScreenPeople.ymlinc"
+    - xmlinc:
+        file: "screen_ScreenPerson.ymlinc"
+    - xmlinc:
+        file: "screen_ScreenSeason.ymlinc"
