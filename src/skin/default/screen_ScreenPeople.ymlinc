@@ -1,8 +1,6 @@
 screen:
-  backgroundColor: "md_transparent"
   name: "ScreenPeople"
   position: "fill"
-  resolution: "1920,1080"
   children:
     - xmlinc:
         file: "screenpart_Window.ymlinc"

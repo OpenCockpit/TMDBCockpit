@@ -133,7 +133,7 @@
 			}
 			</convert>
 		</widget>
-		<widget addon="Pager" backgroundColor="md_surface" conditional="list" connection="list" position="30,974" size="1350,25" transparent="1"/>
+		<widget addon="Pager" backgroundColor="md_surface" conditional="list" connection="list" maxPages="20" position="30,974" size="1350,25" transparent="1"/>
 		<widget alphatest="blend" cornerRadius="20" name="cover" position="1410,150" scale="1" size="480,720"/>
 	</screen>
 	<screen backgroundColor="md_transparent" flags="wfNoBorder" name="ScreenPerson" position="fill" resolution="1920,1080">
@@ -175,7 +175,7 @@
 			}
 			</convert>
 		</widget>
-		<widget addon="Pager" backgroundColor="md_surface" conditional="list" connection="list" position="30,650" size="1310,25" transparent="1"/>
+		<widget addon="Pager" backgroundColor="md_surface" conditional="list" connection="list" maxPages="20" position="30,650" size="1310,25" transparent="1"/>
 		<widget cornerRadius="20" name="cover" position="1370,150" scaleFlags="scaleCenter" size="520,520"/>
 		<widget font="Roboto;30" name="overview" position="30,684" size="1860,285" transparent="1"/>
 		<widget addon="COCPager" backgroundColor="md_surface" conditional="overview" connection="overview" position="30,974" size="1860,25" transparent="1"/>

@@ -1,26 +1,104 @@
-- default:
-    tag: "screen"
-    flags: "wfNoBorder"
-    resolution: "1920,1080"
-    backgroundColor: "md_surface"
+# The defaults of every skin, MaterialSkinCockpit and the plugins alike: what an element that does not set an attribute itself gets. An
+# element that sets it keeps its own value. A default is written like the element it is for. A condition is what it needs to apply:
+# "if render=Listbox" (this render), "if itemCornerRadius" (the element has it, any value), "if addon=Pager"; no condition: every
+# element of that kind. Of the defaults that apply to one element, the one with more conditions wins, and between equals the one that
+# comes later in this file.
 
-# What a list does not set itself comes from the active system skin, so the lists of the plugins would look different
-# with every skin but MaterialSkinCockpit. They get the look of MaterialSkinCockpit here instead:
-#  - the selected entry is drawn by the list (backgroundColorSelected, itemCornerRadiusSelected): the system skin's
-#    frame around it (its windowstyle's bsListboxEntry, which MaterialSkinCockpit does not have) is switched off
-#  - the text and the background of the other entries (MaterialSkinCockpit's ListboxForeground/ListboxBackground)
-#  - the scrollbar (the system skin's scrollbarstyle, MaterialSkinCockpit has none: its lists that show one set this)
-#  - the behaviour all of them share: wrap around at the ends, no panel of their own, a scrollbar only when needed
-#    (a list that needs something else says so itself, like the narrow columns of TVMagazineCockpit)
-- default:
-    tag: "widget[render=Listbox]"
-    selectionFrame: "none"
-    enableWrapAround: "1"
-    transparent: "1"
-    scrollbarMode: "showOnDemand"
-    foregroundColor: "md_on_surface"
-    backgroundColor: "md_surface"
-    scrollbarWidth: "5"
-    scrollbarSliderBorderWidth: "1"
-    scrollbarSliderBorderColor: "md_on_surface"
-    scrollbarSliderForegroundColor: "md_on_surface_variant"
+# The font of every line of a list of timers (the timers, the power timers, the AutoTimers): one size, so no line is smaller than another.
+- global:
+    name: "timer_list_font"
+    value: "md_body_large"
+
+- defaults:
+    children:
+      # A screen: no border, and transparent. Its surface is the window frame it includes (rounded, so what is under the corners and around a
+      # smaller window shows). A screen that draws its own surface, or has to hide what is under it, says backgroundColor itself. Only a screen
+      # that has a name: the screen entries of screens.ymlinc (key and image, the icon of a screen) are no screens, enigma2 reads nothing else of them.
+      - screen:
+          if name:
+            flags: "wfNoBorder"
+            resolution: "1920,1080"
+            backgroundColor: "md_transparent"
+
+      # What a list does not set itself comes from the active system skin, so the lists of the plugins would look different
+      # with every skin but MaterialSkinCockpit. They get the look of MaterialSkinCockpit here instead:
+      #  - the selected entry is drawn by the list (backgroundColorSelected, itemCornerRadiusSelected): the system skin's
+      #    frame around it (its windowstyle's bsListboxEntry, which MaterialSkinCockpit does not have) is switched off
+      #  - the text and the background of the other entries (MaterialSkinCockpit's ListboxForeground/ListboxBackground)
+      #  - the scrollbar (the system skin's scrollbarstyle, MaterialSkinCockpit has none: its lists that show one set this)
+      #  - the behaviour all of them share: wrap around at the ends, no panel of their own, a scrollbar only when needed
+      #    (a list that needs something else says so itself, like the narrow columns of TVMagazineCockpit)
+      # Not for a list that draws its rows itself (an itemCornerRadius): it gets its look from the rule below, and from MaterialSkinCockpit
+      # itself, where these defaults would only add attributes (wrap around, no selection frame) that its lists never had.
+      - widget:
+          if render=Listbox and not itemCornerRadius:
+            selectionFrame: "none"
+            enableWrapAround: "1"
+            transparent: "1"
+            scrollbarMode: "showOnDemand"
+            foregroundColor: "md_on_surface"
+            backgroundColor: "md_surface"
+            scrollbarWidth: "5"
+            scrollbarSliderBorderWidth: "1"
+            scrollbarSliderBorderColor: "md_on_surface"
+            scrollbarSliderForegroundColor: "md_on_surface_variant"
+
+      # A list that draws its rows itself (a widget with an itemCornerRadius): no scrollbar (the pager shows where the list is), the text
+      # of a row at the indent of the skin and in the middle of the row. textOffset and valign are only read by the lists of strings: a
+      # list drawn by a template ignores both. After the lists above, so the scrollbarMode of this one is the one that counts.
+      - widget:
+          if itemCornerRadius:
+            scrollbarMode: "showNever"
+            textOffset: "$list_indent,0"
+            valign: "center"
+
+      # A list of timers (TimerList, PowerTimerList: the widgets with a satPosLeft): two lines a row, all in the one font of timer_list_font. The screens set only what is theirs (the size, satPosLeft).
+      - widget:
+          if satPosLeft:
+            iconMargin: "30"
+            itemHeight: "$list_item_height_double"
+            rowSplit: "45"
+            setEventNameFont: "$timer_list_font"
+            setFont: "$timer_list_font"
+            setServiceNameFont: "$timer_list_font"
+            sidesMargin: "$list_indent"
+
+      # A picon is drawn with its transparency.
+      - widget:
+          if render=Picon:
+            alphatest: "blend"
+
+      # The addon widgets of the window frames (screenpart_Pager, screenpart_WindowHeader, screenpart_WindowFooter): the look is
+      # here, the parts only say what is theirs (the connection, the place, the pixmaps of the keys). A header with other fonts or a
+      # button bar with another zPosition says so itself.
+      - widget:
+          if addon=Pager:
+            backgroundColor: "md_surface"
+            transparent: "1"
+
+      - widget:
+          if addon=ScreenHeader:
+            backgroundColor: "md_surface_container_high"
+            pathFont: "$md_label_small_emphasized"
+            pathForegroundColor: "md_primary"
+            titleFont: "$md_title_small_emphasized"
+            titleForegroundColor: "md_primary"
+            titleSingleFont: "$md_headline_large_emphasized"
+            transparent: "1"
+            zPosition: "20"
+
+      - widget:
+          if addon=ScreenButtonsBar:
+            actionButtonsPos: "farRight"
+            backgroundColor: "md_surface_container_high"
+            font: "$md_body_small"
+            layoutStyle: "fluid"
+            spacingActionColorGroups: "60"
+            spacingColor: "120"
+            spacingPixmapText: "10"
+
+      # A pixmap is drawn with its transparency (every pixmap of the skins says so; the few that need "on" say that).
+      # No zPosition: a pixmap without one is drawn at 0, and 8 of them depend on it.
+      - widget:
+          if render=Pixmap:
+            alphatest: "blend"

@@ -4,7 +4,6 @@
 
 from pathlib import Path
 from Tools.Directories import SCOPE_SKIN
-from Components.SystemInfo import BoxInfo
 from skin import loadSkin, findSkinScreen
 # from .Debug import logger
 

@@ -16,10 +16,8 @@
     itemCornerRadiusSelected: "$radius_item"
     position: "0,60"
     render: "Listbox"
-    scrollbarMode: "showOnDemand"
     size: "1350,eval(($height-60)/$list_item_height*$list_item_height)"
     source: "list"
-    transparent: "1"
     children:
       - convert:
           type: "COCTemplatedMultiContentEx"

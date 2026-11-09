@@ -1,10 +1,15 @@
 # The page indicator of a list (Pager addon). The includer places it with position= and size= (at the bottom edge of the
 # body: position "0,$height-25", size "$width,25") and names the list or label it follows with connection=.
+#
+# pager_max_pages: the number of pages of a list up to which the indicator shows a dot for each page (the Pager addon itself has 10
+# when a skin does not say). A list with more pages says so with pager_max_pages= on the xmlinc of its indicator, for that indicator only.
+- param: {name: "connection"}
+- param: {name: "pager_max_pages", default: "20"}
+
 - widget:
     addon: "Pager"
-    backgroundColor: "md_surface"
     conditional: "$connection"
     connection: "$connection"
+    maxPages: "$pager_max_pages"
     position: "0,0"
     size: "$width,$height"
-    transparent: "1"
