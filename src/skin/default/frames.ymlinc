@@ -39,7 +39,7 @@
     value: "24"
 
 # the zPosition of the button bar: above the window it belongs to; a screen that has to cover it (the pictures of the
-# Slideshow, which shows the bar only while they are smaller than the screen) passes buttons_bar_z with the include
+# PictureEditor (the picture viewer and slideshow), which shows the bar only while they are smaller than the screen) passes buttons_bar_z with the include
 - global:
     name: "buttons_bar_z"
     value: "10"

@@ -36,15 +36,34 @@ def readFile(path, mode="r"):
 
 
 def writeFile(path, data, mode="w"):
+    """Write a file; True when it is written, False (and an error in the log) if not.
+
+    The data goes into a file next to it, which then takes the place of the old one (os.replace is atomic): an error in the middle, a full disk or
+    a power failure leaves the old file as it was. It used to be truncated first, so a .cuts file (the resume point and the marks of a recording)
+    could be left empty or half written."""
+    tmp = os.path.join(os.path.dirname(path) or ".", f".{os.path.basename(path)}.{os.getpid()}.tmp")
     try:
         if mode == "wb":
-            with open(path, "wb") as f:
+            with open(tmp, "wb") as f:
                 f.write(data)
+                f.flush()
+                os.fsync(f.fileno())
         else:
-            with open(path, "w", encoding="utf-8") as f:
+            with open(tmp, "w", encoding="utf-8") as f:
                 f.write(data)
+                f.flush()
+                os.fsync(f.fileno())
+        if os.path.isfile(path):
+            shutil.copymode(path, tmp)      # the file keeps its permissions
+        os.replace(tmp, path)
+        return True
     except Exception as e:
         logger.error("path: %s, exception: %s", path, e)
+        try:
+            os.remove(tmp)
+        except OSError:
+            pass
+        return False
 
 
 def deleteFile(path):
