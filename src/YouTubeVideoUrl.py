@@ -7,11 +7,15 @@ import glob
 
 from .Debug import logger
 
-try:
-    from yt_dlp import YoutubeDL
-    HAS_YTDLP = True
-except ImportError:
-    HAS_YTDLP = False
+
+def _loadYoutubeDL():
+    # yt_dlp is imported on first use, in the download worker thread: importing it when the plugin is loaded ran
+    # its import chain (dozens of modules, many stat() calls) on the main thread at boot and showed the busy spinner.
+    try:
+        from yt_dlp import YoutubeDL  # pylint: disable=import-outside-toplevel
+    except ImportError:
+        return None
+    return YoutubeDL
 
 
 # Legacy itag -> max height, kept for the existing yttrailer_best_resolution
@@ -40,7 +44,7 @@ class YouTubeVideoUrl():
         downloading and merging them locally via ffmpeg (rather than streaming an
         extracted URL directly) sidesteps the problem entirely.
         """
-        if not HAS_YTDLP:
+        if _loadYoutubeDL() is None:
             raise RuntimeError('python3-yt-dlp is not installed. Install it with: opkg install python3-yt-dlp')
         height = RESOLUTION_HEIGHTS.get(resolution_itag, 720)
         outtmpl = os.path.join(dest_dir, 'trailer_%(id)s.%(ext)s')
@@ -77,7 +81,7 @@ class YouTubeVideoUrl():
         }
         if client:
             ydl_opts['extractor_args'] = {'youtube': {'player_client': [client]}}
-        with YoutubeDL(ydl_opts) as ydl:
+        with _loadYoutubeDL()(ydl_opts) as ydl:
             info = ydl.extract_info(video_id, download=True)
             path = None
             downloads = info.get('requested_downloads')

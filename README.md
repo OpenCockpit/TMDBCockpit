@@ -22,6 +22,3 @@ This repository has no control over the streams, links, or the legality of the c
 
 ## Installation
 - https://OpenCockpit.github.io/TMDBCockpit
-
-## Wiki
-- https://github.com/OpenCockpit/TMDBCockpit/wiki

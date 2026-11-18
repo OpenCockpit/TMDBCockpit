@@ -2,13 +2,35 @@
 # License: GNU General Public License v3.0
 
 import os
+import threading
+import requests
+import requests.adapters
 from twisted.internet import threads, reactor
-from PIL import Image
 from Tools.LoadPixmap import LoadPixmap
 from .Debug import logger
 from .Utils import temp_dir
 from .WebRequests import WebRequests
 from .FileUtils import deleteFile
+
+# PIL is imported where it is used, in the worker thread: importing it with the plugin ran on the main thread at boot.
+# Dimming of the backdrop: a 160/255 black layer over the picture, i.e. every value times (255 - 160) / 255.
+_DIM_TABLE = [round(i * (255 - 160) / 255) for i in range(256)] * 3
+
+_download_session = None
+_download_session_lock = threading.Lock()
+
+
+def _getDownloadSession():
+    # One session for all picture downloads: the cover and the backdrop come from the same host, and scrolling through
+    # a list asks for a new pair on every stop, so the connection (and its TLS handshake) is reused.
+    global _download_session  # pylint: disable=global-statement
+    with _download_session_lock:
+        if _download_session is None:
+            _download_session = requests.Session()
+            adapter = requests.adapters.HTTPAdapter(pool_connections=2, pool_maxsize=8)
+            _download_session.mount("http://", adapter)
+            _download_session.mount("https://", adapter)
+        return _download_session
 
 
 class Picture(WebRequests):
@@ -25,6 +47,47 @@ class Picture(WebRequests):
         else:
             self.displayPicture(ident, widget, path)
 
+    def downloadFile(self, url, path):
+        """Stream download of a picture.
+
+        The file is written next to its destination and moved into place when complete: a cover/backdrop that
+        is already in the cache is shown as it is, so a download that failed halfway (or is still running when
+        the same picture is asked for again) must never leave a truncated file under the final name."""
+        logger.info("url: %s, path: %s", url, path)
+        headers = {"user-agent": self.getUserAgent()}
+        part = path + ".part"
+        response = _getDownloadSession().get(url, headers=headers, stream=True, allow_redirects=True, verify=False, timeout=30)
+        try:
+            logger.debug("response.url: %s", response.url)
+            logger.debug("response.status_code: %s", response.status_code)
+            response.raise_for_status()
+            with open(part, 'wb') as f:
+                for chunk in response.iter_content(chunk_size=65536):
+                    if chunk:  # filter out keep-alive chunks
+                        f.write(chunk)
+            os.replace(part, path)
+        except BaseException:
+            deleteFile(part)
+            raise
+        finally:
+            response.close()
+        return True
+
+    @staticmethod
+    def _widgetSize(widget, default=None):
+        if widget and widget.instance:
+            size = widget.instance.size()
+            if size.width() > 0 and size.height() > 0:
+                return size.width(), size.height()
+        return default
+
+    @staticmethod
+    def _saveJpeg(img, path):
+        # Written next to the destination and moved into place: a picture that is in the cache is displayed as it is.
+        part = path + ".part"
+        img.save(part, format="JPEG", quality=90)
+        os.replace(part, path)
+
     def downloadPicture(self, widget, ident, atype, url, path):
         logger.info("atype: %s, ident: %s, url: %s, path: %s", atype, ident, url, path)
         try:
@@ -35,62 +98,75 @@ class Picture(WebRequests):
                 path_dir = os.path.dirname(path)
                 tmp_path = os.path.join(path_dir, f"tmp_{path_name}{path_ext}")
                 self.downloadFile(url, tmp_path)
-
-                # if type is 'backdrop' construct overlay
                 logger.debug("tmp_path: %s", tmp_path)
-                # get widget size
-                width = 1920
-                height = 1080
-                if widget and widget.instance:
-                    size = widget.instance.size()
-                    width = size.width()
-                    height = size.height()
-                    logger.debug("Widget size: %dx%d", width, height)
-
-                # Use compatible resampling filter
                 try:
-                    resample = Image.Resampling.LANCZOS
-                except AttributeError:
-                    resample = Image.LANCZOS
-
-                img = None
-                dim = None
-                out = None
-                try:
-                    # load original jpg
-                    with Image.open(tmp_path) as base_img:
-                        img = base_img.convert("RGBA")
-                    # scale to widget size (or fallback to 1920x1080)
-                    img = img.resize((width, height), resample)
-                    logger.debug("Scaled backdrop to widget size: %dx%d", width, height)
-                    # save original (undimmed) backdrop as backup
-                    try:
-                        path_org = path + ".org"
-                        img.convert("RGB").save(path_org, format="JPEG", quality=95)
-                    except Exception as e:
-                        logger.error("Error saving backdrop backup: %s", str(e))
-                    # construct dim layer
-                    dim = Image.new("RGBA", img.size, (0, 0, 0, 160))  # 160 ~57% opacity
-                    # merge dim layer with the image
-                    out = Image.alpha_composite(img, dim)
-                    # save merged image to original path
-                    out.convert("RGB").save(path, quality=95)
+                    self._processBackdrop(widget, tmp_path, path)
                 finally:
-                    # Clean up image objects
-                    if out:
-                        out.close()
-                    if dim:
-                        dim.close()
-                    if img:
-                        img.close()
-                    deleteFile(tmp_path)
+                    deleteFile(tmp_path)    # already gone when it was kept as the undimmed copy
             else:
                 logger.debug("Downloaded cover to path: %s", path)
                 self.downloadFile(url, path)
+                self._shrinkCover(widget, path)
         except Exception as e:
             logger.error("Error processing picture: %s", str(e))
         finally:
             reactor.callFromThread(self.displayPicture, ident, widget, path)
+
+    def _processBackdrop(self, widget, tmp_path, path):
+        """Scale the downloaded backdrop to the widget, dim it, and keep the download as the undimmed copy.
+
+        This runs on a (slow, 32 bit ARM) worker core and the result is decoded again on the main thread, so
+        the cost matters:
+        - JPEG draft mode decodes at 1/2, 1/4 or 1/8 size when the target is smaller (no full size decode),
+        - BICUBIC with reducing_gap instead of LANCZOS (the dim layer hides the difference),
+        - the dimming is a lookup table on the RGB image (same result as a 160/255 black RGBA layer, without the
+          RGBA conversion, the composite and the second conversion),
+        - one encode instead of two: the downloaded file itself is the undimmed copy (".org", used by "save
+          backdrop"), it used to be scaled to the widget and encoded again at quality 95."""
+        from PIL import Image  # pylint: disable=import-outside-toplevel
+        width, height = self._widgetSize(widget, (1920, 1080))
+        logger.debug("Widget size: %dx%d", width, height)
+        try:
+            resample = Image.Resampling.BICUBIC
+        except AttributeError:
+            resample = Image.BICUBIC
+        with Image.open(tmp_path) as base_img:
+            base_img.draft("RGB", (width, height))
+            img = base_img.convert("RGB")
+        img = img.resize((width, height), resample, reducing_gap=2.0)
+        logger.debug("Scaled backdrop to widget size: %dx%d", width, height)
+        self._saveJpeg(img.point(_DIM_TABLE), path)
+        try:
+            os.replace(tmp_path, path + ".org")
+        except OSError as e:
+            logger.error("Error saving backdrop backup: %s", str(e))
+
+    def _shrinkCover(self, widget, path):
+        """Make sure the cover is not much larger than the widget it is displayed in.
+
+        With the size "original" a poster is up to 2000x3000: the decode on the main thread (a 6 MP image) was
+        a stall of its own. The download is kept as ".org" (used by "save cover") and the widget sized copy is
+        what is displayed. A cover of the proper size (w500 for the 480x720 widget) is not touched."""
+        size = self._widgetSize(widget)
+        if not size:
+            return
+        width, height = size
+        from PIL import Image  # pylint: disable=import-outside-toplevel
+        with Image.open(path) as base_img:
+            if base_img.width <= width * 1.25 and base_img.height <= height * 1.25:
+                return
+            base_img.draft("RGB", (width, height))
+            img = base_img.convert("RGB")
+        try:
+            resample = Image.Resampling.BICUBIC
+        except AttributeError:
+            resample = Image.BICUBIC
+        img.thumbnail((width, height), resample, reducing_gap=2.0)     # keeps the aspect ratio, never enlarges
+        small = path + ".small"
+        self._saveJpeg(img, small)
+        os.replace(path, path + ".org")
+        os.replace(small, path)
+        logger.debug("Scaled cover to %dx%d", img.width, img.height)
 
     def displayPicture(self, ident, widget, path):
         logger.info("...")
