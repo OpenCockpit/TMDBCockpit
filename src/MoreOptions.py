@@ -48,8 +48,6 @@ class MoreOptions():
             msg += "\n" if msg else ""
             if option in {2, 5, 7}:
                 cover = temp_dir + "cover" + ident + ".jpg"
-                if os.path.isfile(cover + ".org"):    # the download, when a smaller copy is what is displayed (Picture._shrinkCover)
-                    cover += ".org"
                 if os.path.isfile(cover):
                     copyFile(cover, service_filename + ".jpg")
                     msg += _("Cover saved.")
@@ -59,7 +57,7 @@ class MoreOptions():
                     msg += _("No cover available")
 
             if option in {3, 4, 6, 7}:
-                backdrop = temp_dir + "backdrop" + ident + ".jpg" + ".org"
+                backdrop = temp_dir + "backdrop" + ident + ".jpg"
                 ext = ".jpg" if option == 4 else ".bdp.jpg"
                 msg += "\n" if msg else ""
                 if os.path.isfile(backdrop):

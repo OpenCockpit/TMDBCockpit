@@ -14,8 +14,8 @@ logger.debug("lang: %s", lang)
 lang_choices = LanguageSelection().getLangChoices(lang)
 if not hasattr(config.plugins, "tmdbcockpit"):
     config.plugins.tmdbcockpit = ConfigSubsection()
-# w500 is what the 480x720 cover widget needs, w1280 what the backdrop (dimmed, 1908x947) needs: "original" is up to
-# 2000x3000 / 3840x2160, several MB to download and decode on a 32 bit ARM CPU for a picture shown that size.
+# w500 is what the 480x720 cover widget needs, w1280 what the backdrop (1908x947) needs. "original" is up to 2000x3000 /
+# 3840x2160: it is displayed as it is, the pixmap widget (skin: scale) scales it.
 config.plugins.tmdbcockpit.cover_size = ConfigSelection(
     default="w500", choices=["w92", "w185", "w500", "original"])
 config.plugins.tmdbcockpit.backdrop_size = ConfigSelection(
