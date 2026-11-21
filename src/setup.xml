@@ -7,6 +7,7 @@
 		<item text="Red key for TMDB infos in EPGs" description="Use the red key to open TMDB infos in EPG screens.">config.plugins.tmdbcockpit.key_red</item>
 		<item text="Cover resolution" description="Select the resolution for cover images.">config.plugins.tmdbcockpit.cover_size</item>
 		<item text="Backdrop resolution" description="Select the resolution for backdrop images.">config.plugins.tmdbcockpit.backdrop_size</item>
+		<item text="Backdrop dimming" description="Select how dark the haze over the backdrop is. 0 % shows the backdrop as it is.">config.plugins.tmdbcockpit.backdrop_dim</item>
 		<item text="YouTube trailer best resolution" description="Select the preferred resolution for YouTube trailers.">config.plugins.tmdbcockpit.yttrailer_best_resolution</item>
 		<item text="YouTube trailer use Dash MP4" description="Use Dash MP4 streams for YouTube trailers.">config.plugins.tmdbcockpit.yttrailer_useDashMP4</item>
 		<item level="2" text="Log level" description="Select the debug log level.">config.plugins.tmdbcockpit.debug_log_level</item>

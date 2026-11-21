@@ -250,6 +250,9 @@ msgstr "TMDb Suche"
 msgid "TMDBCockpit"
 msgstr "TMDBCockpit"
 
+msgid "Backdrop dimming"
+msgstr "Backdrop-Abdunklung"
+
 msgid "Backdrop resolution"
 msgstr "Backdrop-Auflösung"
 
@@ -276,6 +279,9 @@ msgstr "Verwende Dask MP4 für YouTube Trailer"
 
 msgid "Automatically skip to movie details when only one result is found."
 msgstr "Springe automatisch zu Movie-Details, wenn nur ein Film gefunden wurde."
+
+msgid "Select how dark the haze over the backdrop is. 0 % shows the backdrop as it is."
+msgstr "Wähle, wie stark das Backdrop abgedunkelt wird. 0 % zeigt das Backdrop unverändert."
 
 msgid "Select the debug log level."
 msgstr "Wähle die Log-Stufe"

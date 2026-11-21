@@ -20,6 +20,9 @@ config.plugins.tmdbcockpit.cover_size = ConfigSelection(
     default="w500", choices=["w92", "w185", "w500", "original"])
 config.plugins.tmdbcockpit.backdrop_size = ConfigSelection(
     default="w1280", choices=["w300", "w780", "w1280", "original"])
+# how dark the haze over the backdrop is, in percent (the skin's "backdropdim" label, see Picture.BackdropPixmap)
+config.plugins.tmdbcockpit.backdrop_dim = ConfigSelection(
+    default="70", choices=[(str(percent), f"{percent} %") for percent in range(0, 100, 10)])
 config.plugins.tmdbcockpit.lang = ConfigSelection(
     default=lang[:2], choices=lang_choices)
 config.plugins.tmdbcockpit.skip_to_movie = ConfigYesNo(default=True)

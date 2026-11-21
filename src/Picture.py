@@ -6,6 +6,8 @@ import threading
 import requests
 import requests.adapters
 from twisted.internet import threads, reactor
+from enigma import gRGB
+from Components.config import config
 from Components.Pixmap import Pixmap
 from Tools.LoadPixmap import LoadPixmap
 from .Debug import logger
@@ -32,15 +34,29 @@ def _getDownloadSession():
 
 class BackdropPixmap(Pixmap):
     """The backdrop widget. The dimming is not part of the picture: it is a translucent label of the skin ("backdropdim") over
-    the backdrop, which is shown and hidden together with it."""
+    the backdrop, which is shown and hidden together with it. How dark it is, is the setting "backdrop_dim" (percent)."""
 
     def __init__(self, dim):
         # Pixmap.__init__ already calls show()/hide() (GUIComponent.setVisible), which use self.dim
         self.dim = dim
         Pixmap.__init__(self)
+        config.plugins.tmdbcockpit.backdrop_dim.addNotifier(self.applyDim, initial_call=False)
+
+    def destroy(self):
+        config.plugins.tmdbcockpit.backdrop_dim.removeNotifier(self.applyDim)
+        Pixmap.destroy(self)
+
+    def applyDim(self, *_args):
+        """The color of the haze: black, as opaque as the setting says. The alpha of a color is the transparency: 0 is opaque."""
+        instance = self.dim.instance
+        if instance:
+            alpha = round(255 * (100 - int(config.plugins.tmdbcockpit.backdrop_dim.value)) / 100)
+            instance.setBackgroundColor(gRGB(alpha << 24))
+            instance.invalidate()
 
     def show(self):
         Pixmap.show(self)
+        self.applyDim()
         self.dim.show()
 
     def hide(self):

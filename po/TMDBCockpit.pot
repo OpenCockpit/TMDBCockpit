@@ -250,6 +250,9 @@ msgstr ""
 msgid "TMDBCockpit"
 msgstr ""
 
+msgid "Backdrop dimming"
+msgstr ""
+
 msgid "Backdrop resolution"
 msgstr ""
 
@@ -275,6 +278,11 @@ msgid "YouTube trailer use Dash MP4"
 msgstr ""
 
 msgid "Automatically skip to movie details when only one result is found."
+msgstr ""
+
+msgid ""
+"Select how dark the haze over the backdrop is. 0 % shows the backdrop as it "
+"is."
 msgstr ""
 
 msgid "Select the debug log level."
