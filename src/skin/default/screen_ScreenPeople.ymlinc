@@ -13,6 +13,15 @@ screen:
         position: "$window_surface_x,$window_header_height"
         scale: "1"
         size: "$window_full_width-2*$window_surface_x,$window_full_height-$window_surface_trim"
+        zPosition: "-2"
+    - widget:
+        alphaBlend: "1"
+        backgroundColor: "#4f000000"
+        cornerRadius: "$radius_window_inner"
+        name: "backdropdim"
+        position: "$window_surface_x,$window_header_height"
+        size: "$window_full_width-2*$window_surface_x,$window_full_height-$window_surface_trim"
+        transparent: "0"
         zPosition: "-1"
     - xmlinc:
         file: "screenpart_ScreenPeopleBody.ymlinc"

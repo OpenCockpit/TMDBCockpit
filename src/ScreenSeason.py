@@ -13,7 +13,7 @@ from Screens.Screen import Screen
 from Tools.BoundFunction import boundFunction
 from .__init__ import _
 from .SetupScreen import SetupScreen
-from .Picture import Picture
+from .Picture import Picture, BackdropPixmap
 from .Debug import logger
 from .DelayTimer import DelayTimer
 from .SearchSeason import SearchSeason
@@ -47,7 +47,8 @@ class ScreenSeason(MoreOptions, Picture, Screen, HelpableScreen):
         self['key_menu'] = Button(_("Menu"))
         self['list'] = self.list = List()
         self['cover'] = Pixmap()
-        self['backdrop'] = Pixmap()
+        self["backdropdim"] = Label()
+        self["backdrop"] = BackdropPixmap(self["backdropdim"])
 
         HelpableScreen.__init__(self)
         self["actions"] = HelpableActionMap(

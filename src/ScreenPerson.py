@@ -12,7 +12,7 @@ from Screens.HelpMenu import HelpableScreen
 from Screens.Screen import Screen
 from Tools.BoundFunction import boundFunction
 from .__init__ import _
-from .Picture import Picture
+from .Picture import Picture, BackdropPixmap
 from .Debug import logger
 from .SetupScreen import SetupScreen
 from .SearchPerson import SearchPerson
@@ -36,7 +36,8 @@ class ScreenPerson(Picture, Screen, HelpableScreen):
         self['searchinfo'] = Label()
         self['fulldescription'] = self.fulldescription = ScrollLabel("")
         self['cover'] = Pixmap()
-        self['backdrop'] = Pixmap()
+        self["backdropdim"] = Label()
+        self["backdrop"] = BackdropPixmap(self["backdropdim"])
 
         self['key_red'] = Button(_("Exit"))
         self['key_green'] = Button()

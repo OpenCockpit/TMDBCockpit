@@ -6,6 +6,7 @@ import threading
 import requests
 import requests.adapters
 from twisted.internet import threads, reactor
+from Components.Pixmap import Pixmap
 from Tools.LoadPixmap import LoadPixmap
 from .Debug import logger
 from .Utils import temp_dir
@@ -13,8 +14,6 @@ from .WebRequests import WebRequests
 from .FileUtils import deleteFile
 
 # PIL is imported where it is used, in the worker thread: importing it with the plugin ran on the main thread at boot.
-# Dimming of the backdrop: a 160/255 black layer over the picture, i.e. every value times (255 - 160) / 255.
-_DIM_TABLE = [round(i * (255 - 160) / 255) for i in range(256)] * 3
 
 _download_session = None
 _download_session_lock = threading.Lock()
@@ -31,6 +30,24 @@ def _getDownloadSession():
             _download_session.mount("http://", adapter)
             _download_session.mount("https://", adapter)
         return _download_session
+
+
+class BackdropPixmap(Pixmap):
+    """The backdrop widget. The dimming is not part of the picture: it is a translucent label of the skin ("backdropdim") over
+    the backdrop, which is shown and hidden together with it."""
+
+    def __init__(self, dim):
+        # Pixmap.__init__ already calls show()/hide() (GUIComponent.setVisible), which use self.dim
+        self.dim = dim
+        Pixmap.__init__(self)
+
+    def show(self):
+        Pixmap.show(self)
+        self.dim.show()
+
+    def hide(self):
+        Pixmap.hide(self)
+        self.dim.hide()
 
 
 class Picture(WebRequests):
@@ -102,7 +119,7 @@ class Picture(WebRequests):
                 try:
                     self._processBackdrop(widget, tmp_path, path)
                 finally:
-                    deleteFile(tmp_path)    # already gone when it was kept as the undimmed copy
+                    deleteFile(tmp_path)    # already gone when it was kept as the original
             else:
                 logger.debug("Downloaded cover to path: %s", path)
                 self.downloadFile(url, path)
@@ -113,15 +130,13 @@ class Picture(WebRequests):
             reactor.callFromThread(self.displayPicture, ident, widget, path)
 
     def _processBackdrop(self, widget, tmp_path, path):
-        """Scale the downloaded backdrop to the widget, dim it, and keep the download as the undimmed copy.
+        """Scale the downloaded backdrop to the widget, and keep the download as the original.
 
         This runs on a (slow, 32 bit ARM) worker core and the result is decoded again on the main thread, so
         the cost matters:
         - JPEG draft mode decodes at 1/2, 1/4 or 1/8 size when the target is smaller (no full size decode),
-        - BICUBIC with reducing_gap instead of LANCZOS (the dim layer hides the difference),
-        - the dimming is a lookup table on the RGB image (same result as a 160/255 black RGBA layer, without the
-          RGBA conversion, the composite and the second conversion),
-        - one encode instead of two: the downloaded file itself is the undimmed copy (".org", used by "save
+        - BICUBIC with reducing_gap instead of LANCZOS,
+        - one encode instead of two: the downloaded file itself is the original (".org", used by "save
           backdrop"), it used to be scaled to the widget and encoded again at quality 95."""
         from PIL import Image  # pylint: disable=import-outside-toplevel
         width, height = self._widgetSize(widget, (1920, 1080))
@@ -135,7 +150,7 @@ class Picture(WebRequests):
             img = base_img.convert("RGB")
         img = img.resize((width, height), resample, reducing_gap=2.0)
         logger.debug("Scaled backdrop to widget size: %dx%d", width, height)
-        self._saveJpeg(img.point(_DIM_TABLE), path)
+        self._saveJpeg(img, path)
         try:
             os.replace(tmp_path, path + ".org")
         except OSError as e:

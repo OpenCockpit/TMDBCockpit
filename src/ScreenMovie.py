@@ -23,7 +23,7 @@ from .__init__ import _
 from .SetupScreen import SetupScreen
 from .ScreenPeople import ScreenPeople
 from .ScreenSeason import ScreenSeason
-from .Picture import Picture
+from .Picture import Picture, BackdropPixmap
 from .Debug import logger
 from .SearchMovie import SearchMovie
 from .MoreOptions import MoreOptions
@@ -143,7 +143,8 @@ class ScreenMovie(MoreOptions, Picture, Screen, HelpableScreen):
 
         self["searchinfo"] = Label()
         self["cover"] = Pixmap()
-        self["backdrop"] = Pixmap()
+        self["backdropdim"] = Label()
+        self["backdrop"] = BackdropPixmap(self["backdropdim"])
         self["fsklogo"] = Pixmap()
         self["star"] = Pixmap()
         self.fsk = {"0": "fsk_0.png", "6": "fsk_6.png", "12": "fsk_12.png", "16": "fsk_16.png", "18": "fsk_18.png"}

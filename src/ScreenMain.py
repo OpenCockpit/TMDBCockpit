@@ -21,7 +21,7 @@ from .SetupScreen import SetupScreen
 from .ScreenMovie import ScreenMovie
 from .ScreenPerson import ScreenPerson
 from .Utils import temp_dir, cleanText
-from .Picture import Picture
+from .Picture import Picture, BackdropPixmap
 from .FileUtils import createDirectory, deleteDirectory
 from .Debug import logger
 from .DelayTimer import DelayTimer
@@ -63,7 +63,8 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
         self['list'] = List()
         self["pages"] = COCPageSource()  # the result pages of TMDb (page/totalpages), for the pager under the list
         self['cover'] = Pixmap()
-        self['backdrop'] = Pixmap()
+        self["backdropdim"] = Label()
+        self["backdrop"] = BackdropPixmap(self["backdropdim"])
 
         HelpableScreen.__init__(self)
         self["actions"] = HelpableActionMap(
