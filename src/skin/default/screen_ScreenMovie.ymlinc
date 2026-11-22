@@ -16,7 +16,6 @@ screen:
         zPosition: "-2"
     - widget:
         alphaBlend: "1"
-        backgroundColor: "#4f000000"
         cornerRadius: "$radius_window_inner"
         name: "backdropdim"
         position: "$window_surface_x,$window_header_height"

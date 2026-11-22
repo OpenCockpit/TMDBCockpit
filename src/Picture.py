@@ -54,6 +54,13 @@ class BackdropPixmap(Pixmap):
             instance.setBackgroundColor(gRGB(alpha << 24))
             instance.invalidate()
 
+    def applySkin(self, desktop, parent):
+        # The skin gives the haze label no color, it is set here. The label is created before the backdrop (the screens
+        # assign it first), so its widget is there: its color is set before the screen is shown the first time.
+        applied = Pixmap.applySkin(self, desktop, parent)
+        self.applyDim()
+        return applied
+
     def show(self):
         Pixmap.show(self)
         self.applyDim()
