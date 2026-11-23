@@ -20,17 +20,19 @@ class SearchPerson(Parsers, Json):
                 "also_known_as", "popularity", "movie_credits", "tv_credits"]
         for lang in (config.plugins.tmdbcockpit.lang.value, "en"):
             json_data = tmdb.People(ident).info(
-                language=lang, append_to_response="movie_credits, tv_credits")
+                language=lang, append_to_response="movie_credits,tv_credits")
             # logger.debug("json_data: %s", json_data)
             self.parseJson(result, json_data, keys)
-            if result["biography"]:
+            if result["biography"] and result["biography"] != "None":
                 break
+        if result["biography"] == "None":
+            result["biography"] = ""
 
         logger.debug("result: %s", result)
 
         self.parsePersonGender(result)
         self.parseJsonList(result, "also_known_as", ",")
-        result["popularity"] = f"{float(result['popularity']):.1f}"
+        result["popularity"] = f"{self.number(result['popularity']):.1f}"
 
         data_movies = []
         for source in (
@@ -39,7 +41,7 @@ class SearchPerson(Parsers, Json):
             result2 = {}
             self.parseJson(result2, source[0], ["cast"])
             logger.debug("result2: %s", result2)
-            for cast in result2["cast"]:
+            for cast in self.asList(result2["cast"]):
                 logger.debug("cast: %s", cast)
                 movie = {}
                 self.parseJson(movie, cast, source[1])
@@ -54,5 +56,4 @@ class SearchPerson(Parsers, Json):
         data_movies.sort(reverse=True)
         movies = "\n".join(data_movies)
         result["movies"] = movies
-        del json_data
         return result

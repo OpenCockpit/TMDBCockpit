@@ -4,6 +4,7 @@
 
 from Components.config import config
 from Plugins.Plugin import PluginDescriptor
+from ServiceReference import ServiceReference
 from .__init__ import _
 from .Debug import logger
 from .Version import VERSION
@@ -18,6 +19,7 @@ loadPluginSkin("ScreenMain")
 
 
 _epgPatched = False
+_started = False
 EPG_CONFIGS = ("infobar", "single", "multi", "grid")   # the EPG screens with a configurable red button
 
 
@@ -74,7 +76,8 @@ def showEventInfos(session, event="", service="", **__):
             info = info.info()
             if info:
                 event = info.getEvent(0)  # 0 = now, 1 = next
-    event_name = event and event.getEventName() or (service and service.getName()) or ""
+    # the name of a DVB service reference is not in the reference: it is the one of the service
+    event_name = event and event.getEventName() or (service and ServiceReference(service).getServiceName()) or ""
     session.open(ScreenMain, event_name, 2)
 
 
@@ -97,7 +100,11 @@ def main(session, **__):
 
 
 def autoStart(reason, **__):
-    if reason == 0:  # startup
+    global _started  # pylint: disable=global-statement
+    if reason == 0:  # startup (autostart and session start both call this)
+        if _started:
+            return
+        _started = True
         logger.info("+++ Version: %s starts...", VERSION)
         # session = kwargs["session"]
         if config.plugins.tmdbcockpit.key_red.value:

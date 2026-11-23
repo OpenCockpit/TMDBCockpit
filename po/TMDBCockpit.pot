@@ -124,6 +124,9 @@ msgstr ""
 msgid "page"
 msgstr ""
 
+msgid "Search failed"
+msgstr ""
+
 msgid "No results for:"
 msgstr ""
 

@@ -71,7 +71,11 @@ class ScreenPerson(Picture, Screen, HelpableScreen):
         threads.deferToThread(self.getData, self.gotData)
 
     def getData(self, callback):
-        result = SearchPerson().getResult(self.result, self.cover_ident)
+        try:
+            result = SearchPerson().getResult(self.result, self.cover_ident)
+        except Exception as e:  # no network, an error of TMDB
+            logger.error("person %s failed: %s", self.cover_ident, str(e))
+            result = {}
         logger.debug("result: %s", result)
         reactor.callFromThread(callback, result)
 

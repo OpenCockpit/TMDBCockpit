@@ -46,12 +46,13 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
         self.search_title = ""
         self.direction_up = False
         self.page = 1
-        self.total_pages = 0
+        self.totalpages = 0
+        # every search has its number: the answer of an older one (the pages were turned quickly, the screen was left) is dropped
+        self.request_id = 0
         self.ident = 0
         self.count = 0
         self.service_path = ""
         self.files_saved = False
-        self.result = []
 
         self['searchinfo'] = Label()
         self['key_red'] = Button(_("Exit"))
@@ -73,8 +74,8 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
             {
                 "ok": (self.ok, _("Show details")),
                 "red": (self.exit, _("Exit")),
-                "down": (self.down, _("Up")),
-                "up": (self.up, _("Down")),
+                "down": (self.down, _("Down")),
+                "up": (self.up, _("Up")),
                 "nextBouquet": (self.nextBouquet, _("Details down")),
                 "prevBouquet": (self.prevBouquet, _("Details up")),
                 "cancel": (self.exit, _("Cancel")),
@@ -151,19 +152,22 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
     def searchData(self):
         logger.debug("menu_selection: %s, text: %s",
                      self.menu_selection, self.text)
-        self.result = []
+        self.request_id += 1
+        request_id = self.request_id
         if self.menu_selection:
             self["searchinfo"].setText(self.search_title)
             threads.deferToThread(
-                self.getData, self.menu_selection, self.text, self.ident, self.page, self.gotData)
+                self.getData, request_id, self.menu_selection, self.text, self.ident, self.page, self.gotData)
         else:
             self.search_iteration = 0
             self.search_words = self.text.split(" ")
             self.last_text = self.text
             self["searchinfo"].setText(_("Looking up: %s ...") % self.text)
-            self.search(0, [])
+            self.search(request_id, 0, [])
 
-    def search(self, totalpages, result):
+    def search(self, request_id, totalpages, result):
+        if request_id != self.request_id:
+            return
         if self.search_iteration and self.search_words:
             del self.search_words[-1]
             text = " ".join(self.search_words)
@@ -176,16 +180,31 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
             logger.debug("iteration: %s, text: %s",
                          self.search_iteration, text)
             threads.deferToThread(
-                self.getData, self.menu_selection, text, self.ident, self.page, self.search)
+                self.getData, request_id, self.menu_selection, text, self.ident, self.page, self.search)
         else:
-            self.gotData(totalpages, result, self.last_text)
+            self.gotData(request_id, totalpages, result, self.last_text)
 
-    def getData(self, menu_selection, text, ident, page, callback):
-        totalpages, result = SearchMain().getResult(
-            self.result, menu_selection, text, ident, page)
-        reactor.callFromThread(callback, totalpages, result)
+    def getData(self, request_id, menu_selection, text, ident, page, callback):
+        try:
+            totalpages, result = SearchMain().getResult([], menu_selection, text, ident, page)
+        except Exception as e:  # no network, an error of TMDB: not as "no results", and no search with a shorter text
+            logger.error("search failed: %s", str(e))
+            reactor.callFromThread(self.searchFailed, request_id)
+            return
+        reactor.callFromThread(callback, request_id, totalpages, result)
 
-    def gotData(self, totalpages, result, text=""):
+    def searchFailed(self, request_id):
+        if request_id != self.request_id:
+            return
+        self.count = 0
+        self.totalpages = 0
+        self["pages"].setPages(self.page, 0)
+        self["list"].setList([])
+        self["searchinfo"].setText(_("Search failed"))
+
+    def gotData(self, request_id, totalpages, result, text=""):
+        if request_id != self.request_id:
+            return
         logger.info("text: %s", text)
         logger.info("len(result): %s", len(result))
         self.count = len(result)
@@ -278,13 +297,15 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
     def menuCallback(self, ret):
         logger.info("ret: %s", ret)
         if ret is not None:
+            current = self['list'].getCurrent()
+            if ret[1] in {4, 5} and not current:
+                return  # similar movies and recommendations are those of the selected movie
             self.page = 1
             self.search_title = ret[0]
             self.menu_selection = ret[1]
-            current = self['list'].getCurrent()
             if current:
                 self.ident = current[1]
-                self.searchData()
+            self.searchData()
 
     def up(self):
         list_length = len(self["list"].list) if self["list"].list else 0
@@ -306,7 +327,7 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
 
     def prevBouquet(self):
         logger.info("...")
-        if self.menu_selection or self.text:
+        if (self.menu_selection or self.text) and self.totalpages > 0:
             self.direction_up = False
             self.page += 1
             if self.page > self.totalpages:
@@ -315,7 +336,7 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
 
     def nextBouquet(self):
         logger.info("...")
-        if self.menu_selection or self.text:
+        if (self.menu_selection or self.text) and self.totalpages > 0:
             self.direction_up = True
             self.page -= 1
             if self.page <= 0:
@@ -326,22 +347,23 @@ class ScreenMain(Picture, Json, Screen, HelpableScreen):
         self.session.open(SetupScreen)
 
     def searchString(self):
-        self.menu_selection = 0
+        # nothing is changed before the search: leaving the keyboard with cancel keeps the list as it is
         current = self['list'].getCurrent()
         logger.info("current: %s", current)
-        if current:
-            search_title = current[5]
-            self.text = search_title
+        text = current[5] if current else self.text
         self.session.openWithCallback(self.goSearch, VirtualKeyBoard, title=(
-            _("Search for Movie:")), text=self.text)
+            _("Search for Movie:")), text=text)
 
     def goSearch(self, text):
         if text:
+            self.menu_selection = 0
+            self.page = 1
             self.text = text
             self.searchData()
 
     def exit(self):
         logger.info("files_saved: %s", self.files_saved)
+        self.request_id += 1  # the answers that are still to come are for no one
         DelayTimer.stopAll()
         self["list"].onSelectionChanged.remove(self.onSelectionChanged)
         deleteDirectory(temp_dir)

@@ -25,4 +25,5 @@ screen:
     - xmlinc:
         file: "screenpart_ScreenPersonBody.ymlinc"
         position: "$window_full_body_x,$window_full_body_y"
-        size: "$window_full_body_width,$window_full_body_height"
+        width: "$window_full_body_width"
+        height: "$window_full_body_height"

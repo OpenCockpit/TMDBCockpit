@@ -12,11 +12,19 @@ Created by Celia Oakley on 2013-10-31.
 """
 
 import json
+import re
 import requests
 from ..WebRequests import WebRequests
 
 
+REQUESTS_TIMEOUT_DEFAULT = 30
+
+
 class APIKeyError(Exception):
+    pass
+
+
+class TMDBError(Exception):
     pass
 
 
@@ -109,10 +117,21 @@ class TMDB(WebRequests, object):
         return response.json()
 
     def _GET(self, path, params=None):
+        """The answer of TMDB as a dict. Raises when there is none (no network, an error of the server): the caller decides what to
+        do. The key is kept out of the log."""
+        from ..Debug import logger
         url = self._get_complete_url(path)
         params = self._get_params(params)
-        content = self.getContent(url, params)
-        return json.loads(content)
+        logger.info("url: %s", url)
+        try:
+            response = requests.get(url, params=params, headers={"Accept": "application/json", "User-Agent": "TMDBCockpit"},
+                                    timeout=REQUESTS_TIMEOUT_DEFAULT, verify=False)
+            response.raise_for_status()
+            response.encoding = "utf-8"
+            return json.loads(response.text)
+        except (requests.exceptions.RequestException, ValueError) as e:
+            # the text of the exception has the whole url, with the api key
+            raise TMDBError(re.sub(r"api_key=[^&\s]+", "api_key=***", str(e))) from None
 
     def _POST(self, path, params=None, payload=None):
         return self._request('POST', path, params=params, payload=payload)

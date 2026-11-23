@@ -7,6 +7,7 @@ from . import tmdbsimple as tmdb
 from .__init__ import _
 from .Debug import logger
 from .Json import Json
+from .Utils import imageUrl
 
 # TMDB delivers its result lists in pages of a fixed 20 entries. The list shows PAGE_SIZE rows, so the entries
 # are regrouped here: page N of the screen is entries (N-1)*PAGE_SIZE ... N*PAGE_SIZE-1 of the TMDB sequence,
@@ -56,6 +57,10 @@ class SearchMain(Json):
             tmdb_page_cache.popitem(last=False)
         return total_pages, total_results, entries
 
+    def titleWithYear(self, title, label, date):
+        year = self.year(date)
+        return f"{title} ({label}, {year})" if year else f"{title} ({label})"
+
     def getResult(self, res, menu_selection, text, ident, page):
         logger.info("menu_selection: %s, text: %s, ident: %s, page: %s",
                     menu_selection, text, ident, page)
@@ -98,12 +103,10 @@ class SearchMain(Json):
 
             title = search_title = ""
             if media == "movie" and title_movie:
-                movie_label = _("Movie")
-                title = f"{title_movie} ({movie_label}, {date_movie[:4]})"
+                title = self.titleWithYear(title_movie, _("Movie"), date_movie)
                 search_title = title_movie
             elif media == "tv" and title_series:
-                series_label = _("Series")
-                title = f"{title_series} ({series_label}, {date_tv[:4]})"
+                title = self.titleWithYear(title_series, _("Series"), date_tv)
                 search_title = title_series
             elif media == "person" and title_person:
                 person_label = _("Person")
@@ -111,17 +114,13 @@ class SearchMain(Json):
                 search_title = title_person
             elif menu_selection and title_movie:
                 media = "movie"
-                movie_label = _("Movie")
-                title = f"{title_movie} ({movie_label}, {date_movie[:4]})"
+                title = self.titleWithYear(title_movie, _("Movie"), date_movie)
                 search_title = title_movie
             else:
                 media = ""
 
-            if media == "person":
-                cover_url = f"http://image.tmdb.org/t/p/{config.plugins.tmdbcockpit.cover_size.value}{profile_path}"
-            else:
-                cover_url = f"http://image.tmdb.org/t/p/{config.plugins.tmdbcockpit.cover_size.value}{cover_path}"
-            backdrop_url = f"http://image.tmdb.org/t/p/{config.plugins.tmdbcockpit.backdrop_size.value}{backdrop_path}"
+            cover_url = imageUrl(config.plugins.tmdbcockpit.cover_size.value, profile_path if media == "person" else cover_path)
+            backdrop_url = imageUrl(config.plugins.tmdbcockpit.backdrop_size.value, backdrop_path)
 
             logger.debug("ident: %s, title: %s, media: %s",
                          ident, title, media)

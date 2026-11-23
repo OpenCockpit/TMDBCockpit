@@ -8,19 +8,19 @@
 &lt;eLabel&gt; backgroundColor=&quot;md_surface_container_high&quot; cornerRadius=&quot;16&quot; position=&quot;4,4&quot; size=&quot;1912,1071&quot; zPosition=&quot;-11&quot;</title></rect>
 <rect data-ref="0:1" data-src="screenpart_WindowBase.ymlinc:10" x="6" y="66" width="1908" height="947" fill="#121212" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screenpart_WindowBase.ymlinc:10
 &lt;eLabel&gt; backgroundColor=&quot;md_surface&quot; cornerRadius=&quot;14&quot; position=&quot;6,66&quot; size=&quot;1908,947&quot; zPosition=&quot;-10&quot;</title></rect>
-<rect data-ref="0:8" data-src="screenpart_ScreenMovieBody.ymlinc:1" x="1395" y="150" width="1" height="849" fill="#424242" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screenpart_ScreenMovieBody.ymlinc:1
+<rect data-ref="0:8" data-src="screenpart_ScreenMovieBody.ymlinc:3" x="1395" y="150" width="1" height="849" fill="#424242" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screenpart_ScreenMovieBody.ymlinc:3
 &lt;eLabel&gt; backgroundColor=&quot;md_outline_variant&quot; position=&quot;1395,150&quot; size=&quot;1,849&quot; zPosition=&quot;-5&quot;</title></rect>
 <rect data-ref="0:6" data-src="screen_ScreenMovie.ymlinc:10" x="6" y="66" width="1908" height="947" fill="#b07aa1" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screen_ScreenMovie.ymlinc:10
 &lt;widget&gt; cornerRadius=&quot;14&quot; name=&quot;backdrop&quot; position=&quot;6,66&quot; scale=&quot;1&quot; size=&quot;1908,947&quot; zPosition=&quot;-2&quot;</title></rect>
 <rect data-ref="0:7" data-src="screen_ScreenMovie.ymlinc:17" x="6" y="66" width="1908" height="947" fill="#ff9da7" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screen_ScreenMovie.ymlinc:17
 &lt;widget&gt; alphaBlend=&quot;1&quot; cornerRadius=&quot;14&quot; name=&quot;backdropdim&quot; position=&quot;6,66&quot; size=&quot;1908,947&quot; transparent=&quot;0&quot; zPosition=&quot;-1&quot;</title></rect>
-<rect data-ref="0:9" data-src="screenpart_ScreenMovieBody.ymlinc:6" x="30" y="90" width="1860" height="45" fill="#bab0ac" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screenpart_ScreenMovieBody.ymlinc:6
+<rect data-ref="0:9" data-src="screenpart_ScreenMovieBody.ymlinc:8" x="30" y="90" width="1860" height="45" fill="#bab0ac" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screenpart_ScreenMovieBody.ymlinc:8
 &lt;widget&gt; font=&quot;Roboto;34&quot; foregroundColor=&quot;md_key_yellow&quot; name=&quot;searchinfo&quot; position=&quot;30,90&quot; size=&quot;1860,45&quot; transparent=&quot;1&quot;</title></rect>
-<rect data-ref="0:10" data-src="screenpart_ScreenMovieBody.ymlinc:13" x="30" y="150" width="850" height="814" fill="#4e79a7" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screenpart_ScreenMovieBody.ymlinc:13
+<rect data-ref="0:10" data-src="screenpart_ScreenMovieBody.ymlinc:15" x="30" y="150" width="850" height="814" fill="#4e79a7" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screenpart_ScreenMovieBody.ymlinc:15
 &lt;widget&gt; font=&quot;Roboto;26&quot; name=&quot;fulldescription&quot; position=&quot;30,150&quot; scrollbarMode=&quot;showNever&quot; size=&quot;850,814&quot; transparent=&quot;1&quot;</title></rect>
-<rect data-ref="0:11" data-src="screenpart_ScreenMovieBody.ymlinc:20" x="30" y="974" width="850" height="25" fill="#121212" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screenpart_ScreenMovieBody.ymlinc:20
+<rect data-ref="0:11" data-src="screenpart_ScreenMovieBody.ymlinc:22" x="30" y="974" width="850" height="25" fill="#121212" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screenpart_ScreenMovieBody.ymlinc:22
 &lt;widget&gt; addon=&quot;COCPager&quot; backgroundColor=&quot;md_surface&quot; conditional=&quot;fulldescription&quot; connection=&quot;fulldescription&quot; position=&quot;30,974&quot; size=&quot;850,25&quot; transparent=&quot;1&quot;</title></rect>
-<rect data-ref="0:12" data-src="screenpart_ScreenMovieBody.ymlinc:28" x="1410" y="150" width="480" height="720" fill="#e15759" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screenpart_ScreenMovieBody.ymlinc:28
+<rect data-ref="0:12" data-src="screenpart_ScreenMovieBody.ymlinc:30" x="1410" y="150" width="480" height="720" fill="#e15759" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screenpart_ScreenMovieBody.ymlinc:30
 &lt;widget&gt; alphatest=&quot;blend&quot; cornerRadius=&quot;20&quot; name=&quot;cover&quot; position=&quot;1410,150&quot; scale=&quot;1&quot; size=&quot;480,720&quot;</title></rect>
 <rect data-ref="0:13" data-src="screenpart_MovieDetails.ymlinc:1" x="905" y="280" width="100" height="100" fill="#76b7b2" fill-opacity="0.45" stroke="#000000" stroke-opacity="0.6" stroke-width="1"><title>screenpart_MovieDetails.ymlinc:1
 &lt;widget&gt; alphatest=&quot;blend&quot; name=&quot;star&quot; position=&quot;905,280&quot; scale=&quot;1&quot; size=&quot;100,100&quot; zPosition=&quot;0&quot;</title></rect>
@@ -73,13 +73,13 @@
 <g pointer-events="none" font-family="monospace" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="3" stroke-opacity="0.85" stroke-linejoin="round" paint-order="stroke">
 <text x="8" y="46"><tspan font-weight="bold">#1:4</tspan> eLabel</text>
 <text x="10" y="80"><tspan font-weight="bold">#1:10</tspan> eLabel</text>
-<text x="1395" y="146"><tspan font-weight="bold">#6:1</tspan> eLabel</text>
+<text x="1395" y="146"><tspan font-weight="bold">#6:3</tspan> eLabel</text>
 <text x="1808" y="80"><tspan font-weight="bold">#5:10</tspan> backdrop</text>
 <text x="1786" y="108"><tspan font-weight="bold">#5:17</tspan> backdropdim</text>
-<text x="34" y="104"><tspan font-weight="bold">#6:6</tspan> searchinfo</text>
-<text x="34" y="164"><tspan font-weight="bold">#6:13</tspan> fulldescription</text>
-<text x="34" y="988"><tspan font-weight="bold">#6:20</tspan> widget</text>
-<text x="1414" y="164"><tspan font-weight="bold">#6:28</tspan> cover</text>
+<text x="34" y="104"><tspan font-weight="bold">#6:8</tspan> searchinfo</text>
+<text x="34" y="164"><tspan font-weight="bold">#6:15</tspan> fulldescription</text>
+<text x="34" y="988"><tspan font-weight="bold">#6:22</tspan> widget</text>
+<text x="1414" y="164"><tspan font-weight="bold">#6:30</tspan> cover</text>
 <text x="909" y="294"><tspan font-weight="bold">#7:1</tspan> star</text>
 <text x="909" y="444"><tspan font-weight="bold">#7:34</tspan> year_txt</text>
 <text x="1044" y="444"><tspan font-weight="bold">#7:41</tspan> year</text>

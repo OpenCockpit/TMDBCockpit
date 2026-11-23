@@ -12,7 +12,7 @@ class Parsers(Json):
 
     def parseCountry(self, result):
         country_string = ""
-        for country in result["production_countries"]:
+        for country in self.asList(result["production_countries"]):
             result1 = {}
             self.parseJson(result1, country, ["iso_3166_1"])
             if country_string:
@@ -23,7 +23,7 @@ class Parsers(Json):
 
     def parseGenre(self, result):
         genre_string = ""
-        for genre in result["genres"]:
+        for genre in self.asList(result["genres"]):
             result1 = {}
             self.parseJson(result1, genre, ["name"])
             if genre_string:
@@ -34,7 +34,7 @@ class Parsers(Json):
     def parseCast(self, result):
         cast_string = ""
         result1 = result["credits"]
-        for cast in result1["cast"]:
+        for cast in self.asList(result1.get("cast") if isinstance(result1, dict) else None):
             result2 = {}
             self.parseJson(result2, cast, ["name", "character"])
             cast_string += f"{result2['name']} ({result2['character']})\n"
@@ -45,7 +45,7 @@ class Parsers(Json):
         director = ""
         author = ""
         result1 = result["credits"]
-        for crew in result1["crew"]:
+        for crew in self.asList(result1.get("crew") if isinstance(result1, dict) else None):
             result2 = {}
             self.parseJson(result2, crew, ["name", "job"])
             crew_string += f"{result2['name']} ({result2['job']})\n"
@@ -63,7 +63,7 @@ class Parsers(Json):
 
     def parseStudio(self, result):
         studio_string = ""
-        for studio in result["production_companies"]:
+        for studio in self.asList(result["production_companies"]):
             result1 = {}
             self.parseJson(result1, studio, ["name"])
             if studio_string:
@@ -81,8 +81,8 @@ class Parsers(Json):
         elif media == "tv":
             keys = ["results", "rating"]
             result1 = result["content_ratings"]
-        if keys and result1:
-            for country in result1[keys[0]]:
+        if keys and isinstance(result1, dict):
+            for country in self.asList(result1.get(keys[0])):
                 result2 = {}
                 self.parseJson(result2, country, ["iso_3166_1", keys[1]])
                 if result2["iso_3166_1"] == "DE":
@@ -92,9 +92,8 @@ class Parsers(Json):
     def parseMovieVideos(self, result):
         result1 = {}
         self.parseJson(result1, result["videos"], ["results"])
-        result["videos"] = result1["results"]
         videos = []
-        for video in result["videos"]:
+        for video in self.asList(result1["results"]):
             result1 = {}
             self.parseJson(result1, video, ["site"])
             if result1["site"] == "YouTube":
@@ -107,7 +106,7 @@ class Parsers(Json):
 
     def parseTVCrew(self, result):
         director = ""
-        for directors in result["created_by"]:
+        for directors in self.asList(result["created_by"]):
             result1 = {}
             self.parseJson(result1, directors, ["name"])
             if director:
@@ -118,7 +117,7 @@ class Parsers(Json):
 
     def parseTVStudio(self, result):
         studio_string = ""
-        for studio in result["networks"]:
+        for studio in self.asList(result["networks"]):
             result1 = {}
             self.parseJson(result1, studio, ["name"])
             if studio_string:
@@ -127,29 +126,32 @@ class Parsers(Json):
         result["studio"] = studio_string
 
     def parseTVSeasons(self, result):
-        num_seasons = result["number_of_seasons"]
-        episodes = result["number_of_episodes"]
+        num_seasons = result["number_of_seasons"] if result["number_of_seasons"] != "None" else 0
+        episodes = result["number_of_episodes"] if result["number_of_episodes"] != "None" else 0
         seasons_label = _("Seasons")
         episodes_label = _("Episodes")
         result["runtime"] = f"{num_seasons} {seasons_label} / {episodes} {episodes_label}"
 
         season_label = _("Season")
         seasons_string = ""
-        for season in result["seasons"]:
+        for season in self.asList(result["seasons"]):
             result1 = {}
             self.parseJson(result1, season, ["season_number", "episode_count", "air_date"])
             # logger.debug("seasons: %s", result1)
-            if int(result1["season_number"]) >= 1:
-                seasons_string += f"{season_label} {result1['season_number']}: {result1['episode_count']} {episodes_label} ({result1['air_date'][:4]})\n"
+            if self.number(result1["season_number"], 0) >= 1:
+                year = self.year(result1["air_date"])
+                year = f" ({year})" if year else ""
+                seasons_string += f"{season_label} {result1['season_number']}: {result1['episode_count']} {episodes_label}{year}\n"
         result["seasons"] = seasons_string
 
     def parsePersonGender(self, result):
+        # TMDB: 0 not specified, 1 female, 2 male, 3 non-binary
         gender = result["gender"]
         if gender == 1:
             gender = _("female")
         elif gender == 2:
             gender = _("male")
-        elif gender == "divers":
+        elif gender == 3:
             gender = _("divers")
         else:
             gender = _("not specified")

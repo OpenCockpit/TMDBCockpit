@@ -44,8 +44,10 @@ class ScreenTMDB():
         try:
             result = SearchTMDB().getResult(self.result1, text)
         except Exception as e:
-            logger.error("search failed: %s", e)
-            result = []
+            # no network, an error of TMDB: that is no "nothing found", a search with a shorter text would fail as well
+            logger.error("search failed: %s", str(e))
+            reactor.callFromThread(self.callback, {})
+            return
         reactor.callFromThread(callback, result)
 
     def gotData(self, result):
@@ -64,7 +66,7 @@ class ScreenTMDB():
             result = SearchMovie().getResult(self.result2, ident, media)
             result["cover_url"] = cover_url
         except Exception as e:
-            logger.error("details of %s failed: %s", ident, e)
+            logger.error("details of %s failed: %s", ident, str(e))
             result = {}
         logger.debug("result: %s", result)
         reactor.callFromThread(self.callback, result)

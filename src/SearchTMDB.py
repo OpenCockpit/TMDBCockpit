@@ -5,6 +5,7 @@ from Components.config import config
 from . import tmdbsimple as tmdb
 from .Debug import logger
 from .Json import Json
+from .Utils import imageUrl
 
 
 class SearchTMDB(Json):
@@ -21,7 +22,7 @@ class SearchTMDB(Json):
         self.parseJson(results, json_data, ["results"])
         logger.debug("json_data: %s", json_data)
 
-        for entry in results["results"]:
+        for entry in self.asList(results["results"]):
             logger.debug("entry: %s", entry)
             result = {}
             keys = ["media_type", "id", "title", "original_title", "name", "release_date",
@@ -33,13 +34,12 @@ class SearchTMDB(Json):
             if media not in {"movie", "tv"}:
                 continue   # a person is no answer to the lookup of a title
             title = result["title"] if media == "movie" else result["name"]
-            cover_url = f"http://image.tmdb.org/t/p/{config.plugins.tmdbcockpit.cover_size.value}{result['poster_path']}"
-            backdrop_url = f"http://image.tmdb.org/t/p/{config.plugins.tmdbcockpit.backdrop_size.value}{result['backdrop_path']}"
+            cover_url = imageUrl(config.plugins.tmdbcockpit.cover_size.value, result["poster_path"])
+            backdrop_url = imageUrl(config.plugins.tmdbcockpit.backdrop_size.value, result["backdrop_path"])
 
             logger.debug("ident: %s, title: %s, media: %s",
                          ident, title, media)
             if ident and title and media:
                 res.append(((title, ident, media, cover_url, backdrop_url), ))
                 break
-        del json_data
         return res

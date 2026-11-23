@@ -61,7 +61,7 @@ class ScreenSeason(MoreOptions, Picture, Screen, HelpableScreen):
                 "nextBouquet": (self.overview_label.pageUp, _("Details down")),
                 "prevBouquet": (self.overview_label.pageDown, _("Details up")),
                 "right": (self.list.pageDown, _("Page down")),
-                "left": (self.list.pageUp, _("Page down")),
+                "left": (self.list.pageUp, _("Page up")),
                 "cancel": (boundFunction(self.exit, False), _("Cancel")),
                 "blue": (self.showMenu, _("more ...")),
                 "menu": (self.setup, _("Setup"))
@@ -82,12 +82,17 @@ class ScreenSeason(MoreOptions, Picture, Screen, HelpableScreen):
     def onFinish(self):
         logger.debug("Selected: %s", self.movie)
         self.showPicture(self["backdrop"], "backdrop", self.ident, None)
+        self["searchinfo"].setText(_("Looking up: %s ...") % (
+            self.movie + " - " + _("Seasons")))
         threads.deferToThread(self.getData, self.gotData)
 
     def getData(self, callback):
-        self["searchinfo"].setText(_("Looking up: %s ...") % (
-            self.movie + " - " + _("Seasons")))
-        result = SearchSeason().getResult(self.result, self.ident)
+        # runs in a thread: no access to the widgets here
+        try:
+            result = SearchSeason().getResult(self.result, self.ident)
+        except Exception as e:  # no network, an error of TMDB
+            logger.error("seasons of %s failed: %s", self.ident, str(e))
+            result = []
         reactor.callFromThread(callback, result)
 
     def gotData(self, result):

@@ -30,9 +30,6 @@ class ScreenPeople(Picture, Screen, HelpableScreen):
         self.title = _("Crew")
         self.session = session
         self.movie = movie
-        # Picture.showPicture() reuses self.ident as its "current image" marker, so the
-        # movie's own id lives in its own attribute (getData() runs in a thread and could
-        # otherwise read the value showPicture() just overwrote)
         self.movie_ident = ident
         self.media = media
         self.cover_url = cover_url
@@ -60,7 +57,7 @@ class ScreenPeople(Picture, Screen, HelpableScreen):
                 "up": (self.list.up, _("Selection up")),
                 "down": (self.list.down, _("Selection down")),
                 "right": (self.list.pageDown, _("Page down")),
-                "left": (self.list.pageUp, _("Page down")),
+                "left": (self.list.pageUp, _("Page up")),
                 "cancel": (boundFunction(self.exit, False), _("Cancel")),
                 "green": (self.ok, _("Show details")),
                 "menu": (self.setup, _("Setup"))
@@ -81,12 +78,17 @@ class ScreenPeople(Picture, Screen, HelpableScreen):
     def __onLayoutFinish(self):
         logger.debug("movie: %s", self.movie)
         self.showPicture(self["backdrop"], "backdrop", self.movie_ident, self.backdrop_url)
+        self["searchinfo"].setText(
+            _("Looking up: %s ...") % (self.movie + " - " + _("Crew")))
         threads.deferToThread(self.getData, self.gotData)
 
     def getData(self, callback):
-        self["searchinfo"].setText(
-            _("Looking up: %s ...") % (self.movie + " - " + _("Crew")))
-        result = SearchPeople().getResult(self.result, self.movie_ident, self.media)
+        # runs in a thread: no access to the widgets here
+        try:
+            result = SearchPeople().getResult(self.result, self.movie_ident, self.media)
+        except Exception as e:  # no network, an error of TMDB
+            logger.error("crew of %s failed: %s", self.movie_ident, str(e))
+            result = []
         reactor.callFromThread(callback, result)
 
     def gotData(self, result):

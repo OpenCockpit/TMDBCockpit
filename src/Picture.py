@@ -11,7 +11,7 @@ from Components.config import config
 from Components.Pixmap import Pixmap
 from Tools.LoadPixmap import LoadPixmap
 from .Debug import logger
-from .Utils import temp_dir
+from .Utils import temp_dir, pruneCache
 from .WebRequests import WebRequests
 from .FileUtils import deleteFile
 
@@ -74,16 +74,18 @@ class BackdropPixmap(Pixmap):
 class Picture(WebRequests):
     def __init__(self):
         WebRequests.__init__(self)
-        self.ident = None
+        # what is wanted at the moment, for each kind of picture: the cover and the backdrop of a screen are asked for one after
+        # the other, and the answer of a download is only shown if it is still the one wanted
+        self.idents = {}
 
     def showPicture(self, widget, atype, ident, url):
         logger.info("atype: %s, ident: %s, url: %s", atype, ident, url)
-        self.ident = ident
+        self.idents[atype] = ident
         path = os.path.join(temp_dir, f"{atype}{ident}.jpg")
         if url and not url.endswith("None") and not os.path.isfile(path):
             threads.deferToThread(self.downloadPicture, widget, ident, atype, url, path)
         else:
-            self.displayPicture(ident, widget, path)
+            self.displayPicture(atype, ident, widget, path)
 
     def downloadFile(self, url, path):
         """Stream download of a picture.
@@ -93,7 +95,8 @@ class Picture(WebRequests):
         the same picture is asked for again) must never leave a truncated file under the final name."""
         logger.info("url: %s, path: %s", url, path)
         headers = {"user-agent": self.getUserAgent()}
-        part = path + ".part"
+        # the same picture can be asked for again while it is downloaded: every download has its own file
+        part = f"{path}.{threading.get_ident()}.part"
         response = _getDownloadSession().get(url, headers=headers, stream=True, allow_redirects=True, verify=False, timeout=30)
         try:
             logger.debug("response.url: %s", response.url)
@@ -115,14 +118,15 @@ class Picture(WebRequests):
         logger.info("atype: %s, ident: %s, url: %s, path: %s", atype, ident, url, path)
         try:
             self.downloadFile(url, path)
+            pruneCache()
         except Exception as e:
             logger.error("Error downloading picture: %s", str(e))
         finally:
-            reactor.callFromThread(self.displayPicture, ident, widget, path)
+            reactor.callFromThread(self.displayPicture, atype, ident, widget, path)
 
-    def displayPicture(self, ident, widget, path):
+    def displayPicture(self, atype, ident, widget, path):
         logger.info("...")
-        if widget and widget.instance and ident == self.ident:
+        if widget and widget.instance and ident == self.idents.get(atype):
             if path and os.path.isfile(path):
                 # Release the currently displayed picture's accelerated
                 # surface before decoding+loading the new one instead of

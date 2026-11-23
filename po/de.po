@@ -124,8 +124,11 @@ msgstr "Lade: %s ..."
 msgid "page"
 msgstr "Seite"
 
+msgid "Search failed"
+msgstr "Suche fehlgeschlagen"
+
 msgid "No results for:"
-msgstr "Keine Ergebnisse für: %s"
+msgstr "Keine Ergebnisse für:"
 
 msgid "TMDB Infos"
 msgstr "TMDB Infos"

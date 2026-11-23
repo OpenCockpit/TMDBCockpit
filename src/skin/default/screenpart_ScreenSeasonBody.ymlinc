@@ -1,3 +1,5 @@
+- param: {name: "width"}
+- param: {name: "height"}
 - eLabel:
     backgroundColor: "md_outline_variant"
     position: "$width-520-15,60"

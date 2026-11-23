@@ -181,7 +181,11 @@ class ScreenMovie(MoreOptions, Picture, Screen, HelpableScreen):
         threads.deferToThread(self.getData, self.gotData)
 
     def getData(self, callback):
-        result = SearchMovie().getResult(self.result, self.ident, self.media)
+        try:
+            result = SearchMovie().getResult(self.result, self.ident, self.media)
+        except Exception as e:  # no network, an error of TMDB
+            logger.error("details of %s failed: %s", self.ident, str(e))
+            result = {}
         logger.debug("result: %s", result)
         reactor.callFromThread(callback, result)
 
