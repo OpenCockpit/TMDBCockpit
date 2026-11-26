@@ -10,7 +10,7 @@
     foregroundColor: "md_key_yellow"
     name: "searchinfo"
     position: "0,0"
-    size: "$width,45"
+    size: "$width,46"
     transparent: "1"
 - widget:
     font: "$md_body_small"
